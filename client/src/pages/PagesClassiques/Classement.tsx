@@ -1,19 +1,12 @@
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+
 function Classement() {
   return (
     <>
       <h2>Le classement</h2>
       <header>
-        {/* Pour l'instant en dur ici mais sera importé sous forme de composant */}
-        <nav>
-          <img src="http://logo.fr" alt="Logo" />
-          <img src="http://profil.fr" alt="IconeProfil" />
-          <p>Profil</p>
-          <div className="clicProfil">
-            <p>Voir mon profil</p>
-            <p>Modifier mon profil</p>
-            <p>Me déconnecter</p>
-          </div>
-        </nav>
+        <Header />
       </header>
 
       <h3>Classement</h3>
@@ -32,12 +25,7 @@ function Classement() {
       </figure>
 
       <footer>
-        {/* Pour l'instant en dur ici mais sera importé sous forme de composant */}
-        <p>Carte</p>
-        <p>Règles</p>
-        <img src="http://bouton.fr" alt="IconeProfil" />
-        <p>Classement</p>
-        <p>Contact</p>
+        <Footer />
       </footer>
     </>
   );
