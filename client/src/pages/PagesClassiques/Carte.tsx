@@ -16,7 +16,9 @@ function Carte() {
         </nav>
       </header>
       <main>
-        <h2><Carte/></h2>
+        <h2>
+          <Carte />
+        </h2>
 
         <section className="streetArtPhotos">
           <figure>
