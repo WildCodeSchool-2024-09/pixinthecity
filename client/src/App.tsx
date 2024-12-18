@@ -1,12 +1,5 @@
-import "./App.css";
-import Carte from "./pages/PagesClassiques/Carte";
-
 function App() {
-  return (
-    <>
-      <Carte />
-    </>
-  );
+  return <></>;
 }
 
 export default App;
