@@ -19,7 +19,6 @@ function Shoot() {
       <p>Appareil photo</p>
       <p>Importer votre photo</p>
       <p>A toi de jouer !</p>
-
       <footer>
         {/* Pour l'instant en dur ici mais sera importé sous forme de composant */}
         <p>Carte</p>

@@ -9,9 +9,7 @@ function Login() {
         <input />
         <label htmlFor="password">Mot de passe</label>
         <input />
-        <button type="submit">
-          Connexion
-        </button>
+        <button type="submit">Connexion</button>
       </form>
       <p>ou</p>
       <button type="button">Créer mon compte</button>

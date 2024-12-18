@@ -16,23 +16,26 @@ function SoumPhoto() {
         </nav>
       </header>
 
-<h3>Soumettre une photo</h3>
-<p>Les oeuvres doivent respecter les critères de bienséance, et sont systématiquement valider par l'administrateur</p>
-<form>
+      <h3>Soumettre une photo</h3>
+      <p>
+        Les oeuvres doivent respecter les critères de bienséance, et sont
+        systématiquement valider par l'administrateur
+      </p>
+      <form>
         <label htmlFor="identifiant">Nom</label>
         <input />
-        <label htmlFor="password">Titre de l'oeuvre (si vous la connaisez)</label>
+        <label htmlFor="password">
+          Titre de l'oeuvre (si vous la connaisez)
+        </label>
         <input />
         <label htmlFor="identifiant">Description</label>
         <input />
         <label htmlFor="identifiant">Adresse de l'oeuvre</label>
         <input />
         <button type="submit" className="Homebutton">
-   Proposer mon oeuvre
+          Proposer mon oeuvre
         </button>
       </form>
-
-
 
       <footer>
         {/* Pour l'instant en dur ici mais sera importé sous forme de composant */}

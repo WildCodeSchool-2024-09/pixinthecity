@@ -21,18 +21,18 @@ function Profil() {
       <img src="http://avatar.fr" alt="avatar" />
       <p>Nom d'utilisateur</p>
 
-<h3>Points : xx points</h3>
+      <h3>Points : xx points</h3>
 
-<h3>Badges : <img src="http://badge.fr" alt="badge" />
-<img src="http://badge.fr" alt="badge" /></h3>
+      <h3>
+        Badges : <img src="http://badge.fr" alt="badge" />
+        <img src="http://badge.fr" alt="badge" />
+      </h3>
 
-<h3>Contributions</h3>
-<p>aperçu des photos déjà validées</p>
+      <h3>Contributions</h3>
+      <p>aperçu des photos déjà validées</p>
 
-
-<p>Paramètres</p>
-<p>Modifier mon profil</p>
-
+      <p>Paramètres</p>
+      <p>Modifier mon profil</p>
 
       <footer>
         {/* Pour l'instant en dur ici mais sera importé sous forme de composant */}
