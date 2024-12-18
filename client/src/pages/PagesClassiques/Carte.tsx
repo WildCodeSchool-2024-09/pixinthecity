@@ -16,7 +16,7 @@ function Carte() {
         </nav>
       </header>
       <main>
-        <h2>La carte sera importée ici sous forme de composant</h2>
+        <h2><Carte/></h2>
 
         <section className="streetArtPhotos">
           <figure>

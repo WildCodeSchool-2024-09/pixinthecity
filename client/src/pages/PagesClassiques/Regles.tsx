@@ -84,6 +84,9 @@ function Regles() {
         22. <li>Conservateur de Rue (5,000-9,999 points)</li>
         22. <li>Légende du Street Art (10,000+ points)</li>
       </ul>
+      <button type="button">Me connecter</button>
+      <button type="button">Créer mon compte</button>
+      <button type="button">Rester en tant que visiteur (dommage !)</button>
     </>
   );
 }
