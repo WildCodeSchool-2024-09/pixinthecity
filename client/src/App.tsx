@@ -1,12 +1,9 @@
-// import CardChasseurs from "./components/CardChasseurs";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <div>
-        <h2>App</h2>
-        {/* <CardChasseurs /> */}
-      </div>
+      <Outlet />
     </>
   );
 }
