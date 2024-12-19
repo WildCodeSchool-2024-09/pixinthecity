@@ -7,6 +7,17 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
+import Carte from "./components/Carte";
+import Classement from "./pages/PagesClassiques/Classement";
+import Contact from "./pages/PagesClassiques/Contact";
+import Regles from "./pages/PagesClassiques/Regles";
+import Shoot from "./pages/Photos/Shoot";
+import SoumPhoto from "./pages/Photos/SoumPhoto";
+import CreaProfil from "./pages/Profil/CreaProfil";
+import ModifProfil from "./pages/Profil/ModifProfil";
+import Profil from "./pages/Profil/Profil";
+import Login from "./pages/Secu/Login";
+import MdpOublie from "./pages/Secu/MdpOublie";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -20,8 +31,54 @@ import App from "./App";
 // You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
-    path: "/", // The root path
-    element: <App />, // Renders the App component for the home page
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "", // The root path
+        element: <Regles />,
+      },
+      {
+        path: "Carte",
+        element: <Carte />,
+      },
+      {
+        path: "Classement",
+        element: <Classement />,
+      },
+      {
+        path: "Contact",
+        element: <Contact />,
+      },
+      {
+        path: "Login",
+        element: <Login />,
+      },
+      {
+        path: "Shoot",
+        element: <Shoot />,
+      },
+      {
+        path: "Données photo",
+        element: <SoumPhoto />,
+      },
+      {
+        path: "Création de profil",
+        element: <CreaProfil />,
+      },
+      {
+        path: "Modification de profil ",
+        element: <ModifProfil />,
+      },
+      {
+        path: "Profil",
+        element: <Profil />,
+      },
+      {
+        path: "Modification mot de passe",
+        element: <MdpOublie />,
+      },
+    ],
   },
   // Try adding a new route! For example, "/about" with an About component
 ]);
