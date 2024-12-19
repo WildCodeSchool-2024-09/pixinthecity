@@ -59,15 +59,15 @@ const router = createBrowserRouter([
         element: <Shoot />,
       },
       {
-        path: "Données photo",
+        path: "Donnees_photo",
         element: <SoumPhoto />,
       },
       {
-        path: "Création de profil",
+        path: "Creation_de_profil",
         element: <CreaProfil />,
       },
       {
-        path: "Modification de profil ",
+        path: "Modification_de_profil ",
         element: <ModifProfil />,
       },
       {
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
         element: <Profil />,
       },
       {
-        path: "Modification mot de passe",
+        path: "Modification_mot_de_passe",
         element: <MdpOublie />,
       },
     ],
