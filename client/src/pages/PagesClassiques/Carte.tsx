@@ -1,18 +1,17 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-
+import MapStretArt from "../../components/MapStreetArt";
 function Carte() {
   return (
     <>
-      <h2>Carte</h2>
       <header>
-        <header>
-          <Header />
-        </header>
+        <Header />
       </header>
+      <h2>Carte</h2>
+
       <main>
         <h2>
-          <Carte />
+          <MapStretArt />
         </h2>
 
         <section className="streetArtPhotos">
@@ -21,7 +20,7 @@ function Carte() {
             <h3>Titre : Mosaique Ememem, rue de la bourse, Lyon 2e</h3>
             <h4>Description :</h4>
             <p>
-              À partir de petit carreaux, l'artist urban Ememem construit des
+              À partir de petit carreaux, l'artiste urban Ememem construit des
               mosaïques ou des "pancements de trous" (comme il les appelle) pour
               vétir la rue des couleurs. Dans ce mosaïque en blanc et noir nous
               trouvons une sorte de jeu qui fait penser aux mots fléchés. Pour
