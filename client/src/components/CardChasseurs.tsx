@@ -18,7 +18,7 @@ function CardChasseur() {
     const fetchProfiles = async () => {
       try {
         const response = await fetch(
-          "https://randomuser.me/api/?results=128&nat=us,gb,fr",
+          "https://randomuser.me/api/?results=48&nat=us,gb,fr",
         );
         const data = await response.json();
 
