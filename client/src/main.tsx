@@ -7,7 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
-import Carte from "./components/Carte";
+import Carte from "./pages/PagesClassiques/Carte";
 import Classement from "./pages/PagesClassiques/Classement";
 import Contact from "./pages/PagesClassiques/Contact";
 import Regles from "./pages/PagesClassiques/Regles";
@@ -18,7 +18,6 @@ import ModifProfil from "./pages/Profil/ModifProfil";
 import Profil from "./pages/Profil/Profil";
 import Login from "./pages/Secu/Login";
 import MdpOublie from "./pages/Secu/MdpOublie";
-
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
