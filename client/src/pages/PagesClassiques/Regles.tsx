@@ -2,13 +2,13 @@ function Regles() {
   return (
     <>
       <h2>
-        12. "Prêts à vivre l’aventure ? Découvrez nos règles et rejoignez-nous
-        !" 13. "Des règles simples pour une aventure inoubliable." "Vous
-        parcourez les 14. rues comme un historien moderne, redécouvrant les
-        trésors cachés de nos 15. villes." "Des récompenses pour les
-        contributeurs assidus et un 16. classement officiel." 17.
+        "Prêts à vivre l’aventure ? Découvrez nos règles et rejoignez-nous!"
+        "Des règles simples pour une aventure inoubliable." "Vous parcourez les
+        rues comme un historien moderne, redécouvrant les trésors cachés de nos
+        villes." "Des récompenses pour les contributeurs assidus et un
+        classement officiel."
       </h2>
-      18. <h3>Système de Points</h3>
+      <h3>Système de Points</h3>
       <ul>
         <li>
           Soumission d'une œuvre avec photo et localisation valide : +50 points.
@@ -17,14 +17,14 @@ function Regles() {
           Première soumission d'une œuvre dans une nouvelle ville/quartier :
           +100 points.
         </li>
-        22. <li>Signalement d'une œuvre disparue (avec preuve) : +30 points</li>
+        <li>Signalement d'une œuvre disparue (avec preuve) : +30 points</li>
       </ul>
-      24. <h3>Système de Badges</h3>
+      <h3>Système de Badges</h3>
       <p>
         Les badges sont des récompenses visuelles qui sont attribués aux
         contributeurs :
       </p>
-      27. <h4>Par contribution</h4>
+      <h4>Par contribution</h4>
       <ul>
         <li>
           Soumission d'une œuvre avec photo et localisation valide : +50 points.
@@ -78,11 +78,11 @@ function Regles() {
       </p>
       <ul>
         <li>Passant Curieux (0-499 points)</li>
-        21. <li>Apprenti Explorateur (500-999 points)</li>
-        22. <li>Chercheur Urbain (1,000-2,499 points)</li>
-        21. <li>Découvreur Passionné (2,500-4,999 points)</li>
-        22. <li>Conservateur de Rue (5,000-9,999 points)</li>
-        22. <li>Légende du Street Art (10,000+ points)</li>
+        <li>Apprenti Explorateur (500-999 points)</li>
+        <li>Chercheur Urbain (1,000-2,499 points)</li>
+        <li>Découvreur Passionné (2,500-4,999 points)</li>
+        <li>Conservateur de Rue (5,000-9,999 points)</li>
+        <li>Légende du Street Art (10,000+ points)</li>
       </ul>
     </>
   );
