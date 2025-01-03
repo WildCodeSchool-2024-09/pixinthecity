@@ -1,10 +1,34 @@
+import { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+// import Header from "../../components/Header";
+import type UserType from "../../types/UserType";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Classement() {
+  const [users, setUsers] = useState<UserType[] | []>([]);
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/users`)
+      .then((resultAPI) => {
+        return resultAPI.json();
+      })
+      .then((usersJson) => {
+        setUsers(usersJson);
+      });
+  }, []);
+
   return (
     <>
-      <h2>Le classement</h2>
+      {users.map((user) => {
+        return (
+          <section key={user.id}>
+            <h2>{user.firstname}</h2>
+            <h2>{user.lastname}</h2>
+          </section>
+        );
+      })}
+
+      {/* <h2>Le classement</h2>
       <header>
         <Header />
       </header>
@@ -15,6 +39,8 @@ function Classement() {
         règles
       </p>
 
+
+
       <figure className="card">
         <h4>Nom_utilisateur</h4>
         <img src="http://avatar.fr" alt="avatar" />
@@ -22,7 +48,7 @@ function Classement() {
         <p>
           <img src="http://badge.fr" alt="badge" />
         </p>
-      </figure>
+      </figure> */}
 
       <footer>
         <Footer />
