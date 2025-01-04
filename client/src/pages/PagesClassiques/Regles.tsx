@@ -1,15 +1,15 @@
 import "./Regles.css";
-import rue from "../../assets/videos/homepage.mp4";
+// import rue from "../../assets/videos/homepage.mp4";
 
 function Regles() {
   return (
     <>
-      <video className="video-background" autoPlay loop muted>
+      {/* <video className="video-background" autoPlay loop muted>
         <source src={rue} type="video/mp4" />
         Votre navigateur ne supporte pas les vidéos HTML5.
-      </video>
+      </video> */}
       <div className="container">
-        <img className="logo" src="./src/assets/images/logo.png" alt="logo" />
+        {/* <img className="logo" src="./src/assets/images/logo.png" alt="logo" /> */}
         <h1>
           Prêts à vivre l’aventure ? Découvrez nos règles et rejoignez-nous!
         </h1>
@@ -47,15 +47,15 @@ function Regles() {
         <ul>
           <li>
             Découvreur Novice : Soumettre 5 œuvres.
-            <img src="\src\assets\images\novice.jpg" alt="novice" />
+            {/* <img src="\src\assets\images\novice.jpg" alt="novice" /> */}
           </li>
           <li>
             Photographe de Rue : Soumettre 50 œuvres.
-            <img src="\src\assets\images\photographe.png" alt="photographe" />
+            {/* <img src="\src\assets\images\photographe.png" alt="photographe" /> */}
           </li>
           <li>
             Archiviste : Soumettre 200 œuvres.
-            <img src="\src\assets\images\archiviste.jpg" alt="archiviste" />
+            {/* <img src="\src\assets\images\archiviste.jpg" alt="archiviste" /> */}
           </li>
         </ul>
         <h4>Par engagement géographique</h4>
@@ -63,30 +63,30 @@ function Regles() {
           <li>
             Explorateur Local : Soumettre des œuvres dans 3 quartiers d'une même
             ville.
-            <img
+            {/* <img
               src="\src\assets\images\explorateur_local.jpg"
               alt="explorateur"
-            />
+            /> */}
           </li>
 
           <li>
             Globe-Trotter Urbain : Soumettre des œuvres dans 2 villes
             différentes.
-            <img src="\src\assets\images\globe_trotteur.png" alt="globe" />
+            {/* <img src="\src\assets\images\globe_trotteur.png" alt="globe" /> */}
           </li>
         </ul>
         <h4>Badges spéciaux</h4>
         <ul>
           <li>
             Découverte Rare : Soumettre une œuvre d’un artiste renommé.
-            <img
+            {/* <img
               src="\src\assets\images\decouverte_rare.jpg"
               alt="decouverte"
-            />
+            /> */}
           </li>
           <li>
             Oeil de Lynx : Soumettre une œuvre difficile à localiser.
-            <img src="\src\assets\images\oeil_de_lynx.png" alt="oeil" />
+            {/* <img src="\src\assets\images\oeil_de_lynx.png" alt="oeil" /> */}
           </li>
         </ul>
         <h3>Niveaux</h3>
