@@ -22,5 +22,6 @@ router.get("/api/users", userActions.browse);
 import photoActions from "./modules/photo/photoActions";
 
 router.get("/api/photos", photoActions.browse);
+router.get("/api/photos/:id", photoActions.read);
 
 export default router;
