@@ -19,4 +19,8 @@ import userActions from "./modules/user/userActions";
 
 router.get("/api/users", userActions.browse);
 
+import photoActions from "./modules/photo/photoActions";
+
+router.get("/api/photos", photoActions.browse);
+
 export default router;

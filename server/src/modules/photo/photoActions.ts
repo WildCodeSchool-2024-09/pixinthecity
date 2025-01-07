@@ -5,16 +5,16 @@ import photoRepository from "./photoRepository";
 
 // The B of BREAD - Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
-	try {
-		// Fetch all items
-		const photos = await photoRepository.readAll();
+  try {
+    // Fetch all items
+    const photos = await photoRepository.readAll();
 
-		// Respond with the items in JSON format
-		res.json(photos);
-	} catch (err) {
-		// Pass any errors to the error-handling middleware
-		next(err);
-	}
+    // Respond with the items in JSON format
+    res.json(photos);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
 };
 
 // The R of BREAD - Read operation
