@@ -18,24 +18,24 @@ const browse: RequestHandler = async (req, res, next) => {
 };
 
 // The R of BREAD - Read operation
-// const read: RequestHandler = async (req, res, next) => {
-//   try {
-//     // Fetch a specific item based on the provided ID
-//     const itemId = Number(req.params.id);
-//     const item = await itemRepository.read(itemId);
+const read: RequestHandler = async (req, res, next) => {
+  try {
+    // Fetch a specific item based on the provided ID
+    const photoId = Number(req.params.id);
+    const photos = await photoRepository.read(photoId);
 
-//     // If the item is not found, respond with HTTP 404 (Not Found)
-//     // Otherwise, respond with the item in JSON format
-//     if (item == null) {
-//       res.sendStatus(404);
-//     } else {
-//       res.json(item);
-//     }
-//   } catch (err) {
-//     // Pass any errors to the error-handling middleware
-//     next(err);
-//   }
-// };
+    // If the photo is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the item in JSON format
+    if (photos == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(photos);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 // The A of BREAD - Add (Create) operation
 // const add: RequestHandler = async (req, res, next) => {
@@ -57,4 +57,4 @@ const browse: RequestHandler = async (req, res, next) => {
 //   }
 // };
 
-export default { browse };
+export default { browse, read };
