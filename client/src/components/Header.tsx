@@ -1,17 +1,33 @@
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Logo from "../assets/images/logo.png";
+import "./CSS/Header.css";
+
 function Header() {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/Login");
+  };
+
+  const handleSignup = () => {
+    navigate("/Creation_de_profil");
+  };
+
   return (
-    <>
-      <nav>
-        <img src="http://logo.fr" alt="Logo" />
-        <img src="http://profil.fr" alt="IconeProfil" />
-        <p>Profil</p>
-        <div className="clicProfil">
-          <p>Voir mon profil</p>
-          <p>Modifier mon profil</p>
-          <p>Me déconnecter</p>
-        </div>
+    <header className="header">
+      <Link to="/">
+        <img src={Logo} alt="Logo" id="logo" />
+      </Link>
+      <nav className="buttons">
+        <button type="button" id="login_button" onClick={handleLogin}>
+          CONNEXION
+        </button>
+        <button type="button" id="signup_button" onClick={handleSignup}>
+          CREER MON COMPTE
+        </button>
       </nav>
-    </>
+    </header>
   );
 }
 
