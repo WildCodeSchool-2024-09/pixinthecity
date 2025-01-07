@@ -16,6 +16,10 @@ header {
   justify-content: space-between;
   padding-top: 1em;
   padding-bottom: 1em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 #logo {
@@ -33,26 +37,26 @@ header {
 #login_button,
 #signup_button {
   font-size: x-small;
-  background-color: #ed2ea5; /* Couleur par défaut */
+  background-color: #ed2ea5;
   font-family: "pixeleum", sans-serif;
   color: white;
   margin-bottom: 5px;
-  padding: 5px 10px; /* Combine les padding pour simplifier */
+  padding: 5px 10px;
   border: solid white 1px;
   border-radius: 8px;
   text-align: left;
-  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.3); /* Ombre par défaut */
-  transition: all 0.2s ease; /* Animation douce */
+  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
   cursor: pointer;
 }
 
 #signup_button {
-  background-color: #6e7dc9; /* Couleur différente pour le bouton */
+  background-color: #6e7dc9;
 }
 
 #login_button:active,
 #signup_button:active {
-  transform: translateY(2px) translateX(4px); /* Déplace le bouton légèrement vers le bas et à droite */
+  transform: translateY(2px) translateX(4px);
   box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.6), 0px 0px 10px
-    rgba(255, 255, 255, 0.3); /* Effet néon fin */
+    rgba(255, 255, 255, 0.3);
 }

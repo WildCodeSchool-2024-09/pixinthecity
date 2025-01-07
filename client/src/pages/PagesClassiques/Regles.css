@@ -1,128 +1,133 @@
-/* body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  color: #ed2ea5;
+/* === Définition des polices === */
+@font-face {
+  font-family: "pixeleum";
+  src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
 }
 
-.video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  object-fit: cover;
+@font-face {
+  font-family: "roboto";
+  src: url("../../assets/fonts/roboto.ttf") format("truetype");
 }
 
-.logo {
-  width: 200px;
+@font-face {
+  font-family: "roboto_bold";
+  src: url("../../assets/fonts/roboto_bold.ttf") format("truetype");
 }
 
+/* === Styles globaux === */
 .container {
-  z-index: 1;
-  position: relative;
-  padding: 20px;
   text-align: center;
-}
-
-h1,
-h2 {
-  margin: 20px 0;
-  color: #fad009;
-}
-
-h3,
-h4 {
-  border: 1px #fa8057 solid;
-  box-shadow: -3px 0px 0px #fa8057;
-  margin: 20px 60px;
-  color: #6e7dc9;
+  background: url("../../assets/images/backgroundstars.jpg") center / cover
+    fixed;
+  font-family: "roboto", sans-serif;
+  color: white;
+  padding: 13em 1.5em 3em;
 }
 
 ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 20px auto;
+  list-style: none;
+  margin-bottom: 3em;
 }
 
-ul li {
-  padding: 10px 15px;
-  margin: 5px 0;
-  font-size: 1rem;
-  color: #fa8057;
+/* === Composants spécifiques === */
+.instructions,
+.niveaux {
+  text-align: left;
+  padding: 2.8em 0;
 }
 
-ul li img {
-  width: 60px;
-  height: 40px;
-  border-radius: 15px;
+.niveaux {
+  padding-top: 0;
 }
 
-.boutton {
-  display: flex;
-  flex-direction: column;
+.badges_img {
+  width: 15%;
+  margin: 1.5em 0;
 }
 
-button {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #ffffff;
-  background: #6e7dc9;
-  border: none;
-  border-radius: 20px;
+.badges_class {
+  margin-top: 2em;
+}
+
+.badge {
+  color: #6e7dc9;
+  font-family: "roboto_bold", sans-serif;
+}
+
+.points01,
+.points02 {
+  font-family: "pixeleum", sans-serif;
+  color: #fad009;
+  font-size: larger;
+  margin: 1em 0 2em;
+}
+
+img#arrow_up {
+  width: 11%;
+  animation: moveUpDown 1s ease-in-out infinite;
+}
+
+#button_up {
+  background: none;
+  border: 0;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-button:hover {
-  background: #ed2ea5;
+#button_up p {
+  color: white;
+  font-family: "pixeleum", sans-serif;
 }
 
-/* Tablette */
-/* @media screen and (min-width: 768px) {
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-size: 3em;
+/* Définition de l'animation */
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
   }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
-  h3,
-  h4 {
-    border: 1px #fa8057 solid;
-    box-shadow: -3px 0px 0px #fa8057;
-    margin: 40px 12em;
-  }
+/* === Hiérarchie des titres === */
+h1,
+h2,
+h3,
+h4,
+h6 {
+  font-family: "pixeleum", sans-serif;
+}
 
-  ul li {
-    font-size: 3em;
-  }
+h1 {
+  color: #fad009;
+  font-size: 1.5em;
+  padding-bottom: 1.2em;
+}
 
-  ul li img {
-    width: 120px;
-    height: 80px;
-  }
+h2 {
+  color: #ed2ea5;
+  font-size: 1.2em;
+}
 
-  p {
-    font-size: 3em;
-  }
+h3 {
+  color: #ed2ea5;
+  border: 2px solid #ed2ea5;
+  margin-bottom: 0.5em;
+  padding: 0.2em 0 0.3em;
+}
 
-  button {
-    padding: 10px 20px;
-    font-size: 2em;
-  }
+h4 {
+  color: #fad009;
+  margin-top: 2em;
+}
 
-  .boutton {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
+h5 {
+  font-size: 1.1em;
+}
 
-  .logo {
-    width: 400px;
-  }
-} */
+h6 {
+  color: #6e7dc9;
+  font-size: medium;
+}
