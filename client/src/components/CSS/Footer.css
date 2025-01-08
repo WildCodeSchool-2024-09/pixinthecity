@@ -36,14 +36,14 @@ img.icon_camera {
 }
 
 .button_camera {
-  width: 10vw; /* Largeur définie en fonction de la largeur de la fenêtre */
-  height: 10vw; /* Hauteur égale à la largeur pour garantir un cercle */
-  max-width: 8.5em; /* Limite de taille pour les écrans plus grands */
-  max-height: 8.5em; /* Limite de taille pour les écrans plus grands */
-  min-width: 7em; /* Taille minimale pour les petits écrans */
-  min-height: 7em; /* Taille minimale pour les petits écrans */
+  width: 10vw;
+  height: 10vw;
+  max-width: 8.5em;
+  max-height: 8.5em;
+  min-width: 7em;
+  min-height: 7em;
   border: lightyellow 1px solid;
-  border-radius: 50%; /* Forme ronde */
+  border-radius: 50%;
   background-image: url("../../assets/images/footer_icons/icon_camera_background.png");
   background-size: cover;
   background-position: bottom;
