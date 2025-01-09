@@ -1,5 +1,3 @@
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
 import "./Regles.css";
 
 function Regles() {
@@ -13,7 +11,6 @@ function Regles() {
 
   return (
     <>
-      <Header />
       <div className="container">
         <h1>RÈGLES DU JEU</h1>
         <h2>Prêt·e·s à vivre l’aventure ?</h2>
@@ -199,7 +196,6 @@ function Regles() {
           <p>RETOUR VERS LE HAUT</p>
         </button>
       </div>
-      <Footer />
     </>
   );
 }
