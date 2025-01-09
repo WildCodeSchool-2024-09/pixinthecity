@@ -1,4 +1,6 @@
-.leaflet-container {
-  height: 500px;
-  width: 500px;
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+  position: relative;
+  width: 100%;
+  padding-top: 51em;
+  margin-top: 11em;
 }
