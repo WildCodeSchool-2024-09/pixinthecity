@@ -6,6 +6,7 @@
 .container-carte {
   padding: 3.4em 0;
   text-align: center;
+  margin-bottom: 6em;
 }
 .carte-leaflet {
   margin: 0 auto;
