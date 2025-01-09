@@ -45,7 +45,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-
       {
         path: "Regles",
         element: <Regles />,
@@ -78,7 +77,6 @@ const router = createBrowserRouter([
         path: "Profil",
         element: <Profil />,
       },
-
     ],
   },
   // Try adding a new route! For example, "/about" with an About component
