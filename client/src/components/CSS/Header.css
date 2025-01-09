@@ -12,6 +12,7 @@
 header {
   background-image: url("../../assets/images/backgroundstreet.jpg");
   background-size: cover;
+  background-position: bottom;
   display: flex;
   justify-content: space-between;
   padding-top: 1em;

@@ -1,3 +1,63 @@
-* {
-  background-color: violet;
+@font-face {
+  font-family: "pixeleum";
+  src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 0.5em;
+  padding-bottom: 2.3em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  background-image: url("../../assets/images/backgroundstreet.jpg");
+  background-position: 0em -37em;
+  background-size: cover;
+}
+
+img.icon_footer {
+  width: 30%;
+  margin-bottom: 5%;
+}
+
+img.icon_camera {
+  width: 75%;
+}
+
+.button_footer {
+  background-color: transparent;
+  border: none;
+  padding-top: 3em;
+  color: white;
+  font-family: "pixeleum", sans-serif;
+}
+
+.button_camera {
+  width: 10vw;
+  height: 10vw;
+  max-width: 8.5em;
+  max-height: 8.5em;
+  min-width: 7em;
+  min-height: 7em;
+  border: lightyellow 1px solid;
+  border-radius: 50%;
+  background-image: url("../../assets/images/footer_icons/icon_camera_background.png");
+  background-size: cover;
+  background-position: bottom;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+
+.button_camera:hover {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 50px
+    rgba(255, 255, 255, 0.5);
+}
+
+.button_camera:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }

@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import Footer from "../../components/Footer";
-// import Header from "../../components/Header";
 import type UserType from "../../types/UserType";
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -49,10 +47,6 @@ function Classement() {
           <img src="http://badge.fr" alt="badge" />
         </p>
       </figure> */}
-
-      <footer>
-        <Footer />
-      </footer>
     </>
   );
 }

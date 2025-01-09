@@ -1,0 +1,68 @@
+/* === Définition des polices === */
+@font-face {
+  font-family: "pixeleum";
+  src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "roboto";
+  src: url("../../assets/fonts/roboto.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "roboto_bold";
+  src: url("../../assets/fonts/roboto_bold.ttf") format("truetype");
+}
+
+.RS {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-family: "roboto", sans-serif;
+  color: white;
+  padding-bottom: 10em;
+}
+
+.container {
+  background: url("../../assets/images/backgroundstars.jpg") center / cover
+    fixed;
+}
+
+.box {
+  width: 11em;
+  height: 8em;
+  background-color: #6e7dc9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+}
+.box img {
+  width: 3em;
+  height: 3em;
+}
+
+.title {
+  color: #fad009;
+  text-align: center;
+}
+
+h1 {
+  font-family: "pixeleum", sans-serif;
+  color: #fad009;
+  font-size: 1.5em;
+  padding-bottom: 1em;
+}
+
+a {
+  text-decoration: none;
+  font-family: "pixeleum", sans-serif;
+  color: white;
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
