@@ -1,8 +1,10 @@
 import "./Contact.css";
+import Header from "../../components/Header";
 
 function Contact() {
   return (
     <>
+      <Header />
       <div className="container">
         <div className="title">
           <h1>CONTACTS</h1>
