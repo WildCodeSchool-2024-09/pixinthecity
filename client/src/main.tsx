@@ -38,6 +38,10 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
+    path: "Modification_mot_de_passe",
+    element: <MdpOublie />,
+  },
+  {
     path: "/",
     element: <App />,
     children: [
@@ -45,7 +49,6 @@ const router = createBrowserRouter([
         path: "Regles",
         element: <Regles />,
       },
-
       {
         path: "Classement",
         element: <Classement />,
@@ -73,10 +76,6 @@ const router = createBrowserRouter([
       {
         path: "Profil",
         element: <Profil />,
-      },
-      {
-        path: "Modification_mot_de_passe",
-        element: <MdpOublie />,
       },
     ],
   },
