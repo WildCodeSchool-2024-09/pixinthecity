@@ -1,4 +1,4 @@
-import "./Regles.css";
+import "../../components/CSS/Regles.css";
 
 function Regles() {
   // Fonction pour faire défiler la page en haut
