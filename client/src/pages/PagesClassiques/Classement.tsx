@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import type UserType from "../../types/UserType";
+import "./Classement.css";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 function Classement() {
@@ -17,16 +19,17 @@ function Classement() {
 
   return (
     <>
-      {users.map((user) => {
-        return (
-          <section key={user.id}>
-            <h2>{user.firstname}</h2>
-            <h2>{user.lastname}</h2>
-          </section>
-        );
-      })}
+      <div className="fond">
+        {users.map((user) => {
+          return (
+            <section className="user" key={user.id}>
+              <h2>{user.firstname}</h2>
+              <h2>{user.lastname}</h2>
+            </section>
+          );
+        })}
 
-      {/* <h2>Le classement</h2>
+        {/* <h2>Le classement</h2>
       <header>
         <Header />
       </header>
@@ -35,10 +38,7 @@ function Classement() {
       <p>
         Rappel des règles : 100 points pour truc 200 pour muches + lien pour les
         règles
-      </p>
-
-
-
+      </p
       <figure className="card">
         <h4>Nom_utilisateur</h4>
         <img src="http://avatar.fr" alt="avatar" />
@@ -47,6 +47,7 @@ function Classement() {
           <img src="http://badge.fr" alt="badge" />
         </p>
       </figure> */}
+      </div>
     </>
   );
 }
