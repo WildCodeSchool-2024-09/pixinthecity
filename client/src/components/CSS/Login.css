@@ -17,12 +17,15 @@
   background: url("../../assets/images/backgroundstreet.jpg") center / cover
     fixed;
   color: white;
-  padding: 13em 1.5em 3em;
+  padding: 24em 1.5em 24em;
+  font-family: "pixeleum", sans-serif;
+  margin: 0;
+  padding-top: 0;
 }
 
-#logo {
+#logo_login {
   width: 15em;
-  margin-left: 2.5em;
+  padding-top: 3em;
 }
 .signup_button,
 .login_button {

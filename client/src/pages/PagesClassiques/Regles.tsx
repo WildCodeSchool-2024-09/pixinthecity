@@ -13,14 +13,14 @@ function Regles() {
     <>
       <div className="container">
         <h1>RÈGLES DU JEU</h1>
-        <h2>Prêt·e·s à vivre l’aventure ?</h2>
+        <h2>Prêt·es à vivre l’aventure ?</h2>
         <p>Découvrez nos règles et rejoignez-nous !</p>
         <div className="instructions">
           <p>
-            Des règles simples pour une aventure inoubliable.Vous parcourez les
+            Des règles simples pour une aventure inoubliable. Vous parcourez les
             rues comme un·e historien·ne moderne, redécouvrant les trésors
-            cachés de nos villes.Des récompenses pour les contributeur·rice·s
-            assidu·e·s, avec un classement officiel.
+            cachés de nos villes.Des récompenses pour les contributeur·rices
+            assidu·es, avec un classement officiel.
           </p>
         </div>
         <h3>Système de points</h3>
@@ -41,9 +41,9 @@ function Regles() {
         <h3>Système de Badges</h3>
         <p>
           Les badges sont des récompenses visuelles qui sont attribués aux
-          contributeur·rice·s.
+          contributeur·rices.
         </p>
-        <h4>Badges Contributeur·rice·s</h4>
+        <h4>Badges Contributeur·rices</h4>
         <ul className="badges_class">
           <li>
             <div className="badge">
@@ -79,7 +79,7 @@ function Regles() {
             />
           </li>
         </ul>
-        <h4>Badges Voyageur·euse·s</h4>
+        <h4>Badges Voyageur·euses</h4>
 
         <ul className="badges_class">
           <li>
@@ -111,7 +111,7 @@ function Regles() {
             <div className="badge">
               <h5>Découverte Rare</h5>
             </div>
-            <p>Soumettre une œuvre d’un·e artiste renommé·e</p>
+            <p>Soumettre une œuvre d'un·e artiste renommé·e</p>
             <img
               src={"/src/assets/images/badges/badge_spray.png"}
               alt="spray_paint"
