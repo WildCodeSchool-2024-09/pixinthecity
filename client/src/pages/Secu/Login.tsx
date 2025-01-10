@@ -14,7 +14,7 @@ function Login() {
     if (localUserName.trim() && password.trim()) {
       setIsLoggedIn(true);
       alert(`Bienvenue, ${localUserName}!`);
-      navigate(""); // Redirection vers la page d'accueil
+      navigate("/"); // Redirection vers la page d'accueil
 
       // Réinitialisation des champs
       setLocalUserName("");
@@ -28,7 +28,7 @@ function Login() {
     <>
       <section className="loginPage">
         <Link to="/">
-          <img src={Logo} alt="Logo" id="logo" />
+          <img src={Logo} alt="Logo" id="logo_login" />
         </Link>
         <div className="formulaire">
           <form onSubmit={handleSubmit}>
@@ -52,7 +52,7 @@ function Login() {
               <input
                 className="input_passeword"
                 id="password"
-                placeholder="password"
+                placeholder="mot de passe"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
