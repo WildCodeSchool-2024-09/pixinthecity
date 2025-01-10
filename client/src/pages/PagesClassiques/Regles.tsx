@@ -1,113 +1,200 @@
-import "./Regles.css";
-import rue from "../../assets/videos/homepage.mp4";
+import "../../components/CSS/Regles.css";
 
 function Regles() {
+  // Fonction pour faire défiler la page en haut
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Défilement fluide
+    });
+  };
+
   return (
     <>
-      <video className="video-background" autoPlay loop muted>
-        <source src={rue} type="video/mp4" />
-        Votre navigateur ne supporte pas les vidéos HTML5.
-      </video>
       <div className="container">
-        <img className="logo" src="./src/assets/images/logo.png" alt="logo" />
-        <h1>
-          Prêts à vivre l’aventure ? Découvrez nos règles et rejoignez-nous!
-        </h1>
-        <h2>Des règles simples pour une aventure inoubliable.</h2>
-        <h2>
-          Vous parcourez les rues comme un historien moderne, redécouvrant les
-          trésors cachés de nos villes.
-        </h2>
-        <h2>
-          Des récompenses pour les contributeurs assidus, avec un classement
-          officiel.
-        </h2>
-        <h3>Système de Points</h3>
+        <h1>RÈGLES DU JEU</h1>
+        <h2>Prêt·es à vivre l’aventure ?</h2>
+        <p>Découvrez nos règles et rejoignez-nous !</p>
+        <div className="instructions">
+          <p>
+            Des règles simples pour une aventure inoubliable. Vous parcourez les
+            rues comme un·e historien·ne moderne, redécouvrant les trésors
+            cachés de nos villes.Des récompenses pour les contributeur·rices
+            assidu·es, avec un classement officiel.
+          </p>
+        </div>
+        <h3>Système de points</h3>
         <ul>
           <li>
-            Soumission d'une œuvre avec photo et localisation valide : +50
-            points.
+            Soumission d'une œuvre avec photo et localisation valide :
+            <div className="points01">50 points</div>
           </li>
           <li>
             Première soumission d'une œuvre dans une nouvelle ville/quartier :
-            +100 points.
+            <div className="points01">100 points</div>
           </li>
-          <li>Signalement d'une œuvre disparue (avec preuve) : +30 points</li>
           <li>
-            Soumission d'une œuvre avec photo et localisation valide : +50
-            points.
+            Signalement d'une œuvre disparue (avec preuve) :
+            <div className="points01">30 points</div>
           </li>
         </ul>
         <h3>Système de Badges</h3>
         <p>
           Les badges sont des récompenses visuelles qui sont attribués aux
-          contributeurs :
+          contributeur·rices.
         </p>
-        <h4>Par contribution</h4>
-        <ul>
+        <h4>Badges Contributeur·rices</h4>
+        <ul className="badges_class">
           <li>
-            Découvreur Novice : Soumettre 5 œuvres.
-            <img src="\src\assets\images\novice.jpg" alt="novice" />
-          </li>
-          <li>
-            Photographe de Rue : Soumettre 50 œuvres.
-            <img src="\src\assets\images\photographe.png" alt="photographe" />
-          </li>
-          <li>
-            Archiviste : Soumettre 200 œuvres.
-            <img src="\src\assets\images\archiviste.jpg" alt="archiviste" />
-          </li>
-        </ul>
-        <h4>Par engagement géographique</h4>
-        <ul>
-          <li>
-            Explorateur Local : Soumettre des œuvres dans 3 quartiers d'une même
-            ville.
+            <div className="badge">
+              <h5>Badge Découvreur·euse Novice</h5>
+            </div>
+            <p>Soumettre 5 œuvres</p>
             <img
-              src="\src\assets\images\explorateur_local.jpg"
-              alt="explorateur"
+              src={"/src/assets/images/badges/badge_phone.png"}
+              alt="phone"
+              className="badges_img"
             />
           </li>
-
           <li>
-            Globe-Trotter Urbain : Soumettre des œuvres dans 2 villes
-            différentes.
-            <img src="\src\assets\images\globe_trotteur.png" alt="globe" />
+            <div className="badge">
+              <h5>Badge Photographe de Rue</h5>
+            </div>
+            <p>Soumettre 20 œuvres</p>
+            <img
+              src={"/src/assets/images/badges/badge_camera.png"}
+              alt="camera"
+              className="badges_img"
+            />
+          </li>
+          <li>
+            <div className="badge">
+              <h5>Badge Archiviste</h5>
+            </div>
+            <p>Soumettre 50 œuvres</p>
+            <img
+              src={"/src/assets/images/badges/badge_negative.png"}
+              alt="negative"
+              className="badges_img"
+            />
+          </li>
+        </ul>
+        <h4>Badges Voyageur·euses</h4>
+
+        <ul className="badges_class">
+          <li>
+            <div className="badge">
+              <h5>Badge Explorateur·rice Local·e</h5>
+            </div>
+            <p>Soumettre des œuvres dans 3 quartiers d'une même ville</p>
+            <img
+              src={"/src/assets/images/badges/badge_roller.png"}
+              alt="roller_skate"
+              className="badges_img"
+            />
+          </li>
+          <li>
+            <div className="badge">
+              <h5>Globe-Trotteur·euse Urbain·e</h5>
+            </div>
+            <p>Soumettre des œuvres dans 2 villes différentes</p>
+            <img
+              src={"/src/assets/images/badges/badge_spaceship.png"}
+              alt="spaceship"
+              className="badges_img"
+            />
           </li>
         </ul>
         <h4>Badges spéciaux</h4>
-        <ul>
+        <ul className="badges_class">
           <li>
-            Découverte Rare : Soumettre une œuvre d’un artiste renommé.
+            <div className="badge">
+              <h5>Découverte Rare</h5>
+            </div>
+            <p>Soumettre une œuvre d'un·e artiste renommé·e</p>
             <img
-              src="\src\assets\images\decouverte_rare.jpg"
-              alt="decouverte"
+              src={"/src/assets/images/badges/badge_spray.png"}
+              alt="spray_paint"
+              className="badges_img"
             />
           </li>
           <li>
-            Oeil de Lynx : Soumettre une œuvre difficile à localiser.
-            <img src="\src\assets\images\oeil_de_lynx.png" alt="oeil" />
+            <div className="badge">
+              <h5>Œil de Lynx</h5>
+            </div>
+            <p>Soumettre une œuvre difficile à localiser</p>
+            <img
+              src={"/src/assets/images/badges/badge_eye.png"}
+              alt="eye"
+              className="badges_img"
+            />
           </li>
         </ul>
+
         <h3>Niveaux</h3>
-        <p>
-          Les niveaux permettent de suivre la progression globale des
-          contributeurs en fonction du total de points accumulés. Plus vous
-          aurez de points plus vous serez au sommet de la pyramide :
-        </p>
-        <ul>
-          <li>Passant Curieux (0-499 points)</li>
-          <li>Apprenti Explorateur (500-999 points)</li>
-          <li>Chercheur Urbain (1,000-2,499 points)</li>
-          <li>Découvreur Passionné (2,500-4,999 points)</li>
-          <li>Conservateur de Rue (5,000-9,999 points)</li>
-          <li>Légende du Street Art (10,000+ points)</li>
-        </ul>
-        <div className="boutton">
-          <button type="button">Me connecter</button>
-          <button type="button">Créer mon compte</button>
-          <button type="button">Rester en tant que visiteur (dommage !)</button>
+        <div className="niveaux">
+          <p>
+            Les niveaux permettent de suivre la progression globale des
+            contributeurs en fonction du total de points accumulés. Plus vous
+            aurez de points plus vous serez au sommet de la pyramide :
+          </p>
         </div>
+        <ul>
+          <li>
+            <h6>LEVEL 1</h6>
+            <h5>Passant·e Curieux·se</h5>
+            <div className="points02">
+              <p>0-499 points</p>
+            </div>
+          </li>
+          <li>
+            <h6>LEVEL 2</h6>
+            <h5>Apprenti·e Explorateur·rice</h5>
+            <div className="points02">
+              <p>500-999 points</p>
+            </div>
+          </li>
+          <li>
+            <h6>LEVEL 3</h6>
+            <h5>Chercheur·euse Urbain·e</h5>
+            <div className="points02">
+              <p>1.000-2.499 points</p>
+            </div>
+          </li>
+          <li>
+            <h6>LEVEL 4</h6>
+            <h5>Découvreur·euse Passionné·e</h5>
+            <div className="points02">
+              <p>2.500-4.999 points</p>
+            </div>
+          </li>
+          <li>
+            <h6>LEVEL 5</h6>
+            <h5>Conservateur·rice de Rue</h5>
+            <div className="points02">
+              <p>5.000-9.999 points</p>
+            </div>
+          </li>
+          <li>
+            <h6>LEVEL 6</h6>
+            <h5>Légende du Street Art</h5>
+            <div className="points02">
+              <p>10.000 points et +</p>
+            </div>
+          </li>
+        </ul>
+        <button
+          type="button"
+          id="button_up"
+          onClick={scrollToTop} // Ajout du gestionnaire d'événement
+        >
+          <img
+            src={"/src/assets/images/arrow_up.png"}
+            alt="Retour_vers_le_haut"
+            id="arrow_up"
+          />
+          <p>RETOUR VERS LE HAUT</p>
+        </button>
       </div>
     </>
   );

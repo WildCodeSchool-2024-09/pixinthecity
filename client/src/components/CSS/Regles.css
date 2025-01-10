@@ -1,0 +1,133 @@
+/* === Définition des polices === */
+@font-face {
+  font-family: "pixeleum";
+  src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "roboto";
+  src: url("../../assets/fonts/roboto.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "roboto_bold";
+  src: url("../../assets/fonts/roboto_bold.ttf") format("truetype");
+}
+
+/* === Styles globaux === */
+.container {
+  text-align: center;
+  background: url("../../assets/images/backgroundstars.jpg") center / cover
+    fixed;
+  font-family: "roboto", sans-serif;
+  color: white;
+  padding: 13em 1.5em 13em;
+}
+
+ul {
+  list-style: none;
+  margin-bottom: 3em;
+}
+
+/* === Composants spécifiques === */
+.instructions,
+.niveaux {
+  text-align: left;
+  padding: 2.8em 0;
+}
+
+.niveaux {
+  padding-top: 0;
+}
+
+.badges_img {
+  width: 15%;
+  margin: 1.5em 0;
+}
+
+.badges_class {
+  margin-top: 2em;
+}
+
+.badge {
+  color: #6e7dc9;
+  font-family: "roboto_bold", sans-serif;
+}
+
+.points01,
+.points02 {
+  font-family: "pixeleum", sans-serif;
+  color: #fad009;
+  font-size: larger;
+  margin: 1em 0 2em;
+}
+
+img#arrow_up {
+  width: 11%;
+  animation: moveUpDown 1s ease-in-out infinite;
+}
+
+#button_up {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+#button_up p {
+  color: white;
+  font-family: "pixeleum", sans-serif;
+}
+
+/* Définition de l'animation */
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* === Hiérarchie des titres === */
+h1,
+h2,
+h3,
+h4,
+h6 {
+  font-family: "pixeleum", sans-serif;
+}
+
+h1 {
+  color: #fad009;
+  font-size: 1.5em;
+  padding-bottom: 1.2em;
+}
+
+h2 {
+  color: #ed2ea5;
+  font-size: 1.2em;
+}
+
+h3 {
+  color: #ed2ea5;
+  border: 2px solid #ed2ea5;
+  margin-bottom: 0.5em;
+  padding: 0.2em 0 0.3em;
+}
+
+h4 {
+  color: #fad009;
+  margin-top: 2em;
+}
+
+h5 {
+  font-size: 1.1em;
+}
+
+h6 {
+  color: #6e7dc9;
+  font-size: medium;
+}

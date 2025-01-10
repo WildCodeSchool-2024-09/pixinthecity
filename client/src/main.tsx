@@ -30,16 +30,24 @@ import MdpOublie from "./pages/Secu/MdpOublie";
 // You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
+    path: "", // The root path
+    element: <Carte />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "Modification_mot_de_passe",
+    element: <MdpOublie />,
+  },
+  {
     path: "/",
     element: <App />,
     children: [
       {
-        path: "", // The root path
+        path: "Regles",
         element: <Regles />,
-      },
-      {
-        path: "Carte",
-        element: <Carte />,
       },
       {
         path: "Classement",
@@ -48,10 +56,6 @@ const router = createBrowserRouter([
       {
         path: "Contact",
         element: <Contact />,
-      },
-      {
-        path: "Login",
-        element: <Login />,
       },
       {
         path: "Shoot",
@@ -72,10 +76,6 @@ const router = createBrowserRouter([
       {
         path: "Profil",
         element: <Profil />,
-      },
-      {
-        path: "Modification_mot_de_passe",
-        element: <MdpOublie />,
       },
     ],
   },
