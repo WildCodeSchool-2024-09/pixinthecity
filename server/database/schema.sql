@@ -1,7 +1,14 @@
 create table user (
   id int unsigned primary key auto_increment not null,
   firstname varchar(255) not null,
-  lastname varchar(255) not null
+  lastname varchar(255) not null,
+  pseudo VARCHAR(20) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  zip_code INT,
+  city VARCHAR(30),
+  user_password VARCHAR(30) NOT NULL,
+  avatar VARCHAR(255),
+  is_gcu_accepted BOOL NOT NULL DEFAULT FALSE
 );
 
 create table photo (
@@ -11,11 +18,11 @@ create table photo (
   picture varchar(255) not null
 );
 
-insert into user(firstname, lastname)
+insert into user(firstname, lastname, pseudo, email, zip_code, city, user_password, avatar, is_gcu_accepted)
 values
-  ("Jacqueline", "Morin"),
-  ("René", "Pichard"),
-  ("Pépito", "Perez");
+  ("Jacqueline", "Morin", "jijimomo_95", "jacquelinecomptabilite@sah.fr", "69001", "Lyon", "ilovecomptabilite", NULL, TRUE),
+  ("René", "Pichard", "pich-art", "rene_pich-art@sah.fr", "69002", "Lyon", "rene_explorateur", NULL, TRUE),
+  ("Pépito", "Perez", "pepito_roi_du_gateau", "p-p@sah.fr", "69003", "Lyon" ,"perezforever", NULL, TRUE);
 
 insert into photo(title, content, picture)
 values

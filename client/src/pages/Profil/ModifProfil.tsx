@@ -1,22 +1,9 @@
+import "../../components/CSS/ModifProfil.css"
+
 function ModifProfil() {
   return (
     <>
-      <h2>Modifier le profil</h2>
-      <header>
-        {/* Pour l'instant en dur ici mais sera importé sous forme de composant */}
-        <nav>
-          <img src="http://logo.fr" alt="Logo" />
-          <img src="http://profil.fr" alt="IconeProfil" />
-          <p>Profil</p>
-          <div className="clicProfil">
-            <p>Voir mon profil</p>
-            <p>Modifier mon profil</p>
-            <p>Me déconnecter</p>
-          </div>
-        </nav>
-      </header>
-
-      <h3>Modifier mon profil</h3>
+      <main><h2>Modifier le profil</h2>
       <form>
         <label htmlFor="identifiant">Nom d'utilisateur</label>
         <input />
@@ -71,7 +58,7 @@ function ModifProfil() {
       <input type="checkbox" />
 
       <p>Supprimer mon compte</p>
-
+      </main>
       <footer>
         {/* Pour l'instant en dur ici mais sera importé sous forme de composant */}
         <p>Carte</p>
