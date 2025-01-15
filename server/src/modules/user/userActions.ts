@@ -6,10 +6,10 @@ import userRepository from "./userRepository";
 // The B of BREAD - Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch all items
+    // Fetch all users
     const users = await userRepository.readAll();
 
-    // Respond with the items in JSON format
+    // Respond with the users in JSON format
     res.json(users);
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -38,23 +38,28 @@ const browse: RequestHandler = async (req, res, next) => {
 // };
 
 // The A of BREAD - Add (Create) operation
-// const add: RequestHandler = async (req, res, next) => {
-//   try {
-//     // Extract the item data from the request body
-//     const newItem = {
-//       title: req.body.title,
-//       user_id: req.body.user_id,
-//     };
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    // Extract the user data from the request body
+    const newUser = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      pseudo: req.body.pseudo,
+      email: req.body.email,
+      zip_code: req.body.zip_code,
+      city: req.body.city,
+      user_password: req.body.user_password,
+      avatar: req.body.avatar,
+      is_gcu_accepted: req.body.is_gcu_accepted,
+    };
+    const insertId = await userRepository.create(newUser);
+    res.status(201).json({ insertId });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
-//     // Create the item
-//     const insertId = await itemRepository.create(newItem);
+// Respond with HTTP 201 (Created) and the ID of the newly inserted item
 
-//     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-//     res.status(201).json({ insertId });
-//   } catch (err) {
-//     // Pass any errors to the error-handling middleware
-//     next(err);
-//   }
-// };
-
-export default { browse };
+export default { browse, add };
