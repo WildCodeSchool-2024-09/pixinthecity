@@ -1,48 +1,33 @@
+import { useParams } from "react-router-dom";
+import type { ProfilType } from "../../components/NewUserForm";
+import { useEffect, useState } from "react";
+
 function Profil() {
+  const { id } = useParams();
+  const [user, setUser] = useState(null as null | ProfilType);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
+      .then((response) => response.json())
+      .then((data: ProfilType) => {
+        setUser(data);
+      });
+  }, [id]);
   return (
-    <>
-      <h2>Profil</h2>
+    user && (
+      <>
+        <img src={user.avatar} alt="avatar_user" />
+        <h2>{user.pseudo}</h2>
 
-      <header>
-        {/* Pour l'instant en dur ici mais sera importé sous forme de composant */}
-        <nav>
-          <img src="http://logo.fr" alt="Logo" />
-          <img src="http://profil.fr" alt="IconeProfil" />
-          <p>Profil</p>
-          <div className="clicProfil">
-            <p>Voir mon profil</p>
-            <p>Modifier mon profil</p>
-            <p>Me déconnecter</p>
-          </div>
-        </nav>
-      </header>
+        <h3>Points : xx points</h3>
 
-      <p>Profil</p>
-      <img src="http://avatar.fr" alt="avatar" />
-      <p>Nom d'utilisateur</p>
+        <h3>Contributions</h3>
+        <p>aperçu des photos déjà validées</p>
 
-      <h3>Points : xx points</h3>
-
-      <h3>
-        Badges : <img src="http://badge.fr" alt="badge" />
-        <img src="http://badge.fr" alt="badge" />
-      </h3>
-
-      <h3>Contributions</h3>
-      <p>aperçu des photos déjà validées</p>
-
-      <p>Paramètres</p>
-      <p>Modifier mon profil</p>
-
-      <footer>
-        {/* Pour l'instant en dur ici mais sera importé sous forme de composant */}
-        <p>Carte</p>
-        <p>Règles</p>
-        <img src="http://bouton.fr" alt="IconeProfil" />
-        <p>Classement</p>
-        <p>Contact</p>
-      </footer>
-    </>
+        <p>Paramètres</p>
+        <p>Modifier mon profil</p>
+      </>
+    )
   );
 }
 
