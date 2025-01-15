@@ -6,21 +6,38 @@ type User = {
   id: number;
   firstname: string;
   lastname: string;
+  pseudo: string;
+  email: string;
+  zip_code?: number;
+  city?: string;
+  user_password: string;
+  avatar?: string;
+  is_gcu_accepted: boolean;
 };
 
 class UserRepository {
   //   // The C of CRUD - Create operation
 
-  //   async create(item: Omit<User, "id">) {
-  //     // Execute the SQL INSERT query to add a new item to the "item" table
-  //     const [result] = await databaseClient.query<Result>(
-  //       "insert into item (title, user_id) values (?, ?)",
-  //       [item.title, item.user_id],
-  //     );
+  async create(user: Omit<User, "id">) {
+    // Execute the SQL INSERT query to add a new user to the "user" table
+    const [result] = await databaseClient.query<Result>(
+      "insert into user (firstname, lastname, pseudo, email, zip_code, city, user_password, avatar, is_gcu_accepted) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      [
+        user.firstname,
+        user.lastname,
+        user.pseudo,
+        user.email,
+        user.zip_code ?? null,
+        user.city ?? null,
+        user.user_password,
+        user.avatar ?? null,
+        user.is_gcu_accepted,
+      ],
+    );
 
-  //     // Return the ID of the newly inserted item
-  //     return result.insertId;
-  //   }
+    // Return the ID of the newly inserted item
+    return result.insertId;
+  }
 
   // The Rs of CRUD - Read operations
 
