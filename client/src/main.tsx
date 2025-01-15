@@ -67,7 +67,23 @@ const router = createBrowserRouter([
       },
       {
         path: "Creation_de_profil",
-        element: <CreaProfil />,
+        element: (
+          <CreaProfil
+            defaultValue={{
+              firstname: "",
+              lastname: "",
+              pseudo: "",
+              email: "",
+              zip_code: "",
+              city: "",
+              user_password: "",
+              passwordConfirm: "",
+              avatar: "",
+              is_gcu_accepted: false,
+            }}
+            onSubmit={(user) => console.log("Submitted user:", user)}
+          />
+        ),
       },
       {
         path: "Modification_de_profil ",
