@@ -60,10 +60,11 @@ function Login() {
               />{" "}
               <p id="text_password">MOT DE PASSE OUBLIÉ ?</p>
             </div>
-
-            <button type="submit" className="login_button">
-              CONNEXION
-            </button>
+            <Link to="/">
+              <button type="submit" className="login_button">
+                CONNEXION
+              </button>
+            </Link>
           </form>
           <p className="text_visitor">ou</p>
           <button type="button" className="signup_button">
