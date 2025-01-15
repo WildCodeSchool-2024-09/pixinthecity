@@ -1,0 +1,6 @@
+.formphoto {
+  margin-top: 15em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

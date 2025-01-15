@@ -11,13 +11,13 @@ import Carte from "./pages/PagesClassiques/Carte";
 import Classement from "./pages/PagesClassiques/Classement";
 import Contact from "./pages/PagesClassiques/Contact";
 import Regles from "./pages/PagesClassiques/Regles";
-import Shoot from "./pages/Photos/Shoot";
-import SoumPhoto from "./pages/Photos/SoumPhoto";
+import SubmitPhotoForm from "./pages/Photos/SubmitPhotoForm";
 import CreaProfil from "./pages/Profil/CreaProfil";
 import ModifProfil from "./pages/Profil/ModifProfil";
 import Profil from "./pages/Profil/Profil";
 import Login from "./pages/Secu/Login";
 import MdpOublie from "./pages/Secu/MdpOublie";
+
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
@@ -58,12 +58,20 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "Shoot",
-        element: <Shoot />,
-      },
-      {
         path: "Donnees_photo",
-        element: <SoumPhoto />,
+        element: (
+          <SubmitPhotoForm
+            defaultValue={{
+              title: "",
+              content: "",
+              artist: "",
+              date: "",
+            }}
+            onSubmit={(photo) => console.log("Submitted photo:", photo)}
+          >
+            Submit Photo
+          </SubmitPhotoForm>
+        ),
       },
       {
         path: "Creation_de_profil",
