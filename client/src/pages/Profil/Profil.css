@@ -1,0 +1,96 @@
+@font-face {
+  font-family: "pixeleum";
+  src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "roboto";
+  src: url("../../assets/fonts/roboto.ttf") format("truetype");
+}
+
+.profil_container {
+  background: url("../../assets/images/backgroundstars.jpg") center / cover
+    fixed;
+  margin-top: 32%;
+  text-align: center;
+  height: 100vh;
+  position: fixed;
+  padding-top: 8%;
+}
+
+.avatar_picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar_background {
+  width: 40%;
+}
+
+.avatar_user {
+  width: 21%;
+  margin-top: -27%;
+}
+
+.user_results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: "pixeleum", sans-serif;
+}
+
+#user_title {
+  font-family: "roboto", sans-serif;
+  color: white;
+  margin-bottom: 6%;
+}
+
+h1#username {
+  padding-bottom: 0;
+  text-transform: uppercase;
+}
+
+#user_level {
+  color: #6e7dc9;
+  font-family: "pixeleum", sans-serif;
+  font-size: 80%;
+}
+
+#user_points_number {
+  color: white;
+  font-family: "pixeleum", sans-serif;
+}
+
+#user_points,
+#user_badges,
+#user-contributions {
+  color: #ed2ea5;
+  font-family: "pixeleum", sans-serif;
+  text-transform: uppercase;
+}
+
+.btn-edit-profile {
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "pixeleum", sans-serif;
+  text-transform: uppercase;
+  margin-top: 13%;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+img.repair_icon {
+  width: 9%;
+  animation: spin 20s linear infinite;
+}
