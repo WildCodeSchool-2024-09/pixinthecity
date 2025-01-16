@@ -10,7 +10,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 function Carte() {
   const [photos, setPhotos] = useState<PhotoType[] | []>([]);
   useEffect(() => {
-    fetch(`${API_URL}/api/photos/`)
+    fetch(`${API_URL}/api/photos`)
       .then((responseData) => {
         return responseData.json();
       })

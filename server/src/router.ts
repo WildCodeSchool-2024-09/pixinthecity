@@ -1,4 +1,5 @@
 import express from "express";
+import multer from "multer";
 
 const router = express.Router();
 
@@ -23,7 +24,10 @@ router.post("/api/users", userActions.add);
 
 import photoActions from "./modules/photo/photoActions";
 
+const upload = multer({ dest: "public/photos/" });
+
 router.get("/api/photos", photoActions.browse);
 router.get("/api/photos/:id", photoActions.read);
+router.post("/api/photos", upload.single("picture"), photoActions.add);
 
 export default router;

@@ -4,12 +4,14 @@ type PhotoType = {
   title: string;
   content: string;
   artist: string;
-  date: string;
+  dateoftheday: string;
+  picture: File | null;
 };
+
 interface SubmitPhotoType {
   children?: ReactNode;
   defaultValue: PhotoType;
-  onSubmit: (photo: PhotoType) => void;
+  onSubmit: (photo: FormData) => void;
 }
 function SubmitPhotoForm({
   children,
@@ -22,16 +24,7 @@ function SubmitPhotoForm({
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
-        const title = formData.get("title") as string;
-        const content = formData.get("content") as string;
-        const artist = formData.get("artist") as string;
-        const date = formData.get("date") as string;
-        onSubmit({
-          title,
-          content,
-          artist,
-          date,
-        });
+        onSubmit(formData);
       }}
     >
       <label htmlFor="title">Titre de l'oeuvre</label>
@@ -60,7 +53,7 @@ function SubmitPhotoForm({
         placeholder="date"
         type="text"
         name="date"
-        defaultValue={defaultValue.date}
+        defaultValue={defaultValue.dateoftheday}
       />
       <input type="file" name="picture" />
       <button type="submit">{children}</button>
