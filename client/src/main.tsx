@@ -11,7 +11,7 @@ import Carte from "./pages/PagesClassiques/Carte";
 import Classement from "./pages/PagesClassiques/Classement";
 import Contact from "./pages/PagesClassiques/Contact";
 import Regles from "./pages/PagesClassiques/Regles";
-import SubmitPhotoForm from "./pages/Photos/SubmitPhotoForm";
+import UploadPhoto from "./pages/PagesClassiques/UploadPhoto";
 import CreaProfil from "./pages/Profil/CreaProfil";
 import ModifProfil from "./pages/Profil/ModifProfil";
 import Profil from "./pages/Profil/Profil";
@@ -58,20 +58,12 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: "/",
+        element: <UploadPhoto />,
+      },
+      {
         path: "Donnees_photo",
-        element: (
-          <SubmitPhotoForm
-            defaultValue={{
-              title: "",
-              content: "",
-              artist: "",
-              date: "",
-            }}
-            onSubmit={(photo) => console.log("Submitted photo:", photo)}
-          >
-            Submit Photo
-          </SubmitPhotoForm>
-        ),
+        element: <UploadPhoto />,
       },
       {
         path: "Creation_de_profil",

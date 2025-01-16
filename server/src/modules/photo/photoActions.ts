@@ -6,10 +6,10 @@ import photoRepository from "./photoRepository";
 // The B of BREAD - Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch all items
+    // Fetch all photos
     const photos = await photoRepository.readAll();
 
-    // Respond with the items in JSON format
+    // Respond with the photos in JSON format
     res.json(photos);
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -22,14 +22,14 @@ const read: RequestHandler = async (req, res, next) => {
   try {
     // Fetch a specific item based on the provided ID
     const photoId = Number(req.params.id);
-    const photos = await photoRepository.read(photoId);
+    const photo = await photoRepository.read(photoId);
 
     // If the photo is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
-    if (photos == null) {
+    if (photo == null) {
       res.sendStatus(404);
     } else {
-      res.json(photos);
+      res.json(photo);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -38,23 +38,28 @@ const read: RequestHandler = async (req, res, next) => {
 };
 
 // The A of BREAD - Add (Create) operation
-// const add: RequestHandler = async (req, res, next) => {
-//   try {
-//     // Extract the item data from the request body
-//     const newItem = {
-//       title: req.body.title,
-//       user_id: req.body.user_id,
-//     };
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    // Extract the photo data from the request body
 
-//     // Create the item
-//     const insertId = await itemRepository.create(newItem);
+    const picture = req.file;
+    const newPhoto = {
+      title: req.body.title,
+      content: req.body.content,
+      artist: req.body.artist,
+      dateoftheday: req.body.date,
+      picture: req.file?.filename,
+    };
 
-//     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-//     res.status(201).json({ insertId });
-//   } catch (err) {
-//     // Pass any errors to the error-handling middleware
-//     next(err);
-//   }
-// };
+    // Create the photo
+    const insertId = await photoRepository.create(newPhoto);
 
-export default { browse, read };
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted photo
+    res.status(201).json({ insertId });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+export default { browse, add, read };

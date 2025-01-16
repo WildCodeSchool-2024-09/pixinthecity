@@ -3,8 +3,8 @@ type PhotoType = {
   title: string;
   content: string;
   artist: string;
-  date: string;
-  picture: string;
+  dateoftheday: string;
+  picture: File | null;
 };
 
 export default PhotoType;
