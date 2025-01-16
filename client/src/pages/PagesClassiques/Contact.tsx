@@ -7,7 +7,7 @@ function Contact() {
       <Header />
       <div className="container">
         <div className="title">
-          <h1>CONTACTS</h1>
+          <h1 id="contacts">CONTACTS</h1>
         </div>
         <div className="RS">
           <div className="box">

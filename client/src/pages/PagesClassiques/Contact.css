@@ -1,4 +1,3 @@
-/* === Définition des polices === */
 @font-face {
   font-family: "pixeleum";
   src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
@@ -16,10 +15,11 @@
 
 .RS {
   text-align: center;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
   justify-content: center;
-  align-items: center;
+
   font-family: "roboto", sans-serif;
   color: white;
   padding-bottom: 10em;
@@ -28,17 +28,18 @@
 .container {
   background: url("../../assets/images/backgroundstars.jpg") center / cover
     fixed;
+  position: fixed;
 }
 
 .box {
-  width: 11em;
+  width: 10em;
   height: 8em;
   background-color: #6e7dc9;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 1em;
+  margin: 0.5em;
 }
 .box img {
   width: 3em;
@@ -50,11 +51,11 @@
   text-align: center;
 }
 
-h1 {
+h1#contacts {
   font-family: "pixeleum", sans-serif;
   color: #fad009;
   font-size: 1.5em;
-  padding-bottom: 1em;
+  padding-bottom: 2.2em;
 }
 
 a {
