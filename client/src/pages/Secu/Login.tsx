@@ -30,50 +30,54 @@ function Login() {
         <Link to="/">
           <img src={Logo} alt="Logo" id="logo_login" />
         </Link>
-        <div className="formulaire">
-          <form onSubmit={handleSubmit}>
-            <div className="email">
-              {" "}
-              <label htmlFor="identifiant">EMAIL</label>
-              <br />
-              <input
-                className="input_email"
-                type="email"
-                id="email"
-                placeholder="email"
-                value={localUserName}
-                onChange={(e) => setLocalUserName(e.target.value)}
-                required
-              />
+        <section className="labels_container">
+          <div className="formulaire">
+            <form onSubmit={handleSubmit}>
+              <div className="email">
+                {" "}
+                <label htmlFor="identifiant">EMAIL</label>
+                <br />
+                <input
+                  className="input_email"
+                  type="email"
+                  id="email"
+                  placeholder="email"
+                  value={localUserName}
+                  onChange={(e) => setLocalUserName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="label2">
+                <label htmlFor="mdp">MOT DE PASSE</label>
+                <br />
+                <input
+                  className="input_passeword"
+                  id="password"
+                  placeholder="mot de passe"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />{" "}
+                {/* <p id="text_password">MOT DE PASSE OUBLIÉ ?</p> */}
+              </div>
+              <Link to="/">
+                <button type="submit" className="login_button">
+                  CONNEXION
+                </button>
+              </Link>
+            </form>
+            <p className="text_visitor">OU</p>
+            <button type="button" className="signup_button">
+              CRÉER MON COMPTE
+            </button>
+            <div className="text_login">
+              <Link to="/">
+                <p className="text_visitor">RESTER EN TANT QUE VISITEUR</p>
+              </Link>
             </div>
-            <div className="label2">
-              <label htmlFor="mdp">MOT DE PASSE</label>
-              <br />
-              <input
-                className="input_passeword"
-                id="password"
-                placeholder="mot de passe"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />{" "}
-              <p id="text_password">MOT DE PASSE OUBLIÉ ?</p>
-            </div>
-            <Link to="/">
-              <button type="submit" className="login_button">
-                CONNEXION
-              </button>
-            </Link>
-          </form>
-          <p className="text_visitor">ou</p>
-          <button type="button" className="signup_button">
-            CRÉER MON COMPTE
-          </button>
-          <div className="text_login">
-            <p className="text_visitor">RESTER EN TANT QUE VISITEUR</p>
           </div>
-        </div>
+        </section>
       </section>
     </>
   );

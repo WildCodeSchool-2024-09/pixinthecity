@@ -1,3 +1,4 @@
+/* Fonts */
 @font-face {
   font-family: "pixeleum";
   src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
@@ -13,61 +14,58 @@
   src: url("../../assets/fonts/roboto_bold.ttf") format("truetype");
 }
 
+/* General Page Styles */
 .loginPage {
   background: url("../../assets/images/backgroundstreet.jpg") center / cover
     fixed;
   color: white;
-  padding: 24em 1.5em 24em;
   font-family: "pixeleum", sans-serif;
   margin: 0;
-  padding-top: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
 }
 
+/* Logo */
 #logo_login {
   width: 15em;
   padding-top: 3em;
+  margin-bottom: 2em;
 }
-.signup_button,
-.login_button {
-  font-size: x-small;
-  background-color: #ed2ea5;
-  font-family: "pixeleum", sans-serif;
-  color: white;
-  margin-bottom: 5px;
-  padding: 5px 10px;
+
+/* Form Container */
+.formulaire {
+  width: 108%;
+}
+
+.labels_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  margin-top: -10%;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 10px;
   border: solid white 1px;
   border-radius: 8px;
   text-align: left;
   box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
   cursor: pointer;
-}
-
-.login_button {
-  padding-right: 7.5em;
-  padding-left: 7.5em;
-
-  font-size: 0.9em;
-}
-.signup_button {
-  background-color: #6e7dc9;
-  padding-right: 5.25em;
-  padding-left: 5.25em;
-  font-size: 0.9em;
-  margin-bottom: 1em;
-  margin-top: 0.75em;
-}
-
-.label2,
-.text_login,
-.input_passeword {
-  font-family: "pixeleum", sans-serif;
-}
-
-.input_email,
-.input_passeword {
-  color: #ed2ea5;
   font-family: "roboto_bold", sans-serif;
+  color: #ed2ea5;
+  text-transform: uppercase;
 }
 
 input::placeholder {
@@ -75,33 +73,59 @@ input::placeholder {
   font-family: "roboto", sans-serif;
 }
 
-#text_password {
-  font-size: x-small;
-  text-align: right;
-  padding-bottom: 2em;
-}
-
-.email {
-  text-align: left;
-  font-family: "pixeleum", sans-serif;
-}
-
-input {
-  font-size: x-small;
-  margin-bottom: 5px;
-  padding: 5px 10px;
+/* Buttons */
+.signup_button,
+.login_button {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 10px;
   border: solid white 1px;
   border-radius: 8px;
-  text-align: left;
   box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
   cursor: pointer;
-  padding-right: 17em;
-  padding-top: 0.75em;
+  font-family: "pixeleum", sans-serif;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.signup_button {
+  background-color: #6e7dc9;
+}
+
+.login_button {
+  background-color: #ed2ea5;
+  margin-top: 6%;
+}
+
+/* Labels and Text */
+.label2,
+.text_login,
+.input_passeword {
+  font-family: "pixeleum", sans-serif;
+}
+
+.label2,
+.text_login,
+.text_visitor {
+  text-shadow: 2px 2px 4px black;
 }
 
 .text_visitor {
   text-align: center;
   font-family: "pixeleum", sans-serif;
   font-size: 0.75em;
+  margin-bottom: 7%;
+}
+
+#text_password {
+  font-size: x-small;
+  text-align: right;
+  margin-bottom: 1em;
+}
+
+.email {
+  text-align: left;
+  font-family: "pixeleum", sans-serif;
 }
