@@ -37,11 +37,7 @@ function UploadPhoto() {
       });
   };
 
-  return (
-    <SubmitPhotoForm defaultValue={newPhoto} onSubmit={handleSubmit}>
-      Ajouter
-    </SubmitPhotoForm>
-  );
+  return <SubmitPhotoForm defaultValue={newPhoto} onSubmit={handleSubmit} />;
 }
 
 export default UploadPhoto;

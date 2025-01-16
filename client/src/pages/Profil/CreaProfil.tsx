@@ -34,9 +34,7 @@ function CreaProfil() {
             navigate(`/Profil/${data.insertId}`);
           });
       }}
-    >
-      Ajouter
-    </NewUserForm>
+    />
   );
 }
 
