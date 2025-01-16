@@ -41,16 +41,16 @@ class UserRepository {
 
   // The Rs of CRUD - Read operations
 
-    async read(id: number) {
-      // Execute the SQL SELECT query to retrieve a specific user by its ID
-      const [rows] = await databaseClient.query<Rows>(
-        "select * from user where id = ?",
-        [id],
-      );
+  async read(id: number) {
+    // Execute the SQL SELECT query to retrieve a specific user by its ID
+    const [rows] = await databaseClient.query<Rows>(
+      "select * from user where id = ?",
+      [id],
+    );
 
-      // Return the first row of the result, which represents the user
-      return rows[0] as User;
-    }
+    // Return the first row of the result, which represents the user
+    return rows[0] as User;
+  }
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all users from the "user" table

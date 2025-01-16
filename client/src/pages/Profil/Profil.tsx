@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import type { ProfilType } from "../../components/NewUserForm";
-import { useEffect, useState } from "react";
 
 function Profil() {
   const { id } = useParams();
