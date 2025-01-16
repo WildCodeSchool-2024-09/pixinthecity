@@ -46,6 +46,12 @@ function Carte() {
                   <section className="content-photos">
                     <p>{photo.content}</p>
                   </section>
+                  <section className="date-photos">
+                    <p>{photo.dateoftheday}</p>
+                  </section>
+                  <section className="artist-photos">
+                    <p>{photo.artist}</p>
+                  </section>
                 </figure>
               ))
             ) : (
