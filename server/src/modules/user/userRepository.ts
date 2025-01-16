@@ -18,7 +18,7 @@ type User = {
 class UserRepository {
   //   // The C of CRUD - Create operation
 
-  async create(user: Omit<User, "id">) {
+  async create(user: Omit<User, "id">): Promise<number> {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await databaseClient.query<Result>(
       "insert into user (firstname, lastname, pseudo, email, zip_code, city, user_password, avatar, is_gcu_accepted) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
