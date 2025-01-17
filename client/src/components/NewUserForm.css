@@ -12,12 +12,15 @@
   font-family: "roboto_bold";
   src: url("../../assets/fonts/roboto_bold.ttf") format("truetype");
 }
-.post-photo-container {
-  background: url("backgroundstars.jpg") center / cover fixed;
+
+* {
+  box-sizing: border-box;
+}
+
+.create-profil-container {
+  background: url("../assets/images/backgroundstars.jpg") center / cover fixed;
   color: #ed2ea5;
   font-family: "pixeleum", sans-serif;
-  margin-top: 6em;
-  margin-bottom: 4em;
   padding: 2em;
   display: flex;
   flex-direction: column;
@@ -25,24 +28,25 @@
   justify-content: center;
   height: 100vh;
   position: relative;
+  padding-top: 51em;
+  padding-bottom: 41em;
+  margin-bottom: 6em;
 }
 h1 {
   color: #fad009;
 }
-.form-photo-fields {
-  margin-bottom: 1em;
-}
-.star {
-  color: #ed2ea5;
-  font-family: "roboto", sans-serif;
-}
-.auth-gcu {
+
+.is_gcu_accepted {
   color: white;
-  font-family: "roboto", sans-serif;
+  font-family: "pixeleum", sans-serif;
 }
-.post-photo-button {
+
+.obligatory-fiels {
+  color: white;
+}
+
+.create-profil-button {
   width: 100%;
-  margin-top: 1.5em;
   margin-bottom: 1em;
   padding: 10px;
   border: solid white 1px;

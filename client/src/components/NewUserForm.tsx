@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import "./CSS/CreaProfil.css";
+import "./NewUserForm.css";
 
 export type ProfilType = {
   firstname: string;
@@ -22,10 +22,9 @@ interface CreaProfilType {
 
 function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
   return (
-    <main className="crea_profil">
-      <h2>Création du profil</h2>
+    <section className="create-profil-container">
+      <h1>CRÉER MON PROFIL</h1>
       <form
-        className="formprofil"
         onSubmit={(event) => {
           event.preventDefault();
           const formData = new FormData(event.currentTarget);
@@ -54,16 +53,18 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           });
         }}
       >
-        <label htmlFor="firstname">Prénom</label>
+        <label htmlFor="firstname">Prénom *</label>
         <input
+          className="form-fields"
           id="firstname"
           type="text"
           name="firstname"
           placeholder="Entrez votre prénom"
           defaultValue={defaultValue.firstname}
         />
-        <label htmlFor="lastname">Nom</label>
+        <label htmlFor="lastname">Nom *</label>
         <input
+          className="form-fields"
           id="lastname"
           type="text"
           name="lastname"
@@ -71,8 +72,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           defaultValue={defaultValue.lastname}
         />
 
-        <label htmlFor="pseudo">Pseudo</label>
+        <label htmlFor="pseudo">Pseudo *</label>
         <input
+          className="form-fields"
           id="pseudo"
           type="text"
           name="pseudo"
@@ -80,8 +82,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           defaultValue={defaultValue.pseudo}
         />
 
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email *</label>
         <input
+          className="form-fields"
           id="email"
           type="email"
           name="email"
@@ -100,6 +103,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
 
         <label htmlFor="city">Ville (optionnel)</label>
         <input
+          className="form-fields"
           id="city"
           type="text"
           name="city"
@@ -107,8 +111,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           defaultValue={defaultValue.city}
         />
 
-        <label htmlFor="user_password">Mot de passe</label>
+        <label htmlFor="user_password">Mot de passe *</label>
         <input
+          className="form-fields"
           id="user_password"
           type="password"
           name="user_password"
@@ -116,8 +121,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           defaultValue={defaultValue.user_password}
         />
 
-        <label htmlFor="passwordConfirm">Confirmer le mot de passe</label>
+        <label htmlFor="passwordConfirm">Confirmer le mot de passe *</label>
         <input
+          className="form-fields"
           id="passwordConfirm"
           type="password"
           name="passwordConfirm"
@@ -126,7 +132,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
         />
 
         {/* biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
-        <label>Mon avatar (optionnel)</label>
+        <label>Choix de l'avatar (optionnel)</label>
         <div className="avatars">
           {[
             "avatar1.png",
@@ -141,6 +147,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
                 type="radio"
                 name="avatar"
                 value={avatar}
+                className="form-fields"
                 checked={defaultValue.avatar === avatar}
               />
               <label htmlFor={`avatar-${avatar}`}>
@@ -152,17 +159,23 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
 
         <label htmlFor="is_gcu_accepted">
           <input
+            className="is_gcu_accepted"
             id="is_gcu_accepted"
             type="checkbox"
             name="is_gcu_accepted"
             checked={defaultValue.is_gcu_accepted}
           />
-          J'accepte les conditions générales d'utilisation
+          J'accepte les conditions générales d'utilisation *
         </label>
+        <p className="obligatory-fiels">
+          Tous les champs avec une * sont obligatoires
+        </p>
 
-        <button type="submit">{children}Valider</button>
+        <button type="submit" className="create-profil-button">
+          {children}CRÉER MON PROFIL
+        </button>
       </form>
-    </main>
+    </section>
   );
 }
 
