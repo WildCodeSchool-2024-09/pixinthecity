@@ -21,8 +21,6 @@
   background: url("../assets/images/backgroundstars.jpg") center / cover fixed;
   color: #ed2ea5;
   font-family: "pixeleum", sans-serif;
-  margin-top: 17em;
-  margin-bottom: 13em;
   padding: 2em;
   display: flex;
   flex-direction: column;
@@ -30,6 +28,9 @@
   justify-content: center;
   height: 100vh;
   position: relative;
+  padding-top: 51em;
+  padding-bottom: 41em;
+  margin-bottom: 6em;
 }
 h1 {
   color: #fad009;

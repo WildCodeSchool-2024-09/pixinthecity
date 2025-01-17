@@ -22,7 +22,7 @@ interface CreaProfilType {
 
 function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
   return (
-    <main className="create-profil-container">
+    <section className="create-profil-container">
       <h1>CRÉER MON PROFIL</h1>
       <form
         onSubmit={(event) => {
@@ -175,7 +175,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           {children}CRÉER MON PROFIL
         </button>
       </form>
-    </main>
+    </section>
   );
 }
 
