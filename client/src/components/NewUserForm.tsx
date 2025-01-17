@@ -20,6 +20,13 @@ interface CreaProfilType {
   onSubmit: (photo: ProfilType) => void;
 }
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Défilement fluide
+  });
+};
+
 function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
   return (
     <section className="create-profil-container">
@@ -173,6 +180,18 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
 
         <button type="submit" className="create-profil-button">
           {children}CRÉER MON PROFIL
+        </button>
+        <button
+          type="button"
+          id="button_up"
+          onClick={scrollToTop} // Ajout du gestionnaire d'événement
+        >
+          <img
+            src={"/src/assets/images/arrow_up.png"}
+            alt="Retour_vers_le_haut"
+            id="arrow_up"
+          />
+          <p>RETOUR VERS LE HAUT</p>
         </button>
       </form>
     </section>
