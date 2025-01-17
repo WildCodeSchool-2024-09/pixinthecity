@@ -79,14 +79,24 @@ function Profil() {
             {[
               {
                 id: 1,
-                src: "/photos/contribution1.jpg",
-                title: "Street Art à Lyon",
+                src: "/src/assets/images/essai_photo.webp",
+                title: "Oeuvre 1",
               },
               {
                 id: 2,
-                src: "/photos/contribution2.jpg",
-                title: "Fresque à Paris",
+                src: "/src/assets/images/essai_photo.webp",
+                title: "Oeuvre 2",
               },
+              {
+                id: 3,
+                src: "/src/assets/images/essai_photo.webp",
+                title: "Oeuvre 3",
+              },
+              // {
+              //   id: 4,
+              //   src: "/src/assets/images/essai_photo.webp",
+              //   title: "Oeuvre 4",
+              // },
             ].map((contribution) => (
               <li key={contribution.id}>
                 <figure>
