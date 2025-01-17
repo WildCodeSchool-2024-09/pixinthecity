@@ -50,7 +50,7 @@ function Footer() {
             alt="contact"
             className="icon_footer"
           />
-          <p>CONTACT</p>
+          <p>CONTACTS</p>
         </button>
       </Link>
     </footer>
