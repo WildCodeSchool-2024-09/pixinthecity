@@ -24,14 +24,15 @@ function Footer() {
           <p>CLASSEMENT</p>
         </button>
       </Link>
-
-      <button type="button" className="button_camera">
-        <img
-          src={"/src/assets/images/footer_icons/icon_camera.png"}
-          alt="camera"
-          className="icon_camera"
-        />
-      </button>
+      <Link to="/Donnees_photo">
+        <button type="button" className="button_camera">
+          <img
+            src={"/src/assets/images/footer_icons/icon_camera.png"}
+            alt="camera"
+            className="icon_camera"
+          />
+        </button>
+      </Link>
       <Link to="/regles">
         <button type="button" className="button_footer">
           <img
