@@ -40,7 +40,7 @@ function SubmitPhotoForm({
           className="form-photo-fields"
           placeholder="title"
           type="text"
-          name="titre"
+          name="title"
           defaultValue={defaultValue.title}
         />
         <label htmlFor="content">NOM DE L'ARTISTE</label>
