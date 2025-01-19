@@ -26,3 +26,24 @@
 .content-photos {
   font-family: "roboto", sans-serif;
 }
+
+/* src/pages/PagesClassiques/Carte.css */
+
+/* Assure que le contenu de la carte est bien disposé, même avec la sidebar sur desktop */
+.container-carte {
+  padding: 3.4em 0;
+  text-align: center;
+  margin-bottom: 6em;
+  display: block; /* Affichage par défaut pour mobile */
+}
+
+@media (min-width: 1024px) {
+  .container-carte {
+    display: flex; /* Utilisation du flexbox pour afficher la sidebar à gauche */
+  }
+
+  .main-content {
+    margin-left: 250px; /* Laisse de l'espace pour la sidebar */
+    flex: 1;
+  }
+}

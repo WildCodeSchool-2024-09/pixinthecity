@@ -1,7 +1,6 @@
 import "../../components/CSS/Regles.css";
 
 function Regles() {
-  // Fonction pour faire défiler la page en haut
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -19,7 +18,7 @@ function Regles() {
           <p>
             Des règles simples pour une aventure inoubliable. Vous parcourez les
             rues comme un·e historien·ne moderne, redécouvrant les trésors
-            cachés de nos villes.Des récompenses pour les contributeur·rices
+            cachés de nos villes. Des récompenses pour les contributeur·rices
             assidu·es, avec un classement officiel.
           </p>
         </div>

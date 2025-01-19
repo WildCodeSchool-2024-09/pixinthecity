@@ -1,4 +1,3 @@
-/* === Définition des polices === */
 @font-face {
   font-family: "pixeleum";
   src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
@@ -14,14 +13,32 @@
   src: url("../../assets/fonts/roboto_bold.ttf") format("truetype");
 }
 
-/* === Styles globaux === */
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .container {
   text-align: center;
   background: url("../../assets/images/backgroundstars.jpg") center / cover
     fixed;
   font-family: "roboto", sans-serif;
   color: white;
-  padding: 13em 1.5em 13em;
+  padding: 12em 1.5em 13em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 ul {
@@ -29,7 +46,6 @@ ul {
   margin-bottom: 3em;
 }
 
-/* === Composants spécifiques === */
 .instructions,
 .niveaux {
   text-align: left;
@@ -78,20 +94,6 @@ img#arrow_up {
   font-family: "pixeleum", sans-serif;
 }
 
-/* Définition de l'animation */
-@keyframes moveUpDown {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-/* === Hiérarchie des titres === */
 h1,
 h2,
 h3,
@@ -130,4 +132,34 @@ h5 {
 h6 {
   color: #6e7dc9;
   font-size: medium;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 80%;
+    margin: 0 auto;
+    background-image: none; /* Retirer l'image de fond */
+    background-color: black; /* Ajouter une couleur de fond noire */
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .instructions,
+  .niveaux {
+    padding: 2em;
+    text-align: left;
+  }
+
+  .badges_img {
+    width: 10%;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
 }
