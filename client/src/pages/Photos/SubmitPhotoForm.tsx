@@ -26,7 +26,7 @@ function SubmitPhotoForm({
 }: SubmitPhotoType) {
   return (
     <section className="post-photo-container">
-      <h1>SOUMETTRE UNE ŒUVRE</h1>
+      <h1 id="subm_photo">SOUMETTRE UNE ŒUVRE</h1>
       <form
         className="formphoto"
         onSubmit={(event) => {
@@ -59,37 +59,41 @@ function SubmitPhotoForm({
           name="date"
           defaultValue={defaultValue.artist}
         />
-        <label htmlFor="date">DESCRIPTION</label>
-        <input
+        <label htmlFor="description">DESCRIPTION</label>
+        <textarea
           className="form-photo-fields"
+          rows={5}
+          cols={50}
           placeholder="description"
-          type="text"
           name="description"
           defaultValue={defaultValue.dateoftheday}
         />
         <label htmlFor="date">AJOUTER PHOTO</label>
 
         <input type="file" name="picture" />
-        <p className="star">*</p>
+
         <p className="auth-gcu">
-          Conformément aux CGU acceptées lors de mon inscription, j'autorise le
-          site à utiliser la ou les photos que je soumets.
+          <span className="star">*</span> Conformément aux CGU acceptées lors de
+          mon inscription, j'autorise le site à utiliser la ou les photos que je
+          soumets.
         </p>
         <button className="post-photo-button" type="submit">
           {children}PROPOSER UNE ŒUVRE
         </button>
-        <button
-          type="button"
-          id="button_up"
-          onClick={scrollToTop} // Ajout du gestionnaire d'événement
-        >
-          <img
-            src={"/src/assets/images/arrow_up.png"}
-            alt="Retour_vers_le_haut"
-            id="arrow_up"
-          />
-          <p>RETOUR VERS LE HAUT</p>
-        </button>
+        <div className="button_hiden">
+          <button
+            type="button"
+            id="button_up"
+            onClick={scrollToTop} // Ajout du gestionnaire d'événement
+          >
+            <img
+              src={"/src/assets/images/arrow_up.png"}
+              alt="Retour_vers_le_haut"
+              id="arrow_up"
+            />
+            <p>RETOUR VERS LE HAUT</p>
+          </button>
+        </div>
       </form>
     </section>
   );

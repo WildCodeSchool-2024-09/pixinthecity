@@ -56,3 +56,37 @@ h1 {
   text-transform: uppercase;
   background-color: #ed2ea5;
 }
+
+.auth-gcu {
+  margin-top: 0.75em;
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    padding: 0;
+  }
+  .formphoto {
+    margin-left: 4.3em;
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 28em;
+    padding-right: 36em;
+  }
+
+  .form-photo-fields {
+    border-radius: 8px;
+  }
+
+  #subm_photo {
+    padding-top: 1em;
+  }
+  .post-photo-container {
+    margin-top: 0;
+  }
+  .form-photo-fields {
+    margin-top: 0.5em;
+  }
+  .button_hiden {
+    display: none;
+  }
+}
