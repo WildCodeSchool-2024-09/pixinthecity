@@ -84,3 +84,8 @@ img.icon_footer {
 img.icon_camera {
   width: 70%;
 }
+@media (min-width: 1024px) {
+  footer {
+    display: none;
+  }
+}
