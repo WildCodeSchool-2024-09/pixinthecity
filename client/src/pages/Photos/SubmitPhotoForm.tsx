@@ -68,19 +68,10 @@ function SubmitPhotoForm({
           name="description"
           defaultValue={defaultValue.dateoftheday}
         />
-        <label htmlFor="picture">
-          AJOUTER PHOTO <span className="star">*</span>
-        </label>
-        <br />{" "}
-        <label htmlFor="picture" className="custom-file-button">
-          Parcourir
-        </label>
-        <input
-          id="picture"
-          className="hidden-file-input"
-          type="file"
-          name="picture"
-        />
+        <label htmlFor="date">AJOUTER PHOTO</label>
+
+        <input type="file" name="picture" />
+
         <p className="auth-gcu">
           <span className="star">*</span> Conformément aux CGU acceptées lors de
           mon inscription, j'autorise le site à utiliser la ou les photos que je
