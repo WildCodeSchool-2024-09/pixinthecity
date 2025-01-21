@@ -1,13 +1,13 @@
 import "../../components/CSS/Regles.css";
 
-function Regles() {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // Défilement fluide
-    });
-  };
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 
+function Regles() {
   return (
     <>
       <div className="container">
@@ -182,11 +182,7 @@ function Regles() {
             </div>
           </li>
         </ul>
-        <button
-          type="button"
-          id="button_up"
-          onClick={scrollToTop} // Ajout du gestionnaire d'événement
-        >
+        <button type="button" id="button_up" onClick={scrollToTop}>
           <img
             src={"/src/assets/images/arrow_up.png"}
             alt="Retour_vers_le_haut"

@@ -87,6 +87,7 @@ img#arrow_up {
   background: none;
   border: 0;
   cursor: pointer;
+  z-index: 10;
 }
 
 #button_up p {
