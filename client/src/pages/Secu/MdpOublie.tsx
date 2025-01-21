@@ -22,9 +22,11 @@ function MdpOublie() {
                 placeholder="email"
               />
             </div>
-            <button type="submit" className="passeword_forget_button">
-              ENVOYER UN MOT DE PASSE TEMPORAIRE
-            </button>
+            <Link to="/">
+              <button type="submit" className="passeword_forget_button">
+                ENVOYER UN MOT DE PASSE TEMPORAIRE
+              </button>
+            </Link>
           </form>
         </div>
       </section>
