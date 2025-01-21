@@ -68,7 +68,7 @@ function SubmitPhotoForm({
           name="description"
           defaultValue={defaultValue.dateoftheday}
         />
-        <label htmlFor="date">AJOUTER PHOTO</label>
+        <label htmlFor="date">AJOUTER PHOTO*</label>
 
         <input type="file" name="picture" />
 
