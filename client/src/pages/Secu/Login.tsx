@@ -68,9 +68,12 @@ function Login() {
               </Link>
             </form>
             <p className="text_visitor">OU</p>
-            <button type="button" className="signup_button">
-              CRÉER MON COMPTE
-            </button>
+            <Link to="/Creation_de_profil">
+              {" "}
+              <button type="button" className="signup_button">
+                CRÉER MON COMPTE
+              </button>
+            </Link>
             <div className="text_login">
               <Link to="/">
                 <p className="text_visitor">RESTER EN TANT QUE VISITEUR</p>

@@ -9,7 +9,9 @@ const SideBar = () => {
     <div className="sidebar">
       {/* Logo dans la Sidebar */}
       <div className="sidebar-logo">
-        <img src={Logo} alt="Logo" className="logo-sidebar" />
+        <Link to="/">
+          <img src={Logo} alt="Logo" className="logo-sidebar" />
+        </Link>
       </div>
 
       {/* Boutons Connexion et Inscription */}
