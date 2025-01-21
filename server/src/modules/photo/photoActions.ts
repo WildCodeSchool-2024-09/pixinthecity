@@ -49,6 +49,7 @@ const add: RequestHandler = async (req, res, next) => {
       artist: req.body.artist,
       dateoftheday: req.body.date,
       picture: req.file?.filename,
+      user_id: req.body.user_id,
     };
 
     // Create the photo
