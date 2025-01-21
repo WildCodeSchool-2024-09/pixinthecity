@@ -43,15 +43,16 @@ const add: RequestHandler = async (req, res, next) => {
     // Extract the photo data from the request body
 
     const picture = req.file;
+    const userId = req.body.user_id || null;
     const newPhoto = {
       title: req.body.title,
       content: req.body.content,
       artist: req.body.artist,
       dateoftheday: req.body.date,
-      latitude: req.body.latitude,
-      longitude: req.body.longitude,
+      latitude: req.body.latitude || 45.7597,
+      longitude: req.body.longitude || 4.8422,
       picture: req.file?.filename,
-      user_id: req.body.user_id,
+      user_id: req.body.user_id || null,
     };
 
     // Create the photo
