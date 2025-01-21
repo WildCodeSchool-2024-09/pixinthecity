@@ -8,7 +8,8 @@ create table user (
   city VARCHAR(30),
   user_password VARCHAR(30) NOT NULL,
   avatar VARCHAR(255),
-  is_gcu_accepted BOOL NOT NULL DEFAULT FALSE
+  is_gcu_accepted BOOL NOT NULL DEFAULT FALSE,
+  is_admin boolean not null default false
 );
 
 CREATE TABLE photo (
@@ -16,7 +17,9 @@ CREATE TABLE photo (
   title VARCHAR(255) NOT NULL,
   content TEXT,
   artist VARCHAR(255),
- dateoftheday DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  dateoftheday DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  latitude FLOAT NOT NULL DEFAULT 45.7597,  -- Latitude par défaut (centre de Lyon)
+  longitude FLOAT NOT NULL DEFAULT 4.8422, -- Longitude par défaut (centre de Lyon)
   picture VARCHAR(255) NOT NULL,
   user_id INT UNSIGNED NOT NULL, -- Clé étrangère liée à user.id
   FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE -- Contrainte de clé étrangère
@@ -36,29 +39,29 @@ CREATE TABLE photo (
 
 -- La table user est créée avant la table photo.
 
-insert into user(firstname, lastname, pseudo, email, zip_code, city, user_password, avatar, is_gcu_accepted)
+insert into user(firstname, lastname, pseudo, email, zip_code, city, user_password, avatar, is_gcu_accepted, is_admin)
 values
-  ("Jacqueline", "Morin", "jijimomo_95", "jacquelinecomptabilite@sah.fr", "69001", "Lyon", "ilovecomptabilite", NULL, TRUE),
-  ("René", "Pichard", "pich-art", "rene_pich-art@sah.fr", "69002", "Lyon", "rene_explorateur", NULL, TRUE),
-  ("Pépito", "Perez", "pepito_roi_du_gateau", "p-p@sah.fr", "69003", "Lyon" ,"perezforever", NULL, TRUE);
+  ("Jacqueline", "Morin", "jijimomo_95", "jacquelinecomptabilite@sah.fr", "69001", "Lyon", "ilovecomptabilite", NULL, TRUE, TRUE),
+  ("René", "Pichard", "pich-art", "rene_pich-art@sah.fr", "69002", "Lyon", "rene_explorateur", NULL, TRUE, FALSE),
+  ("Pépito", "Perez", "pepito_roi_du_gateau", "p-p@sah.fr", "69003", "Lyon" ,"perezforever", NULL, TRUE, FALSE);
 
-insert into photo(title, content, picture, dateoftheday, artist, user_id)
+insert into photo(title, content, picture, latitude, longitude, artist, user_id)
 values
 -- Soumission photo de Jacqueline (id:1) (1 photo seulement):
   ("Mosaique Ememem, rue de la bourse, Lyon 2e", 
    "À partir de petit carreaux, l'artiste urban Ememem construit des mosaïques ou des 'pancements de trous' (comme il les appelle) pour vêtir la rue des couleurs. Dans ce mosaïque en blanc et noir nous trouvons une sorte de jeu qui fait penser aux mots fléchés. Pour connaître plus sur cet artiste, rdv dans son site web : https://www.ememem-flacking.com/ et sur ses réseaux sociaux.", 
-   "Ememem.jpg", "2025/01/11", "Jeronimo", 1),
+   "Ememem.jpg", 45.7597, 4.8422,"Jeronimo", 1),
 
 -- Soumission photo de Pépito (id:3) (3 photos):
   ("Hommage à Keith Haring, pont Morand, Lyon 1er", 
    "Dans le cadre de la Boucle du Ruban Rouge et de la Conférence du Fonds Mondial de lutte contre le sida qui s'est déroulé à Lyon les 9 et 10 octobre 2019, (RED) et la Métropole se sont associés pour développer une campagne de Street Art. 'Pour cette œuvre, Faile rend hommage à Keith Haring, artiste légendaire, activement engagé dans la lutte contre le sida, révélé aux Lyonnais lors d’une rétrospective présentée en 2008, au Musée d’Art Contemporain'", 
-   "faile-morand.jpg", "2025/01/13", "Gertrude", 3),
+   "faile-morand.jpg", 45.7686161, 4.8395737,"Gertrude", 3),
   ("Vol du Ara, Kalouf et Chopper, rue Villon, Lyon 8ème", 
    "« L’œuvre représente le symbole de liberté au travers de ce ARA vert (ARA MILITARIS). L’espèce est menacée d’extinction à l’état sauvage à cause de son plumage vivement coloré et victime du trafic d’animaux. Il est souhaitable pour les générations futures que nous préservions le vivant. Les oiseaux jouent un rôle très important et sont indispensables pour la vie sur terre. Laisse la nature intacte, n’y prends rien sauf une photo. » KALOUF", 
-   "kalouf-fresque.jpg", "2025/01/12", "Bernard", 3),
+   "kalouf-fresque.jpg", 45.7407144, 4.863946,"Bernard", 3),
   ("Titre inconnu", 
    "Cette oeuvre représente une petite fille chevauchant un lion", 
-   "collage-britt_tam.jpg", "2025/01/12", "Bitt Tam", 3);
+   "collage-britt_tam.jpg", 45.7692362, 4.8320104,"Bitt Tam", 3);
    
 
   

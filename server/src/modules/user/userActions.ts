@@ -51,6 +51,7 @@ const add: RequestHandler = async (req, res, next) => {
       user_password: req.body.user_password,
       avatar: req.body.avatar,
       is_gcu_accepted: req.body.is_gcu_accepted,
+      is_admin: req.body.is_admin,
     };
     const insertId = await userRepository.create(newUser);
     res.status(201).json({ insertId });

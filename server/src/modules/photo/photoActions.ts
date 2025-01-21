@@ -48,6 +48,8 @@ const add: RequestHandler = async (req, res, next) => {
       content: req.body.content,
       artist: req.body.artist,
       dateoftheday: req.body.date,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
       picture: req.file?.filename,
       user_id: req.body.user_id,
     };
