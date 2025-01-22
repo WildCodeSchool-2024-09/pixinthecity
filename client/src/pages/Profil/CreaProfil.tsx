@@ -16,6 +16,7 @@ function CreaProfil() {
     passwordConfirm: "",
     avatar: "",
     is_gcu_accepted: false,
+    is_admin: false,
   };
 
   return (

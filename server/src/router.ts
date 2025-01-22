@@ -16,11 +16,13 @@ const router = express.Router();
 
 /* ************************************************************************* */
 // Define user-related routes
+import authActions from "./modules/auth/authActions";
 import userActions from "./modules/user/userActions";
 
 router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);
 router.post("/api/users", userActions.add);
+router.post("/api/login", authActions.login);
 
 import photoActions from "./modules/photo/photoActions";
 

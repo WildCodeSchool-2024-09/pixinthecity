@@ -1,26 +1,44 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../components/CSS/Login.css";
+import type { FormEventHandler } from "react";
 import Logo from "../../assets/images/logo.png";
 
 function Login() {
+  const emailRef = useRef<HTMLInputElement>(null);
   const [localUserName, setLocalUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [, setIsLoggedIn] = useState<boolean>(false); // État de connexion - IsLoggedIn à ajouter dans la variable au moment venu
+  //const [, setIsLoggedIn] = useState<boolean>(false); // État de connexion - IsLoggedIn à ajouter dans la variable au moment venu
   const navigate = useNavigate();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit: FormEventHandler = async (event) => {
     event.preventDefault();
-    if (localUserName.trim() && password.trim()) {
-      setIsLoggedIn(true);
-      alert(`Bienvenue, ${localUserName}!`);
-      navigate("/"); // Redirection vers la page d'accueil
-
-      // Réinitialisation des champs
-      setLocalUserName("");
-      setPassword("");
-    } else {
-      alert("Veuillez remplir tous les champs !");
+    try {
+      // Appel à l'API pour créer un nouvel utilisateur
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email:
+              /* rendering process ensures the ref is defined before the form is submitted */
+              (emailRef.current as HTMLInputElement).value,
+            password,
+          }),
+        },
+      );
+      // Redirection vers la page de connexion si la création réussit
+      if (response.status === 201) {
+        alert(`Bienvenue, ${localUserName}!`);
+        navigate("/login");
+      } else {
+        // Log des détails de la réponse en cas d'échec
+        console.info(response);
+      }
+    } catch (err) {
+      // Log des erreurs possibles
+      console.error(err);
     }
   };
 
@@ -42,7 +60,7 @@ function Login() {
                   type="email"
                   id="email"
                   placeholder="email"
-                  value={localUserName}
+                  ref={emailRef}
                   onChange={(e) => setLocalUserName(e.target.value)}
                   required
                 />
@@ -61,11 +79,11 @@ function Login() {
                 />{" "}
                 {/* <p id="text_password">MOT DE PASSE OUBLIÉ ?</p> */}
               </div>
-              <Link to="/">
-                <button type="submit" className="login_button">
-                  CONNEXION
-                </button>
-              </Link>
+              {/*<Link to="/">*/}
+              <button type="submit" className="login_button">
+                CONNEXION
+              </button>
+              {/*</Link>*/}
             </form>
             <p className="text_visitor">OU</p>
             <Link to="/Creation_de_profil">
