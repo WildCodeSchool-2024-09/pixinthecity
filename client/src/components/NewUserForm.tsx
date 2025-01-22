@@ -8,7 +8,7 @@ export type ProfilType = {
   email: string;
   zip_code?: string; // optionnel
   city?: string; // optionnel
-  user_password: string;
+  password: string;
   passwordConfirm: string;
   avatar?: string; // optionnel
   is_gcu_accepted: boolean;
@@ -42,7 +42,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           const email = formData.get("email") as string;
           const zip_code = formData.get("zip_code") as string;
           const city = formData.get("city") as string;
-          const user_password = formData.get("user_password") as string;
+          const password = formData.get("password") as string;
           const passwordConfirm = formData.get("passwordConfirm") as string;
           const avatar = formData.get("avatar") as string;
           const is_gcu_accepted = formData.get("is_gcu_accepted") === "on";
@@ -55,7 +55,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
             email,
             zip_code, // optionnel
             city, // optionnel
-            user_password,
+            password,
             passwordConfirm,
             avatar, // optionnel
             is_gcu_accepted,
@@ -121,14 +121,14 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           defaultValue={defaultValue.city}
         />
 
-        <label htmlFor="user_password">Mot de passe *</label>
+        <label htmlFor="hashed_password">Mot de passe *</label>
         <input
           className="form-fields"
-          id="user_password"
+          id="password"
           type="password"
-          name="user_password"
+          name="password"
           placeholder="Entrez votre mot de passe"
-          defaultValue={defaultValue.user_password}
+          defaultValue={defaultValue.password}
         />
 
         <label htmlFor="passwordConfirm">Confirmer le mot de passe *</label>
