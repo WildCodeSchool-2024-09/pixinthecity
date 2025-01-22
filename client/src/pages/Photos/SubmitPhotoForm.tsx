@@ -43,29 +43,29 @@ function SubmitPhotoForm({
           name="title"
           defaultValue={defaultValue.title}
         />
-        <label htmlFor="content">NOM DE L'ARTISTE</label>
+        <label htmlFor="artist">Nom de l'artiste</label>
         <input
           className="form-photo-fields"
-          placeholder="artist"
+          placeholder="artiste"
           type="text"
-          name="artiste"
-          defaultValue={defaultValue.content}
-        />
-        <label htmlFor="artist">DATE</label>
-        <input
-          className="form-photo-fields"
-          placeholder="date"
-          type="text"
-          name="date"
+          name="artist"
           defaultValue={defaultValue.artist}
         />
-        <label htmlFor="description">DESCRIPTION</label>
+        <label htmlFor="content">DESCRIPTION</label>
         <textarea
           className="form-photo-fields"
           rows={5}
           cols={50}
           placeholder="description"
-          name="description"
+          name="content"
+          defaultValue={defaultValue.content}
+        />
+        <label htmlFor="dateoftheday">DATE</label>
+        <input
+          className="form-photo-fields"
+          placeholder="date"
+          type="text"
+          name="date"
           defaultValue={defaultValue.dateoftheday}
         />
         <label htmlFor="date">AJOUTER PHOTO*</label>
