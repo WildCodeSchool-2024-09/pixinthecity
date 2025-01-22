@@ -48,7 +48,7 @@ const add: RequestHandler = async (req, res, next) => {
       email: req.body.email,
       zip_code: req.body.zip_code,
       city: req.body.city,
-      user_password: req.body.user_password,
+      hashed_password: req.body.hashed_password,
       avatar: req.body.avatar,
       is_gcu_accepted: req.body.is_gcu_accepted,
       is_admin: req.body.is_admin,
