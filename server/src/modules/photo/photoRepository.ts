@@ -55,6 +55,17 @@ class PhotoRepository {
     // Return the array of photos
     return rows as Photo[];
   }
+
+  async delete(id: number) {
+    // Execute the SQL DELETE query to delete an existing photo from the "photo" table
+    const [result] = await databaseClient.query<Result>(
+      "delete from photo where id = ?",
+      [id],
+    );
+
+    // Return how many rows were affected
+    return result.affectedRows;
+  }
 }
 
 export default new PhotoRepository();
