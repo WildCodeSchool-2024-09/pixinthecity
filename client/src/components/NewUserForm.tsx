@@ -12,6 +12,7 @@ export type ProfilType = {
   passwordConfirm: string;
   avatar?: string; // optionnel
   is_gcu_accepted: boolean;
+  is_admin: boolean;
 };
 
 interface CreaProfilType {
@@ -45,6 +46,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           const passwordConfirm = formData.get("passwordConfirm") as string;
           const avatar = formData.get("avatar") as string;
           const is_gcu_accepted = formData.get("is_gcu_accepted") === "on";
+          const is_admin = formData.get("is_admin") === "0";
 
           onSubmit({
             firstname,
@@ -57,6 +59,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
             passwordConfirm,
             avatar, // optionnel
             is_gcu_accepted,
+            is_admin,
           });
         }}
       >

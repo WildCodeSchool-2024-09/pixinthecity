@@ -62,6 +62,18 @@ class UserRepository {
     return rows as User[];
   }
 
+  async readByEmailWithPassword(email: string, user_password: string) {
+    // Execute the SQL SELECT query to retrieve a specific user by its email
+    const [rows] = await databaseClient.query<Rows>(
+      "select * from user where email = ? and user_password = ?",
+      [email, user_password],
+    );
+    // console.log(
+    //   `select * from user where email = ${email} and user_password = ${user_password}`,
+    // );
+    // Return the first row of the result, which represents the user
+    return rows[0] as User;
+  }
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing item
 
