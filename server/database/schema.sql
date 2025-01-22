@@ -6,7 +6,7 @@ create table user (
   email VARCHAR(50) NOT NULL,
   zip_code INT,
   city VARCHAR(30),
-  user_password VARCHAR(30) NOT NULL,
+  hashed_password VARCHAR(255) NOT NULL,
   avatar VARCHAR(255),
   is_gcu_accepted BOOL NOT NULL DEFAULT FALSE,
   is_admin boolean not null default false
@@ -39,7 +39,7 @@ CREATE TABLE photo (
 
 -- La table user est créée avant la table photo.
 
-insert into user(firstname, lastname, pseudo, email, zip_code, city, user_password, avatar, is_gcu_accepted, is_admin)
+insert into user(firstname, lastname, pseudo, email, zip_code, city, hashed_password, avatar, is_gcu_accepted, is_admin)
 values
   ("Jacqueline", "Morin", "jijimomo_95", "jacquelinecomptabilite@sah.fr", "69001", "Lyon", "ilovecomptabilite", NULL, TRUE, TRUE),
   ("René", "Pichard", "pich-art", "rene_pich-art@sah.fr", "69002", "Lyon", "rene_explorateur", NULL, TRUE, FALSE),

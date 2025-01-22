@@ -10,7 +10,7 @@ type User = {
   email: string;
   zip_code?: number;
   city?: string;
-  user_password: string;
+  hashed_password: string;
   avatar?: string;
   is_gcu_accepted: boolean;
   is_admin: boolean;
@@ -22,7 +22,7 @@ class UserRepository {
   async create(user: Omit<User, "id">): Promise<number> {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await databaseClient.query<Result>(
-      "insert into user (firstname, lastname, pseudo, email, zip_code, city, user_password, avatar, is_gcu_accepted, is_admin) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "insert into user (firstname, lastname, pseudo, email, zip_code, city, hashed_password, avatar, is_gcu_accepted, is_admin) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         user.firstname,
         user.lastname,
@@ -30,7 +30,7 @@ class UserRepository {
         user.email,
         user.zip_code ?? null,
         user.city ?? null,
-        user.user_password,
+        user.hashed_password,
         user.avatar ?? null,
         user.is_gcu_accepted,
         user.is_admin,
@@ -62,14 +62,14 @@ class UserRepository {
     return rows as User[];
   }
 
-  async readByEmailWithPassword(email: string, user_password: string) {
+  async readByEmailWithPassword(email: string) {
     // Execute the SQL SELECT query to retrieve a specific user by its email
     const [rows] = await databaseClient.query<Rows>(
-      "select * from user where email = ? and user_password = ?",
-      [email, user_password],
+      "select * from user where email = ?",
+      [email],
     );
     // console.log(
-    //   `select * from user where email = ${email} and user_password = ${user_password}`,
+    //   `select * from user where email = ${email} and hashed_password = ${hashed_password}`,
     // );
     // Return the first row of the result, which represents the user
     return rows[0] as User;

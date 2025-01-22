@@ -12,7 +12,7 @@ function CreaProfil() {
     email: "",
     zip_code: "",
     city: "",
-    user_password: "",
+    password: "",
     passwordConfirm: "",
     avatar: "",
     is_gcu_accepted: false,
