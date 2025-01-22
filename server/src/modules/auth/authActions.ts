@@ -25,7 +25,7 @@ const login: RequestHandler = async (req, res, next) => {
     });
     //console.log(token);
 
-    res.json({
+    res.status(200).json({
       token,
       user: userWithoutHashedPassword,
     });

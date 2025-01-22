@@ -1,6 +1,11 @@
 import type { ReactNode } from "react";
 import "./NewUserForm.css";
-
+import avatar1 from "../assets/images/avatar/avatar01.png";
+import avatar2 from "../assets/images/avatar/avatar02.png";
+import avatar3 from "../assets/images/avatar/avatar03.png";
+import avatar4 from "../assets/images/avatar/avatar04.png";
+import avatar5 from "../assets/images/avatar/avatar05.png";
+import avatar6 from "../assets/images/avatar/avatar06.png";
 export type ProfilType = {
   firstname: string;
   lastname: string;
@@ -29,10 +34,20 @@ const scrollToTop = () => {
 };
 
 function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
+  const avatars = [
+    { id: "avatar1", src: avatar1 },
+    { id: "avatar2", src: avatar2 },
+    { id: "avatar3", src: avatar3 },
+    { id: "avatar4", src: avatar4 },
+    { id: "avatar5", src: avatar5 },
+    { id: "avatar6", src: avatar6 },
+  ];
+
   return (
     <section className="create-profil-container">
-      <h1>CRÉER MON PROFIL</h1>
+      <h1 id="h1-profil-form">CRÉER MON PROFIL</h1>
       <form
+        className="profil-form"
         onSubmit={(event) => {
           event.preventDefault();
           const formData = new FormData(event.currentTarget);
@@ -63,7 +78,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           });
         }}
       >
-        <label htmlFor="firstname">Prénom *</label>
+        <label className="form-fields" htmlFor="firstname">
+          Prénom *
+        </label>
         <input
           className="form-fields"
           id="firstname"
@@ -72,7 +89,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           placeholder="Entrez votre prénom"
           defaultValue={defaultValue.firstname}
         />
-        <label htmlFor="lastname">Nom *</label>
+        <label className="form-fields" htmlFor="lastname">
+          Nom *
+        </label>
         <input
           className="form-fields"
           id="lastname"
@@ -82,7 +101,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           defaultValue={defaultValue.lastname}
         />
 
-        <label htmlFor="pseudo">Pseudo *</label>
+        <label className="form-fields" htmlFor="pseudo">
+          Pseudo *
+        </label>
         <input
           className="form-fields"
           id="pseudo"
@@ -92,7 +113,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           defaultValue={defaultValue.pseudo}
         />
 
-        <label htmlFor="email">Email *</label>
+        <label className="form-fields" htmlFor="email">
+          Email *
+        </label>
         <input
           className="form-fields"
           id="email"
@@ -102,7 +125,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           defaultValue={defaultValue.email}
         />
 
-        <label htmlFor="zip_code">Code postal (optionnel)</label>
+        <label className="form-fields" htmlFor="zip_code">
+          Code postal (optionnel)
+        </label>
         <input
           id="zip_code"
           type="text"
@@ -111,7 +136,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           defaultValue={defaultValue.zip_code}
         />
 
-        <label htmlFor="city">Ville (optionnel)</label>
+        <label className="form-fields" htmlFor="city">
+          Ville (optionnel)
+        </label>
         <input
           className="form-fields"
           id="city"
@@ -121,7 +148,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           defaultValue={defaultValue.city}
         />
 
-        <label htmlFor="user_password">Mot de passe *</label>
+        <label className="form-fields" htmlFor="user_password">
+          Mot de passe *
+        </label>
         <input
           className="form-fields"
           id="user_password"
@@ -131,7 +160,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           defaultValue={defaultValue.user_password}
         />
 
-        <label htmlFor="passwordConfirm">Confirmer le mot de passe *</label>
+        <label className="form-fields" htmlFor="passwordConfirm">
+          Confirmer le mot de passe *
+        </label>
         <input
           className="form-fields"
           id="passwordConfirm"
@@ -142,32 +173,30 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
         />
 
         {/* biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
-        <label>Choix de l'avatar (optionnel)</label>
+        <label className="form-fields">Choix de l'avatar (optionnel)</label>
         <div className="avatars">
-          {[
-            "avatar1.png",
-            "avatar2.png",
-            "avatar3.png",
-            "avatar4.png",
-            "avatar5.png",
-          ].map((avatar) => (
-            <div key={avatar}>
+          {avatars.map((avatar) => (
+            <div key={avatar.id}>
               <input
-                id={`avatar-${avatar}`} // ID unique pour chaque avatar
+                id={`avatar-${avatar.id}`}
+                className="avatars"
                 type="radio"
                 name="avatar"
-                value={avatar}
-                className="form-fields"
-                checked={defaultValue.avatar === avatar}
+                value={avatar.id}
+                defaultChecked={defaultValue.avatar === avatar.id}
               />
-              <label htmlFor={`avatar-${avatar}`}>
-                <img src={`/images/${avatar}`} alt={`Avatar ${avatar}`} />
+              <label htmlFor={`avatar-${avatar.id}`}>
+                <img
+                  src={avatar.src}
+                  alt={`Avatar ${avatar.id}`}
+                  className="avatar-image"
+                />
               </label>
             </div>
           ))}
         </div>
 
-        <label htmlFor="is_gcu_accepted">
+        <label className="is_gcu_accepted" htmlFor="is_gcu_accepted">
           <input
             className="is_gcu_accepted"
             id="is_gcu_accepted"
@@ -184,18 +213,20 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
         <button type="submit" className="create-profil-button">
           {children}CRÉER MON PROFIL
         </button>
-        <button
-          type="button"
-          id="button_up"
-          onClick={scrollToTop} // Ajout du gestionnaire d'événement
-        >
-          <img
-            src={"/src/assets/images/arrow_up.png"}
-            alt="Retour_vers_le_haut"
-            id="arrow_up"
-          />
-          <p>RETOUR VERS LE HAUT</p>
-        </button>
+        <div className="button-up">
+          <button
+            type="button"
+            id="button_up"
+            onClick={scrollToTop} // Ajout du gestionnaire d'événement
+          >
+            <img
+              src={"/src/assets/images/arrow_up.png"}
+              alt="Retour_vers_le_haut"
+              id="arrow_up"
+            />
+            <p>RETOUR VERS LE HAUT</p>
+          </button>
+        </div>
       </form>
     </section>
   );
