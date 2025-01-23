@@ -46,7 +46,7 @@ function Carte() {
           {isDesktop && <SideBar />}{" "}
           {/* Afficher la SideBar uniquement si c'est un écran desktop */}
           <div className="carte-leaflet">
-            <MapStretArt />
+            <MapStretArt photos={photos} apiUrl={API_URL} />
           </div>
           <section className="streetArtPhotos">
             <h1>Les œuvres street art</h1>
