@@ -50,7 +50,7 @@ values
 -- Soumission photo de Jacqueline (id:1) (1 photo seulement):
   ("Mosaique Ememem, rue de la bourse, Lyon 2e", 
    "À partir de petit carreaux, l'artiste urban Ememem construit des mosaïques ou des 'pancements de trous' (comme il les appelle) pour vêtir la rue des couleurs. Dans ce mosaïque en blanc et noir nous trouvons une sorte de jeu qui fait penser aux mots fléchés. Pour connaître plus sur cet artiste, rdv dans son site web : https://www.ememem-flacking.com/ et sur ses réseaux sociaux.", 
-   "Ememem.jpg", 45.7597, 4.8422,"Jeronimo", 1),
+   "Ememem.jpg", 45.754856958728, 4.842333829398,"Jeronimo", 1),
 
 -- Soumission photo de Pépito (id:3) (3 photos):
   ("Hommage à Keith Haring, pont Morand, Lyon 1er", 
