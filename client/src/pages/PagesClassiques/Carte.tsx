@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import MapStretArt from "../../components/MapStreetArt";
-import PhotoDeleteForm from "../../components/PhotoDeleteForm";
+// import PhotoDeleteForm from "../../components/PhotoDeleteForm";
 import SideBar from "../../components/SideBar"; // Import de la SideBar
 import type PhotoType from "../../types/PhotoType";
 import "./Carte.css";
@@ -48,7 +48,7 @@ function Carte() {
           <div className="carte-leaflet">
             <MapStretArt photos={photos} apiUrl={API_URL} />
           </div>
-          <section className="streetArtPhotos">
+          {/* <section className="streetArtPhotos">
             <h1>Les œuvres street art</h1>
             {photos.length > 0 ? (
               photos.map((photo) => (
@@ -75,7 +75,7 @@ function Carte() {
             ) : (
               <p>Loading photos...</p>
             )}
-          </section>
+          </section> */}
         </main>
 
         <footer>

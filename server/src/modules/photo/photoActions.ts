@@ -41,18 +41,20 @@ const read: RequestHandler = async (req, res, next) => {
 const add: RequestHandler = async (req, res, next) => {
   try {
     // Extract the photo data from the request body
+    const { title, content, artist, date, user_id } = req.body;
 
-    const picture = req.file;
-    const userId = req.body.user_id || null;
+    const defaultLatitude = 45.7597; // Latitude par défaut (centre de Lyon)
+    const defaultLongitude = 4.8422; // Longitude par défaut (centre de Lyon)
+
     const newPhoto = {
-      title: req.body.title,
-      content: req.body.content,
-      artist: req.body.artist,
-      dateoftheday: req.body.date,
-      latitude: req.body.latitude || 45.7597,
-      longitude: req.body.longitude || 4.8422,
-      picture: req.file?.filename,
-      user_id: req.body.user_id || null,
+      title,
+      content,
+      artist,
+      dateoftheday: date,
+      latitude: defaultLatitude, // Toujours utiliser les coordonnées par défaut
+      longitude: defaultLongitude,
+      picture: req.file?.filename || null, // Nom du fichier si présent
+      user_id: user_id || null, // Gérer les utilisateurs non connectés
     };
 
     // Create the photo
