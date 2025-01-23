@@ -72,6 +72,13 @@ h1 {
   margin-bottom: 1em;
   padding: 10px;
   border: solid white 1px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-family: "pixeleum", sans-serif;
+  color: white;
+  text-align: center;
   text-transform: uppercase;
   background-color: #ed2ea5;
 }

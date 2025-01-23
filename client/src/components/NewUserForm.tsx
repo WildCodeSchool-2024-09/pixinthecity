@@ -175,17 +175,21 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
         <label className="form-fields">Choix de l'avatar (optionnel)</label>
         <div className="avatars">
           {avatars.map((avatar) => (
-            <div key={avatar.id}>
+            <div key={avatar.id} className="avatar-item">
               <input
                 id={`avatar-${avatar.id}`}
-                className="avatars"
+                className="avatar-radio"
                 type="radio"
                 name="avatar"
                 value={avatar.id}
-                checked={defaultValue.avatar === avatar.id}
+                defaultChecked={defaultValue.avatar === avatar.id}
               />
               <label htmlFor={`avatar-${avatar.id}`}>
-                <img src={`/images/${avatar}`} alt={`Avatar ${avatar.id}`} />
+                <img
+                  src={avatar.src}
+                  alt={`Avatar ${avatar.id}`}
+                  className="avatar-image"
+                />
               </label>
             </div>
           ))}
