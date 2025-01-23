@@ -30,13 +30,18 @@ function Carte({ photos, apiUrl }: MapStreetArtProps) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {photos.map((photo) => (
-          <Marker key={photo.id} position={[45.7455, 4.8278]} icon={customIcon}>
+          <Marker
+            key={photo.id}
+            position={[photo.latitude, photo.longitude]}
+            icon={customIcon}
+          >
             <Popup>
               <strong>{photo.title}</strong>
               {photo.picture && (
                 <img
                   src={`${apiUrl}/photos/${photo.picture}`}
                   alt={photo.title}
+                  style={{ maxWidth: "100px", maxHeight: "100px" }}
                 />
               )}
               <p>{photo.content}</p>

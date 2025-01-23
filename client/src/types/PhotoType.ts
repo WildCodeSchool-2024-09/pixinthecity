@@ -4,6 +4,8 @@ type PhotoType = {
   content: string;
   artist: string;
   dateoftheday: string;
+  latitude: number;
+  longitude: number;
   picture: File | null;
 };
 
