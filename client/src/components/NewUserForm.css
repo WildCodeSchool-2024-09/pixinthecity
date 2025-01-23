@@ -28,12 +28,34 @@
   justify-content: center;
   height: 100vh;
   position: relative;
-  padding-top: 51em;
-  padding-bottom: 41em;
+  padding-top: 53em;
+  padding-bottom: 50em;
   margin-bottom: 6em;
 }
 h1 {
   color: #fad009;
+}
+.avatar-image {
+  width: 100px; /* Largeur des avatars */
+  height: 100px; /* Hauteur des avatars */
+  object-fit: cover; /* S'adapte sans déformation */
+  border-radius: 50%; /* Pour un effet cercle */
+  margin: 5px; /* Espacement autour de chaque avatar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Effet esthétique optionnel */
+}
+
+.avatars {
+  display: flex; /* Aligne les avatars horizontalement */
+  flex-wrap: wrap; /* Retour à la ligne si nécessaire */
+  justify-content: center; /* Centre les avatars horizontalement */
+  gap: 10px; /* Espace entre les conteneurs d'avatars */
+}
+
+.avatars div {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column; /* Input et image alignés en colonne */
+  align-items: center; /* Centrer les éléments dans chaque div */
 }
 
 .is_gcu_accepted {
@@ -47,6 +69,7 @@ h1 {
 
 .create-profil-button {
   width: 100%;
+  margin-top: 2em;
   margin-bottom: 1em;
   padding: 10px;
   border: solid white 1px;
@@ -59,4 +82,42 @@ h1 {
   text-align: center;
   text-transform: uppercase;
   background-color: #ed2ea5;
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    padding: 0;
+    background-color: black;
+  }
+  .profil-form {
+    margin-left: 19%;
+    margin-right: 15%;
+  }
+  .form-fields {
+    border-radius: 8px;
+    margin-top: 0.5em;
+    font-size: 19px;
+  }
+  #h1-profil-form {
+    padding-top: 1em;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  .create-profil-container {
+    margin-top: 3em;
+    padding-top: 44em;
+    padding-bottom: 48em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 8%;
+  }
+  .create-profil-button {
+    margin-top: 2em;
+  }
+  .button-up-profil-form {
+    display: flex;
+    align-items: center;
+    margin-left: 21em;
+  }
 }

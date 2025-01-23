@@ -130,3 +130,18 @@ figcaption {
   font-size: 12px;
   color: white;
 }
+
+@media (min-width: 1024px) {
+  .main-content {
+    background: url("../../assets/images/backgroundstars.jpg") center / cover
+      fixed;
+  }
+  .profil_container {
+    bottom: -0.4em;
+    right: 330px;
+    margin-right: -73px;
+    margin-bottom: 2em;
+    margin-top: 41%;
+    margin-left: 287px;
+  }
+}
