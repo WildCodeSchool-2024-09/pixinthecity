@@ -21,8 +21,8 @@ const browse: RequestHandler = async (req, res, next) => {
 const read: RequestHandler = async (req, res, next) => {
   try {
     // Fetch a specific item based on the provided ID
-    const photoId = Number(req.params.id);
-    const photo = await photoRepository.read(photoId);
+    const photoid = Number(req.params.id);
+    const photo = await photoRepository.read(photoid);
 
     // If the photo is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
@@ -66,4 +66,25 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add, read };
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    // Fetch a specific photo based on the provided ID
+    const photoid = Number(req.params.id);
+    const photo = await photoRepository.delete(photoid);
+
+    // If the photo is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the photo in JSON format
+    if (photo == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(photo);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+// Export them to import them somewhere else
+
+export default { browse, read, add, destroy };
