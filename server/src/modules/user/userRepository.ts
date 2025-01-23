@@ -68,9 +68,7 @@ class UserRepository {
       "select * from user where email = ?",
       [email],
     );
-    // console.log(
-    //   `select * from user where email = ${email} and hashed_password = ${hashed_password}`,
-    // );
+
     // Return the first row of the result, which represents the user
     return rows[0] as User;
   }

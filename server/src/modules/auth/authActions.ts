@@ -2,8 +2,8 @@ import argon2 from "argon2";
 import type { RequestHandler } from "express";
 import userRepository from "../user/userRepository";
 
-// import jwt from "jsonwebtoken";
-// import type { JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+import type { JwtPayload } from "jsonwebtoken";
 // Import access to data
 
 const login: RequestHandler = async (req, res, next) => {
@@ -21,8 +21,20 @@ const login: RequestHandler = async (req, res, next) => {
     if (verified) {
       // Respond with the user in JSON format (but without the hashed password)
       const { hashed_password, ...userWithoutHashedPassword } = user;
-      res.json(userWithoutHashedPassword);
-      // isAdmin: user.is_admin,
+      const myPayload = {
+        sub: user.id.toString(),
+        // isAdmin: user.is_admin,
+      };
+
+      const token = await jwt.sign(
+        myPayload,
+        process.env.APP_SECRET as string,
+        {
+          expiresIn: "1h",
+        },
+      );
+
+      res.json({ user: userWithoutHashedPassword, token });
     } else {
       res.sendStatus(422);
     }
@@ -31,11 +43,6 @@ const login: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-
-// const token = await jwt.sign(myPayload, process.env.APP_SECRET as string, {
-//   expiresIn: "1h",
-// });
-// //console.log(token);
 
 // Options de hachage (voir documentation : https://github.com/ranisalt/node-argon2/wiki/Options)
 // Recommandations **minimales** de l'OWASP : https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
