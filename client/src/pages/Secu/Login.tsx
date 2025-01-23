@@ -6,7 +6,7 @@ import Logo from "../../assets/images/logo.png";
 
 function Login() {
   const emailRef = useRef<HTMLInputElement>(null);
-  const [localUserName, setLocalUserName] = useState<string>("");
+  const [, setLocalUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   //const [, setIsLoggedIn] = useState<boolean>(false); // État de connexion - IsLoggedIn à ajouter dans la variable au moment venu
   const navigate = useNavigate();
@@ -29,9 +29,11 @@ function Login() {
         },
       );
       // Redirection vers la page de connexion si la création réussit
-      if (response.status === 201) {
-        alert(`Bienvenue, ${localUserName}!`);
-        navigate("/login");
+      if (response.status === 200) {
+        // alert(`Bienvenue, ${localUserName}!`);
+        // implementer toastify
+        const data = await response.json();
+        navigate(`/Profil/${data.user.id}`);
       } else {
         // Log des détails de la réponse en cas d'échec
         console.info(response);
