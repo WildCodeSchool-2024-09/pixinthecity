@@ -48,34 +48,6 @@ function Carte() {
           <div className="carte-leaflet">
             <MapStretArt photos={photos} apiUrl={API_URL} />
           </div>
-          {/* <section className="streetArtPhotos">
-            <h1>Les œuvres street art</h1>
-            {photos.length > 0 ? (
-              photos.map((photo) => (
-                <figure key={photo.id}>
-                  <img
-                    src={`${API_URL}/photos/${photo.picture}`}
-                    alt={photo.title}
-                  />
-                  <section className="titre-photos">
-                    <p>{photo.title}</p>
-                  </section>
-                  <section className="content-photos">
-                    <p>{photo.content}</p>
-                  </section>
-                  <section className="date-photos">
-                    <p>{photo.dateoftheday}</p>
-                  </section>
-                  <section className="artist-photos">
-                    <p>{photo.artist}</p>
-                  </section>
-                  <PhotoDeleteForm id={photo.id}>Supprimer</PhotoDeleteForm>
-                </figure>
-              ))
-            ) : (
-              <p>Loading photos...</p>
-            )}
-          </section> */}
         </main>
 
         <footer>
