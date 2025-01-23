@@ -1,73 +1,74 @@
-import "../../components/CSS/ModifProfil.css";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import EditUserForm from "../../components/EditUserForm";
+
+interface EditProfilType {
+  id: number;
+  firstname: string;
+  lastname: string;
+  pseudo: string;
+  email: string;
+  zip_code?: string; // optionnel
+  city?: string; // optionnel
+  hashed_password: string;
+  // passwordConfirm: string;
+  avatar?: string; // optionnel
+  is_gcu_accepted: boolean;
+  is_admin: boolean;
+}
 
 function ModifProfil() {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [user, setUser] = useState(null as null | EditProfilType);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
+      .then((response) => response.json())
+      .then((data: EditProfilType) => {
+        setUser(data);
+      });
+  }, [id]);
+
+  if (!user) {
+    return <p>Chargement...</p>;
+  }
+
   return (
     <>
-      <main>
-        <h2>Modifier le profil</h2>
-        <form>
-          <label htmlFor="identifiant">Nom d'utilisateur</label>
-          <input />
-          <label htmlFor="nom">Nom</label>
-          <input />
-          <label htmlFor="prenom">Prénom</label>
-          <input />
-          <label htmlFor="ville">Ville</label>
-          <input />
-          <label htmlFor="nom">Email</label>
-          <input />
-          <label htmlFor="nom">Nom</label>
-          <input />
-          <label htmlFor="password">Mot de passe</label>
-          <input />
-          <label htmlFor="password">Confirmer le mot de passe</label>
-          <input />
-          <label htmlFor="avatar">Mon avatar</label>
-          <label htmlFor="avatar">
-            <img src="http://avatar1.fr" alt="avatar1" />{" "}
-          </label>
-          <input type="radio" />
-          <label htmlFor="avatar">
-            <img src="http://avatar2.fr" alt="avatar2" />{" "}
-          </label>
-          <input type="radio" />
-          <label htmlFor="avatar">
-            <img src="http://avatar3.fr" alt="avatar3" />{" "}
-          </label>
-          <input type="radio" />
-          <label htmlFor="avatar">
-            <img src="http://avatar4.fr" alt="avatar4" />{" "}
-          </label>
-          <input type="radio" />
-          <label htmlFor="avatar">
-            <img src="http://avatar5.fr" alt="avatar5" />{" "}
-          </label>
-          <input type="radio" />
+      <h1>helelhegsklngjkdbgjsnfjksbgjlsbgjsebgjls</h1>
+      {/* <h1>{user.lastname}</h1>
+      <section>
+        <figure>
+          <img
+            src={`${import.meta.env.VITE_API_URL}/users/${user.avatar || "default-avatar.png"}`}
+            alt={user.lastname}
+          />
+        </figure>
+      </section>
 
-          <button type="submit">Valider</button>
-        </form>
-
-        <h3>Modifier les paramètres du site</h3>
-
-        <label htmlFor="sons">Sons</label>
-        <input type="checkbox" />
-        <label htmlFor="theme">Thème sombre/clair</label>
-        <input type="checkbox" />
-        <label htmlFor="cache">Vider le cache</label>
-        <input type="checkbox" />
-        <label htmlFor="notif">Désactiver les notifications</label>
-        <input type="checkbox" />
-
-        <p>Supprimer mon compte</p>
-      </main>
-      <footer>
-        {/* Pour l'instant en dur ici mais sera importé sous forme de composant */}
-        <p>Carte</p>
-        <p>Règles</p>
-        <img src="http://bouton.fr" alt="IconeProfil" />
-        <p>Classement</p>
-        <p>Contact</p>
-      </footer>
+      <Link to={`/users/${id}/edit`}>Modifier</Link> */}
+      {user && (
+        // <p>toto</p>
+        <EditUserForm
+          defaultValue={user}
+          onSubmit={(userData) => {
+            fetch(`${import.meta.env.VITE_API_URL}/api/users/${user.id}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(userData),
+            }).then((response) => {
+              if (response.status === 204) {
+                navigate(`/users/${user.id}`);
+              }
+            });
+          }}
+        >
+          Modifier
+        </EditUserForm>
+      )}
     </>
   );
 }
