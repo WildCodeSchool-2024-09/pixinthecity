@@ -83,15 +83,13 @@ class UserRepository {
       email,
       zip_code,
       city,
-      hashed_password,
       avatar,
-      is_gcu_accepted,
       is_admin,
       id,
     } = user;
 
     const query =
-      "UPDATE user SET firstname = ?, lastname = ?, pseudo = ?, email = ?, zip_code = ?, city = ?, hashed_password = ?, avatar = ?, is_gcu_accepted = ?, is_admin = ? WHERE id = ?";
+      "UPDATE user SET firstname = ?, lastname = ?, pseudo = ?, email = ?, zip_code = ?, city = ?,  avatar = ?,  is_admin = ? WHERE id = ?";
     const values = [
       firstname,
       lastname,
@@ -99,10 +97,8 @@ class UserRepository {
       email,
       zip_code,
       city,
-      hashed_password,
       avatar,
-      is_gcu_accepted,
-      is_admin || null,
+      is_admin,
       id,
     ];
 

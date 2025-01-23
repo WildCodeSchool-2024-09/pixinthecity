@@ -11,7 +11,7 @@
 .profil_container {
   background: url("../../assets/images/backgroundstars.jpg") center / cover
     fixed;
-  margin-top: 32%;
+  margin-top: 10%;
   text-align: center;
   height: 100vh;
   position: fixed;
@@ -26,6 +26,8 @@
 
 .avatar_background {
   width: 40%;
+  margin-top: 0;
+  margin-bottom: 4em;
 }
 
 .avatar_user {

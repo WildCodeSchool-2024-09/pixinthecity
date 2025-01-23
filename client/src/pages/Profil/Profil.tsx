@@ -1,22 +1,44 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import type { ProfilType } from "../../components/NewUserForm";
+import { useNavigate, useParams } from "react-router-dom";
 import "../../pages/Profil/Profil.css";
 
+interface User {
+  id: number;
+  firstname: string;
+  lastname: string;
+  pseudo: string;
+  email: string;
+  zip_code?: string; // optionnel
+  city?: string; // optionnel
+  // hashed_password: string;
+  // passwordConfirm: string;
+  avatar?: string; // optionnel
+  is_gcu_accepted: boolean;
+  is_admin: boolean;
+}
+
 function Profil() {
-  const { id } = useParams();
-  const [user, setUser] = useState<ProfilType | null>(null);
+  const { id } = useParams(); // Récupération de l'ID de l'utilisateur depuis l'URL
+  const navigate = useNavigate();
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
       .then((response) => response.json())
-      .then((data: ProfilType) => {
+      .then((data: User) => {
         setUser(data);
       });
   }, [id]);
 
+  if (!user) {
+    return <p>Chargement...</p>;
+  }
+
   return (
-    user && (
+    <div>
+      <h1>
+        Profil de {user.firstname} {user.lastname}
+      </h1>
       <section className="profil_container">
         {/* Avatar de l'utilisateur */}
         <div className="avatar_picture">
@@ -26,10 +48,8 @@ function Profil() {
             className="avatar_background"
           />
           <img
-            src={"/src/assets/images/avatar/avatar02.png"}
-            alt="avatar"
-            // src={user.avatar}
-            // alt={`Avatar de ${user.pseudo}`}
+            src={`${import.meta.env.VITE_API_URL}/users/${user.avatar || "default-avatar.png"}`}
+            alt={`Avatar de ${user.pseudo}`}
             className="avatar_user"
           />
         </div>
@@ -114,19 +134,21 @@ function Profil() {
 
         {/* Paramètres et modification du profil */}
         <section aria-labelledby="user-settings">
-          <Link to="/Modification_de_profil ">
-            <button type="button" className="btn-edit-profile">
-              <img
-                src={"/src/assets/images/repair.png"}
-                alt="repair_icon"
-                className="repair_icon"
-              />
-              Modifier mon profil
-            </button>
-          </Link>
+          <button
+            type="button"
+            onClick={() => navigate(`/modification_de_profil/${user.id}`)}
+            className="btn-edit-profile"
+          >
+            <img
+              src={"/src/assets/images/repair.png"}
+              alt="repair_icon"
+              className="repair_icon"
+            />
+            Modifier mon profil
+          </button>
         </section>
       </section>
-    )
+    </div>
   );
 }
 
