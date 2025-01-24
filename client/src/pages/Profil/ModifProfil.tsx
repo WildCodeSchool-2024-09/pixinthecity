@@ -10,10 +10,10 @@ interface EditProfilType {
   email: string;
   zip_code?: string; // optionnel
   city?: string; // optionnel
-  hashed_password: string;
+  // hashed_password: string;
   // passwordConfirm: string;
   avatar?: string; // optionnel
-  is_gcu_accepted: boolean;
+  // is_gcu_accepted: boolean;
   is_admin: boolean;
 }
 
@@ -36,20 +36,7 @@ function ModifProfil() {
 
   return (
     <>
-      <h1>helelhegsklngjkdbgjsnfjksbgjlsbgjsebgjls</h1>
-      {/* <h1>{user.lastname}</h1>
-      <section>
-        <figure>
-          <img
-            src={`${import.meta.env.VITE_API_URL}/users/${user.avatar || "default-avatar.png"}`}
-            alt={user.lastname}
-          />
-        </figure>
-      </section>
-
-      <Link to={`/users/${id}/edit`}>Modifier</Link> */}
       {user && (
-        // <p>toto</p>
         <EditUserForm
           defaultValue={user}
           onSubmit={(userData) => {
@@ -61,7 +48,7 @@ function ModifProfil() {
               body: JSON.stringify(userData),
             }).then((response) => {
               if (response.status === 204) {
-                navigate(`/users/${user.id}`);
+                navigate("/");
               }
             });
           }}
