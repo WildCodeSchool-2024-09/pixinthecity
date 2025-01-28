@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
+import CardChasseurs from "./components/CardChasseurs";
 import Carte from "./pages/PagesClassiques/Carte";
 import Classement from "./pages/PagesClassiques/Classement";
 import Contact from "./pages/PagesClassiques/Contact";
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "Donnees_photo",
         element: <UploadPhoto />,
+      },
+      {
+        path: "affichage_photos",
+        element: <CardChasseurs />,
       },
       {
         path: "Creation_de_profil",
