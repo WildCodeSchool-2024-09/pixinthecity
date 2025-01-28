@@ -1,52 +1,49 @@
 import { useEffect, useState } from "react";
+import "./CardChasseurs.css";
 
-function CardChasseur() {
-  interface Profile {
-    id: string;
-    username: string;
-  }
-  interface User {
-    dob: { age: number };
-    login: { uuid: string; username: string };
-  }
+type PhotoType = {
+  id: number;
+  title: string;
+  content: string;
+  artist: string;
+  dateoftheday: string;
+  latitude: number;
+  longitude: number;
+  picture: File | null;
+};
 
-  //   const ProfilePage: React.FC = () => {
-  const [profiles, setProfiles] = useState<Profile[]>([]);
+function CardChasseurs() {
+  const [photos, setPhotos] = useState<PhotoType[] | []>([]);
 
-  // Fetch profiles from API
   useEffect(() => {
-    const fetchProfiles = async () => {
-      try {
-        const response = await fetch(
-          "https://randomuser.me/api/?results=48&nat=us,gb,fr",
-        );
-        const data = await response.json();
-
-        const filteredProfiles = data.results.map((user: User) => ({
-          id: user.login.uuid,
-          username: user.login.username,
-        }));
-
-        setProfiles(filteredProfiles);
-      } catch (error) {
-        console.error("Error fetching profiles:", error);
-      }
-    };
-
-    fetchProfiles();
-  }, []); // Added missing dependency array for useEffect
-
+    fetch(`${import.meta.env.VITE_API_URL}/api/photos`)
+      .then((responseData) => {
+        return responseData.json();
+      })
+      .then((photos) => {
+        setPhotos(photos);
+      });
+  }, []);
   return (
     <>
-      <div>
-        {profiles.map((profile) => (
-          <div key={profile.id}>
-            <p>{profile.username}</p>
-          </div>
-        ))}
-      </div>
+      <h1 className="liste-streetArt">Liste des street arts</h1>
+      <section className="carte-photo">
+        {photos.map((photo) => {
+          return (
+            <section className="streetArtPhotos" key={photo.id}>
+              <p className="titre-photo">{photo.title}</p>
+              <img
+                src={`${import.meta.env.VITE_API_URL}/photos/${photo.picture || null}`}
+                alt={photo.title}
+              />
+              <p>{photo.content}</p>
+              <p>{photo.artist}</p>
+            </section>
+          );
+        })}
+      </section>
     </>
   );
 }
 
-export default CardChasseur;
+export default CardChasseurs;

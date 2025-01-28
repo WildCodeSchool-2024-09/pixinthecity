@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "roboto";
+  src: url("../../assets/fonts/roboto.ttf") format("truetype");
+}
+
+.carte-photo {
+  padding-top: 2em;
+  text-align: center;
+  background: url("../assets/images/backgroundstars.jpg") center / cover fixed;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8em;
+}
+.streetArtPhotos {
+  margin-bottom: 2em;
+  padding-top: 1em;
+  border: solid 4px #ed2ea5;
+  border-radius: 3em;
+  box-shadow: 2px 2px 20px 5px;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.streetArtPhotos .titre-photo {
+  padding-bottom: 2em;
+}
+
+.liste-streetArt {
+  background: url("../assets/images/backgroundstars.jpg") center / cover fixed;
+  margin-top: 5em;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-top: 2em;
+}
+
+@media (min-width: 1024px) {
+  .carte-photo {
+    font-size: larger;
+    background-image: none;
+    background-color: black;
+    padding-top: 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-content: center;
+    padding-left: 2em;
+  }
+  .streetArtPhotos {
+    max-height: 100%;
+    background-image: none;
+    background-color: black;
+    max-width: 100%;
+    margin-bottom: 2em;
+    padding-top: 1em;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .streetArtPhotos img {
+    height: 20em;
+    width: 40em;
+  }
+
+  .liste-streetArt {
+    margin-top: 0;
+    background-image: none;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 0;
+  }
+}
