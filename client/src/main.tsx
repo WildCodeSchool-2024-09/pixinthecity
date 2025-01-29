@@ -8,8 +8,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import CardChasseurs from "./components/CardChasseurs";
-import Carte from "./pages/PagesClassiques/Carte";
+import { UserProvider } from "./contexts/UserContext";
 import CGU from "./pages/PagesClassiques/CGU";
+import Carte from "./pages/PagesClassiques/Carte";
 import Classement from "./pages/PagesClassiques/Classement";
 import Contact from "./pages/PagesClassiques/Contact";
 import Regles from "./pages/PagesClassiques/Regles";
@@ -33,21 +34,13 @@ import MdpOublie from "./pages/Secu/MdpOublie";
 // You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
-    path: "", // The root path
-    element: <Carte />,
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "Modification_mot_de_passe",
-    element: <MdpOublie />,
-  },
-  {
     path: "/",
-    element: <App />,
+    element: <App />, // Le composant principal qui englobe les autres pages
     children: [
+      {
+        path: "/",
+        element: <Carte />, // La page principale (Carte)
+      },
       {
         path: "Regles",
         element: <Regles />,
@@ -59,10 +52,6 @@ const router = createBrowserRouter([
       {
         path: "Contact",
         element: <Contact />,
-      },
-      {
-        path: "/",
-        element: <UploadPhoto />,
       },
       {
         path: "Donnees_photo",
@@ -89,12 +78,19 @@ const router = createBrowserRouter([
         element: <Profil />,
       },
       {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "Modification_mot_de_passe",
+        element: <MdpOublie />,
+      },
+      {
         path: "cgu",
         element: <CGU />,
       },
     ],
   },
-  // Try adding a new route! For example, "/about" with an About component
 ]);
 
 /* ************************************************************************* */
@@ -108,7 +104,10 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    {/* Envelopper l'application avec UserProvider */}
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </StrictMode>,
 );
 

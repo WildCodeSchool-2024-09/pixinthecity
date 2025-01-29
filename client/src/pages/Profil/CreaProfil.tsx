@@ -36,7 +36,6 @@ function CreaProfil() {
             } else {
               return response.json();
             }
-            
           })
 
           .then((data) => {
