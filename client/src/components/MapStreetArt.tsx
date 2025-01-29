@@ -17,7 +17,7 @@ type MapStreetArtProps = {
   apiUrl: string;
 };
 
-function Carte({ photos, apiUrl }: MapStreetArtProps) {
+function MapStreetArt({ photos, apiUrl }: MapStreetArtProps) {
   return (
     <>
       <MapContainer
@@ -55,4 +55,4 @@ function Carte({ photos, apiUrl }: MapStreetArtProps) {
   );
 }
 
-export default Carte;
+export default MapStreetArt;

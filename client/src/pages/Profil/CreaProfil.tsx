@@ -30,7 +30,15 @@ function CreaProfil() {
           },
           body: JSON.stringify(userData),
         })
-          .then((response) => response.json())
+          .then((response) => {
+            if (response.status === 403) {
+              alert("Vérifiez les informations saisies !");
+            } else {
+              return response.json();
+            }
+            
+          })
+
           .then((data) => {
             navigate(`/Profil/${data.insertId}`);
           });
