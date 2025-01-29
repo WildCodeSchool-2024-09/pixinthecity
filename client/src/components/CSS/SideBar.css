@@ -1,23 +1,22 @@
-/* src/components/CSS/SideBar.css */
-
 /* Par défaut, la sidebar est cachée */
 .sidebar {
   display: none;
+  position: fixed; /* Pour que la sidebar soit fixe */
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background-image: url("../../assets/images/backgroundwall.jpg");
+  color: white;
+  padding-top: 20px;
+  z-index: 1000;
+  flex-direction: column; /* Ajouté pour une disposition en colonne */
 }
 
 /* Affichage de la sidebar uniquement sur les écrans de bureau */
 @media (min-width: 1024px) {
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20%;
-    height: 100%;
-    background-image: url("../../assets/images/backgroundwall.jpg");
-    color: white;
-    padding-top: 20px;
-    z-index: 1000;
-    display: block; /* La sidebar est visible sur desktop */
+    display: flex; /* La sidebar est visible sur desktop */
   }
 
   /* Le contenu principal doit se décaler à droite pour faire de la place à la sidebar */
@@ -26,7 +25,7 @@
   }
 
   .main-content {
-    margin-left: 23%; /* Décale le contenu principal en fonction de la largeur de la sidebar */
+    margin-left: 20%; /* Décale le contenu principal en fonction de la largeur de la sidebar */
     padding: 20px;
   }
 
@@ -34,11 +33,13 @@
   .main-content {
     box-sizing: border-box;
   }
+
+  /* La sidebar footer reste toujours en bas */
+  .sidebar-footer {
+    margin-top: auto; /* Cela force la footer à se coller en bas */
+    padding-bottom: 20px;
+  }
 }
-
-/* src/components/CSS/SideBar.css */
-
-/* Par défaut, la sidebar est cachée */
 
 /* Logo de la Sidebar */
 .sidebar-logo {
@@ -50,6 +51,27 @@
 .logo-sidebar {
   width: 80%; /* Ajuste la taille du logo */
   max-width: 200px; /* Limite la largeur maximale du logo */
+}
+
+/* Section de bienvenue et pseudo */
+.sidebar-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome_username {
+  text-align: center;
+}
+
+#welcome {
+  font-family: "roboto_bold", sans-serif;
+  margin-bottom: 5px;
+}
+
+#header_username {
+  font-family: "pixeleum", sans-serif;
+  font-size: 1.2em;
 }
 
 /* Boutons Connexion et Inscription */
@@ -89,6 +111,37 @@
     rgba(255, 255, 255, 0.3);
 }
 
+/* Boutons pour un utilisateur connecté */
+.sidebar-button-logged {
+  font-size: 65%;
+  background-color: #2c0d2a;
+  font-family: "pixeleum", sans-serif;
+  color: white;
+  margin-bottom: 5px;
+  padding: 2px 10px;
+  border: solid white 1px;
+  border-radius: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 70%;
+}
+
+/* Effet au survol du bouton connecté */
+.sidebar-button-logged:hover {
+  background-color: white;
+  color: #2c0d2a; /* Changer la couleur du texte en violet au survol */
+  border: solid #2c0d2a 1px; /* Le bord devient violet */
+}
+
+/* Effet au clic du bouton connecté */
+.sidebar-button-logged:active {
+  transform: none;
+  box-shadow: none;
+}
+
 /* Navigation de la Sidebar */
 .sidebar-nav {
   padding: 0;
@@ -110,10 +163,6 @@
   font-size: 1.2em;
   display: block;
 }
-
-/* .sidebar-nav a:hover {
-  background-color: #444;
-} */
 
 .sidebar-icon_footer {
   width: 10%;
@@ -159,4 +208,25 @@ img.icon_camera {
   width: 4vw;
   height: 4vw;
   margin-bottom: 4%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "pixeleum";
+  src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "roboto";
+  src: url("../../assets/fonts/roboto.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "roboto_bold";
+  src: url("../../assets/fonts/roboto_bold.ttf") format("truetype");
 }
