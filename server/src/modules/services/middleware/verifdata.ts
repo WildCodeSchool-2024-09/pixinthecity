@@ -23,7 +23,7 @@ const verifyformdata: RequestHandler = (req, res, next) => {
     res.status(403).send({ error: "L'email n'est pas valide." });
     return;
   }
-
+  // vérifie code postal
   const zipCodeRegex = /^\d{5}$/; // Vérifie exactement 5 chiffres
   if (zip_code && !zipCodeRegex.test(zip_code)) {
     res.status(403).send({ error: "Le code postal n'est pas valide." });

@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "roboto";
+  src: url("../../assets/fonts/roboto.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "roboto_bold";
+  src: url("../../assets/fonts/roboto_bold.ttf") format("truetype");
+}
+
+.main-content {
+  background: none;
+}
+
+#titre_cgu {
+  color: #ed2ea5;
+}
+.cgu_text,
+h2 {
+  font-family: "roboto", sans-serif;
+  color: black;
+  text-align: left;
+  padding: 1em;
+}
+.cgu_text {
+  margin-top: 7em;
+  padding-bottom: 8em;
+}
+
+@media (min-width: 778px) {
+  .cgu_text {
+    padding-left: 3.5em;
+    margin-top: 12em;
+    padding-bottom: 15em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cgu_text {
+    padding-left: 8em;
+  }
+}

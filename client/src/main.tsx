@@ -9,6 +9,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import CardChasseurs from "./components/CardChasseurs";
 import Carte from "./pages/PagesClassiques/Carte";
+import CGU from "./pages/PagesClassiques/CGU";
 import Classement from "./pages/PagesClassiques/Classement";
 import Contact from "./pages/PagesClassiques/Contact";
 import Regles from "./pages/PagesClassiques/Regles";
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: "Profil/:id",
         element: <Profil />,
+      },
+      {
+        path: "cgu",
+        element: <CGU />,
       },
     ],
   },
