@@ -14,6 +14,7 @@ import Contact from "./pages/PagesClassiques/Contact";
 import Regles from "./pages/PagesClassiques/Regles";
 import UploadPhoto from "./pages/PagesClassiques/UploadPhoto";
 import CreaProfil from "./pages/Profil/CreaProfil";
+import DeleteProfil from "./pages/Profil/DeleteProfil";
 import ModifProfil from "./pages/Profil/ModifProfil";
 import Profil from "./pages/Profil/Profil";
 import Login from "./pages/Secu/Login";
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
       {
         path: "Modification_de_profil/:id",
         element: <ModifProfil />,
+      },
+      {
+        path: "Suppression_de_profil/:id",
+        element: <DeleteProfil />,
       },
       {
         path: "Profil/:id",
