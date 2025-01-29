@@ -105,13 +105,16 @@ class UserRepository {
     const [result] = await databaseClient.query<Result>(query, values);
     return result.affectedRows;
   }
+  async delete(id: number) {
+    // Execute the SQL DELETE query to delete an existing user from the "user" table
+    const [result] = await databaseClient.query<Result>(
+      "delete from user where id = ?",
+      [id],
+    );
 
-  // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an item by its ID
-
-  // async delete(id: number) {
-  //   ...
-  // }
+    // Return how many rows were affected
+    return result.affectedRows;
+  }
 }
 
 export default new UserRepository();

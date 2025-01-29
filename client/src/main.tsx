@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
+import CardChasseurs from "./components/CardChasseurs";
 import { UserProvider } from "./contexts/UserContext";
 import Carte from "./pages/PagesClassiques/Carte";
 import Classement from "./pages/PagesClassiques/Classement";
@@ -14,6 +15,7 @@ import Contact from "./pages/PagesClassiques/Contact";
 import Regles from "./pages/PagesClassiques/Regles";
 import UploadPhoto from "./pages/PagesClassiques/UploadPhoto";
 import CreaProfil from "./pages/Profil/CreaProfil";
+import DeleteProfil from "./pages/Profil/DeleteProfil";
 import ModifProfil from "./pages/Profil/ModifProfil";
 import Profil from "./pages/Profil/Profil";
 import Login from "./pages/Secu/Login";
@@ -55,12 +57,20 @@ const router = createBrowserRouter([
         element: <UploadPhoto />,
       },
       {
+        path: "affichage_photos",
+        element: <CardChasseurs />,
+      },
+      {
         path: "Creation_de_profil",
         element: <CreaProfil />,
       },
       {
         path: "Modification_de_profil/:id",
         element: <ModifProfil />,
+      },
+      {
+        path: "Suppression_de_profil/:id",
+        element: <DeleteProfil />,
       },
       {
         path: "Profil/:id",

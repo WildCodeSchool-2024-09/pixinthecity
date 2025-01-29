@@ -4,8 +4,8 @@ create table user (
   lastname varchar(255) not null,
   pseudo VARCHAR(20) NOT NULL,
   email VARCHAR(50) NOT NULL,
-  zip_code INT,
-  city VARCHAR(30),
+  zip_code INT NULL,
+  city VARCHAR(30) NULL,
   hashed_password VARCHAR(255) NOT NULL,
   avatar VARCHAR(255),
   is_gcu_accepted BOOL NOT NULL DEFAULT FALSE,
@@ -42,7 +42,7 @@ CREATE TABLE photo (
 insert into user(firstname, lastname, pseudo, email, zip_code, city, hashed_password, avatar, is_gcu_accepted, is_admin)
 values
   ("Jacqueline", "Morin", "jijimomo_95", "jacquelinecomptabilite@sah.fr", "69001", "Lyon", "ilovecomptabilite", NULL, TRUE, TRUE),
-  ("René", "Pichard", "pich-art", "rene_pich-art@sah.fr", "69002", "Lyon", "rene_explorateur", NULL, TRUE, FALSE),
+  ("René", "Pichard", "pich-art", "rene_pich-art@sah.fr", "69002", "Lyon", "rene_explorateur", "avatar01.png", TRUE, FALSE),
   ("Pépito", "Perez", "pepito_roi_du_gateau", "p-p@sah.fr", "69003", "Lyon" ,"perezforever", NULL, TRUE, FALSE);
 
 insert into photo(title, content, picture, latitude, longitude, artist, user_id)

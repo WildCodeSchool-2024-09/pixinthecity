@@ -10,7 +10,7 @@ import "./Carte.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-function Carte() {
+function CartePage() {
   const [photos, setPhotos] = useState<PhotoType[] | []>([]);
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
 
@@ -46,7 +46,11 @@ function Carte() {
           {isDesktop && <SideBar />}{" "}
           {/* Afficher la SideBar uniquement si c'est un écran desktop */}
           <div className="carte-leaflet">
-            <MapStretArt photos={photos} apiUrl={API_URL} />
+            {photos.length > 0 ? (
+              <MapStretArt photos={photos} apiUrl={API_URL} />
+            ) : (
+              <p>Chargement des photos...</p>
+            )}
           </div>
         </main>
 
@@ -58,4 +62,4 @@ function Carte() {
   );
 }
 
-export default Carte;
+export default CartePage;

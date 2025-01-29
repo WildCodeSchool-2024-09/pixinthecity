@@ -53,8 +53,8 @@ const edit: RequestHandler = async (req, res, next) => {
       lastname: req.body.lastname,
       pseudo: req.body.pseudo,
       email: req.body.email,
-      zip_code: req.body.zip_code,
-      hashed_password: req.body.hashed_password,
+      zip_code: req.body.zip_code || null,
+      hashed_password: req.body.hashed_password || null,
       avatar: req.body.avatar,
       is_gcu_accepted: req.body.is_gcu_accepted,
       is_admin: req.body.is_admin,
@@ -83,8 +83,8 @@ const add: RequestHandler = async (req, res, next) => {
       lastname: req.body.lastname,
       pseudo: req.body.pseudo,
       email: req.body.email,
-      zip_code: req.body.zip_code,
-      city: req.body.city,
+      zip_code: req.body.zip_code || null,
+      city: req.body.city || null,
       hashed_password: req.body.hashed_password,
       avatar: req.body.avatar,
       is_gcu_accepted: req.body.is_gcu_accepted,
@@ -98,6 +98,22 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-// Respond with HTTP 201 (Created) and the ID of the newly inserted item
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    // Fetch a specific user based on the provided ID
+    const id = Number(req.params.id);
+    const user = await userRepository.delete(id);
 
-export default { browse, read, edit, add };
+    // If the user is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the user in JSON format
+    if (user == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(user);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+export default { browse, read, edit, add, destroy };

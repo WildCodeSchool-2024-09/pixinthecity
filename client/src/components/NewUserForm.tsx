@@ -1,4 +1,8 @@
-import type { ReactNode } from "react";
+import { type ReactNode, useState } from "react";
+
+import { ToastContainer, toast } from "react-toastify"; // Import de toastify
+import "react-toastify/dist/ReactToastify.css"; // Import des styles de Toastify
+
 import "./NewUserForm.css";
 import avatar1 from "../assets/images/avatar/avatar01.png";
 import avatar2 from "../assets/images/avatar/avatar02.png";
@@ -12,8 +16,8 @@ export type ProfilType = {
   lastname: string;
   pseudo: string;
   email: string;
-  zip_code?: string; // optionnel
-  city?: string; // optionnel
+  zip_code?: string | null; // optionnel
+  city?: string | null; // optionnel
   password: string;
   passwordConfirm: string;
   avatar?: string; // optionnel
@@ -35,8 +39,12 @@ const scrollToTop = () => {
 };
 
 function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
+  const [isGCUAccepted, setIsGCUAccepted] = useState(
+    defaultValue.is_gcu_accepted,
+  );
+
   const avatars = [
-    { id: "avatar1", src: avatar1 },
+    { id: "avatar01.png", src: avatar1 },
     { id: "avatar2", src: avatar2 },
     { id: "avatar3", src: avatar3 },
     { id: "avatar4", src: avatar4 },
@@ -54,27 +62,34 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           const lastname = formData.get("lastname") as string;
           const pseudo = formData.get("pseudo") as string;
           const email = formData.get("email") as string;
-          const zip_code = formData.get("zip_code") as string;
-          const city = formData.get("city") as string;
+          const zip_code = (formData.get("zip_code") as string)?.trim() || null;
+          const city = (formData.get("city") as string)?.trim() || null;
           const password = formData.get("password") as string;
           const passwordConfirm = formData.get("passwordConfirm") as string;
           const avatar = formData.get("avatar") as string;
-          const is_gcu_accepted = formData.get("is_gcu_accepted") === "on";
           const is_admin = formData.get("is_admin") === "0";
+
+          // vérifie si les CGU sont acceptés
+          if (!isGCUAccepted) {
+            alert("Vous devez accepter les CGU avant de soumettre.");
+            return;
+          }
 
           onSubmit({
             firstname,
             lastname,
             pseudo,
             email,
-            zip_code, // optionnel
-            city, // optionnel
+            zip_code: zip_code || null, // optionnel
+            city: city || null,
             password,
             passwordConfirm,
             avatar, // optionnel
-            is_gcu_accepted,
+            is_gcu_accepted: isGCUAccepted,
             is_admin,
           });
+
+          toast.success("Profil créé avec succès !");
         }}
       >
         <label className="form-fields" htmlFor="firstname">
@@ -132,7 +147,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           type="text"
           name="zip_code"
           placeholder="69000"
-          defaultValue={defaultValue.zip_code}
+          defaultValue={defaultValue.zip_code ?? ""}
         />
 
         <label className="form-fields" htmlFor="city">
@@ -144,7 +159,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           type="text"
           name="city"
           placeholder="Entrez votre ville"
-          defaultValue={defaultValue.city}
+          defaultValue={defaultValue.city ?? ""}
         />
 
         <label className="form-fields" htmlFor="hashed_password">
@@ -201,7 +216,8 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
             id="is_gcu_accepted"
             type="checkbox"
             name="is_gcu_accepted"
-            checked={defaultValue.is_gcu_accepted}
+            checked={isGCUAccepted}
+            onChange={(e) => setIsGCUAccepted(e.target.checked)}
           />
           J'accepte les conditions générales d'utilisation *
         </label>
@@ -225,6 +241,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           />
           <p>RETOUR VERS LE HAUT</p>
         </button>
+        <ToastContainer />
       </form>
     </section>
   );
