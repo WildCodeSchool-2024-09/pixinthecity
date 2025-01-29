@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import "./SubmitPhotoForm.css";
+
 type PhotoType = {
   title: string;
   content: string;
@@ -13,17 +14,22 @@ interface SubmitPhotoType {
   defaultValue: PhotoType;
   onSubmit: (photo: FormData) => void;
 }
+
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
     behavior: "smooth", // Défilement fluide
   });
 };
+
 function SubmitPhotoForm({
   children,
   defaultValue,
   onSubmit,
 }: SubmitPhotoType) {
+  const today = new Date().toISOString().split("T")[0];
+  const formattedDate = new Date().toLocaleDateString("fr-FR"); // Format de la date au format DD-MM-YYYY
+
   return (
     <section className="post-photo-container">
       <h1 id="subm_photo">SOUMETTRE UNE ŒUVRE</h1>
@@ -32,6 +38,8 @@ function SubmitPhotoForm({
         onSubmit={(event) => {
           event.preventDefault();
           const formData = new FormData(event.currentTarget);
+          formData.append("date", today);
+          formData.append("dateoftheday", formattedDate); // Ajouter la date formatée
           onSubmit(formData);
         }}
       >
@@ -60,16 +68,8 @@ function SubmitPhotoForm({
           name="content"
           defaultValue={defaultValue.content}
         />
-        <label htmlFor="dateoftheday">DATE</label>
-        <input
-          className="form-photo-fields"
-          placeholder="date"
-          type="text"
-          name="date"
-          defaultValue={defaultValue.dateoftheday}
-        />
-        <label htmlFor="date">AJOUTER PHOTO*</label>
 
+        <label htmlFor="date">AJOUTER PHOTO*</label>
         <input type="file" name="picture" />
 
         <p className="auth-gcu">
@@ -98,4 +98,5 @@ function SubmitPhotoForm({
     </section>
   );
 }
+
 export default SubmitPhotoForm;

@@ -24,6 +24,16 @@ function CardChasseurs() {
         setPhotos(photos);
       });
   }, []);
+
+  // Fonction pour formater la date au format DD-MM-YYYY
+  const formatDate = (date: string) => {
+    const dateObject = new Date(date); // Créer un objet Date à partir de la chaîne
+    const day = dateObject.getDate().toString().padStart(2, "0"); // Jour
+    const month = (dateObject.getMonth() + 1).toString().padStart(2, "0"); // Mois (0-indexé, donc +1)
+    const year = dateObject.getFullYear(); // Année
+    return `${day}-${month}-${year}`;
+  };
+
   return (
     <>
       <h1 className="liste-streetArt">Liste des street arts</h1>
@@ -36,8 +46,10 @@ function CardChasseurs() {
                 src={`${import.meta.env.VITE_API_URL}/photos/${photo.picture || null}`}
                 alt={photo.title}
               />
-              <p>{photo.content}</p>
               <p>{photo.artist}</p>
+              <p>{photo.content}</p>
+              <p>{formatDate(photo.dateoftheday)}</p>{" "}
+              {/* Affichage de la date formatée */}
             </section>
           );
         })}

@@ -7,7 +7,7 @@ interface PhotoData {
   artist: string;
   content: string;
   dateoftheday: string;
-  picture: File | null; // picture devrait être de type File ou null si aucun fichier n'est sélectionné
+  picture: File | null;
 }
 
 function UploadPhoto() {
@@ -21,7 +21,7 @@ function UploadPhoto() {
     artist: "",
     content: "",
     dateoftheday: "",
-    picture: null, // Vous pouvez commencer avec null ou un fichier vide
+    picture: null,
   };
 
   useEffect(() => {
@@ -43,10 +43,14 @@ function UploadPhoto() {
   }, []);
 
   const handleSubmit = (photoData: FormData) => {
+    // Format de la date au format DD-MM-YYYY
+    const formattedDate = new Date().toLocaleDateString("fr-FR");
+
     if (latitude && longitude) {
       photoData.append("latitude", latitude.toString());
       photoData.append("longitude", longitude.toString());
     }
+    photoData.append("dateoftheday", formattedDate); // Ajouter la date formatée au FormData
 
     fetch(`${import.meta.env.VITE_API_URL}/api/photos`, {
       method: "POST",
