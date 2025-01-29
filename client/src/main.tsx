@@ -9,6 +9,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import CardChasseurs from "./components/CardChasseurs";
 import { UserProvider } from "./contexts/UserContext";
+import CGU from "./pages/PagesClassiques/CGU";
 import Carte from "./pages/PagesClassiques/Carte";
 import Classement from "./pages/PagesClassiques/Classement";
 import Contact from "./pages/PagesClassiques/Contact";
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "Modification_mot_de_passe",
         element: <MdpOublie />,
+      },
+      {
+        path: "cgu",
+        element: <CGU />,
       },
     ],
   },

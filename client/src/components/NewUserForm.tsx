@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify"; // Import de toastify
 import "react-toastify/dist/ReactToastify.css"; // Import des styles de Toastify
 
 import "./NewUserForm.css";
+import { Link } from "react-router-dom";
 import avatar1 from "../assets/images/avatar/avatar01.png";
 import avatar2 from "../assets/images/avatar/avatar02.png";
 import avatar3 from "../assets/images/avatar/avatar03.png";
@@ -219,7 +220,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
             checked={isGCUAccepted}
             onChange={(e) => setIsGCUAccepted(e.target.checked)}
           />
-          J'accepte les conditions générales d'utilisation *
+          <Link to="/cgu" className="gcu-link">
+            J'accepte les conditions générales d'utilisation*
+          </Link>
         </label>
         <p className="obligatory-fiels">
           Tous les champs avec une * sont obligatoires
