@@ -10,7 +10,6 @@
   color: white;
   padding-top: 20px;
   z-index: 1000;
-  display: flex;
   flex-direction: column; /* Ajouté pour une disposition en colonne */
 }
 
