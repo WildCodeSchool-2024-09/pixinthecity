@@ -98,6 +98,22 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-// Respond with HTTP 201 (Created) and the ID of the newly inserted item
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    // Fetch a specific user based on the provided ID
+    const id = Number(req.params.id);
+    const user = await userRepository.delete(id);
 
-export default { browse, read, edit, add };
+    // If the user is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the user in JSON format
+    if (user == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(user);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+export default { browse, read, edit, add, destroy };
