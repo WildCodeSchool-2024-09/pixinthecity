@@ -24,8 +24,12 @@
     transform: translateY(0);
   }
 }
+.container p {
+  text-align: center;
+}
 
 .container {
+  position: absolute;
   text-align: center;
   background: url("../../assets/images/backgroundstars.jpg") center / cover
     fixed;
@@ -135,25 +139,46 @@ h6 {
   font-size: medium;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .container {
-    max-width: 80%;
+    font-size: 1.2em;
+    max-width: 100%;
     margin: 0 auto;
     background-image: none; /* Retirer l'image de fond */
     background-color: black; /* Ajouter une couleur de fond noire */
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+    position: absolute;
+  }
+  .badges_img {
+    width: 15%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container {
+    padding-top: 1em;
+    font-size: 1.5em;
+    padding-left: 14em;
+    max-width: 100%;
+    margin: 0 auto;
+    background-image: none; /* Retirer l'image de fond */
+    background-color: black; /* Ajouter une couleur de fond noire */
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
   }
 
   .instructions,
   .niveaux {
     padding: 2em;
-    text-align: left;
+    text-align: center;
   }
 
   .badges_img {
-    width: 10%;
+    width: 20%;
   }
 
   h1 {
