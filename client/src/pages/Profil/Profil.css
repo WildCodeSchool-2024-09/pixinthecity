@@ -133,7 +133,7 @@ figcaption {
   color: white;
 }
 @media (min-width: 1024px) {
-  .main-content {
+  .profil_div {
     background: url("../../assets/images/backgroundstars.jpg") center / cover
       fixed;
   }
