@@ -97,11 +97,11 @@ const SideBar = () => {
               <Link to="/classement">
                 <button type="button" className="sidebar-button_footer">
                   <img
-                    src={"/src/assets/images/footer_icons/icon_ranking.png"}
+                    src={"/src/assets/images/footer_icons/icon_artwork.png"}
                     alt="ranking"
                     className="sidebar-icon_footer"
                   />
-                  <p>CLASSEMENT</p>
+                  <p>ŒUVRES</p>
                 </button>
               </Link>
             </li>

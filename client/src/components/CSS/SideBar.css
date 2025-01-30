@@ -14,7 +14,7 @@
 }
 
 /* Affichage de la sidebar uniquement sur les écrans de bureau */
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .sidebar {
     display: flex; /* La sidebar est visible sur desktop */
   }
