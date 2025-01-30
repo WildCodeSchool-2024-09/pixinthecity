@@ -10,13 +10,15 @@
 
 .main-content {
   background: none;
+  padding: 0;
+  margin: 0;
 }
 
 #titre_cgu {
   color: #ed2ea5;
 }
 .cgu_text,
-h2 {
+.h2_cgu {
   font-family: "roboto", sans-serif;
   color: black;
   text-align: left;
@@ -27,7 +29,7 @@ h2 {
   padding-bottom: 8em;
 }
 
-@media (min-width: 778px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .cgu_text {
     padding-left: 3.5em;
     margin-top: 12em;
@@ -35,8 +37,11 @@ h2 {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .cgu_text {
-    padding-left: 8em;
+    padding-left: 21em;
+  }
+  .main-content {
+    background: none;
   }
 }

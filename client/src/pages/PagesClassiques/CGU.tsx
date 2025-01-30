@@ -36,7 +36,7 @@ function CGU() {
           à tout moment le contenu des présentes CGU.
         </p>
         <br />
-        <h2>ARTICLE 1 : Les mentions légales</h2>
+        <h2 className="h2_cgu">ARTICLE 1 : Les mentions légales</h2>
         <br />
         <p>
           L'édition du site street_art est assurée par la team pixinthecity.
@@ -50,7 +50,7 @@ function CGU() {
           numéro de téléphone : 09 78 45 04 38.
         </p>
         <br />
-        <h2>ARTICLE 2 : Accès au site</h2>
+        <h2 className="h2_cgu">ARTICLE 2 : Accès au site</h2>
         <br />
         <p>
           Le site street_art permet à l'Utilisateur un accès gratuit aux
@@ -93,7 +93,7 @@ function CGU() {
           électronique à l’adresse email de l’éditeur communiqué à l’ARTICLE 1.
         </p>
         <br />
-        <h2>ARTICLE 3 : Collecte des données</h2>
+        <h2 className="h2_cgu">ARTICLE 3 : Collecte des données</h2>
         <br />
         <p>
           Le site assure à l'Utilisateur une collecte et un traitement
@@ -109,7 +109,7 @@ function CGU() {
           exerce ce droit :
         </p>
         <br />
-        <h2>ARTICLE 4 : Propriété intellectuelle</h2>
+        <h2 className="h2_cgu">ARTICLE 4 : Propriété intellectuelle</h2>
         <br />
         <p>
           Les marques, logos, signes ainsi que tous les contenus du site
@@ -146,7 +146,7 @@ function CGU() {
           contenu protégé doit citer l’auteur et sa source.
         </p>
         <br />
-        <h2>ARTICLE 5 : Responsabilité</h2>
+        <h2 className="h2_cgu">ARTICLE 5 : Responsabilité</h2>
         <br />
         <p>
           Les sources des informations diffusées sur le site street_art sont
@@ -183,7 +183,7 @@ function CGU() {
           ou du fait imprévisible et insurmontable d'un tiers.
         </p>
         <br />
-        <h2>ARTICLE 6 : Liens hypertextes</h2>
+        <h2 className="h2_cgu">ARTICLE 6 : Liens hypertextes</h2>
         <br />
         <p>
           Des liens hypertextes peuvent être présents sur le site. L’Utilisateur
@@ -193,7 +193,7 @@ function CGU() {
           responsable de leur contenu.
         </p>
         <br />
-        <h2>ARTICLE 7 : Cookies</h2>
+        <h2 className="h2_cgu">ARTICLE 7 : Cookies</h2>
         <br />
         <p>
           L’Utilisateur est informé que lors de ses visites sur le site, un
@@ -239,7 +239,7 @@ function CGU() {
           seront alors générées par défaut au centre de Lyon).
         </p>
         <br />
-        <h2>ARTICLE 8 : Publication par l’Utilisateur</h2>
+        <h2 className="h2_cgu">ARTICLE 8 : Publication par l’Utilisateur</h2>
         <br />
         <p>
           Le site permet aux membres de publier les contenus suivants : Photos
@@ -286,7 +286,9 @@ function CGU() {
           quelle raison supprimé ou modifié par le site, sans préavis.
         </p>
         <br />
-        <h2>ARTICLE 9 : Droit applicable et juridiction compétente</h2>
+        <h2 className="h2_cgu">
+          ARTICLE 9 : Droit applicable et juridiction compétente
+        </h2>
         <br />
         <p>
           La législation française s'applique au présent contrat. En cas
