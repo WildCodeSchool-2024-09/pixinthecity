@@ -133,6 +133,7 @@ header {
   header {
     background-image: url(/src/assets/images/backgroundcity.jpg);
     background-size: cover;
-    background-position: 1em 80em;
+    background-position: center;
+    background-attachment: fixed;
   }
 }
