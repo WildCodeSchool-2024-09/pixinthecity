@@ -35,7 +35,7 @@ function Profil() {
   }
 
   return (
-    <div>
+    <div className="profil_div">
       <h1>
         Profil de {user.firstname} {user.lastname}
       </h1>

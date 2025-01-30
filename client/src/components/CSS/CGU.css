@@ -42,6 +42,8 @@
     padding-left: 21em;
   }
   .main-content {
-    background: none;
+    background-color: white;
+    margin: 0;
+    padding: 0;
   }
 }
