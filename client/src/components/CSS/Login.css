@@ -134,4 +134,9 @@ body.login-page .sidebar {
     margin-left: 0;
     flex: 1;
   }
+
+  .loginPage {
+    background: url("../../assets/images/backgroundcity.jpg") center / cover
+      fixed;
+  }
 }
