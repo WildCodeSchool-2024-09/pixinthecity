@@ -133,10 +133,11 @@ figcaption {
   color: white;
 }
 @media (min-width: 1024px) {
-  .main-content {
+  /* Lise : j'ai mis le main-content en commentaire car il fait hériter d'autres pages, le but est de ne plus utiliser le main-content mais une className différente qui englobe chaque page */
+  /* .main-content {
     background: url("../../assets/images/backgroundstars.jpg") center / cover
       fixed;
-  }
+  } */
   .profil_container {
     bottom: -0.4em;
     right: 330px;
