@@ -64,7 +64,6 @@ h1 {
 @media (min-width: 1024px) {
   .main-content {
     padding: 0;
-    background-color: black;
   }
   .formphoto {
     margin-left: 19%;
