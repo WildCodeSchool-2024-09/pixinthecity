@@ -16,10 +16,24 @@ type User = {
 
 interface UserFormProps {
   children: ReactNode;
+  extraButton?: ReactNode;
   defaultValue: User;
   onSubmit: (user: User) => void;
 }
-function EditUserForm({ children, defaultValue, onSubmit }: UserFormProps) {
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
+function EditUserForm({
+  children,
+  defaultValue,
+  extraButton,
+  onSubmit,
+}: UserFormProps) {
   return (
     <section className="update-profil-container">
       <h1>MODIFIER MON PROFIL</h1>
@@ -42,7 +56,7 @@ function EditUserForm({ children, defaultValue, onSubmit }: UserFormProps) {
         }}
       >
         <label className="updateForm-fields">
-          Firstname:
+          Prenom:
           <input
             type="text"
             name="firstname"
@@ -51,7 +65,7 @@ function EditUserForm({ children, defaultValue, onSubmit }: UserFormProps) {
           />
         </label>
         <label className="updateForm-fields">
-          Lastname:
+          Nom de famille:
           <input
             type="text"
             name="lastname"
@@ -78,7 +92,7 @@ function EditUserForm({ children, defaultValue, onSubmit }: UserFormProps) {
           />
         </label>
         <label className="updateForm-fields">
-          Zip code:
+          Code postal:
           <input
             type="text"
             name="zip_code"
@@ -86,31 +100,33 @@ function EditUserForm({ children, defaultValue, onSubmit }: UserFormProps) {
           />
         </label>
         <label className="updateForm-fields">
-          City:
+          Ville:
           <input
             type="text"
             name="city"
             defaultValue={defaultValue.city || ""}
           />
         </label>
-        <label className="updateForm-fields">
+        {/* <label className="updateForm-fields">
           Avatar:
           <input
             type="text"
             name="avatar"
             defaultValue={defaultValue.avatar || ""}
           />
-        </label>
-        <label className="is_admin">
-          <input
-            type="checkbox"
-            name="is_admin"
-            defaultChecked={defaultValue.is_admin}
-          />
-          Admin
-        </label>
+        </label> */}
+
         <button type="submit" className="update-profil-button">
           {children}
+        </button>
+        {extraButton && <div className="extra-button">{extraButton}</div>}
+        <button type="button" id="button_up" onClick={scrollToTop}>
+          <img
+            src={"/src/assets/images/arrow_up.png"}
+            alt="Retour_vers_le_haut"
+            id="arrow_up"
+          />
+          <p>RETOUR VERS LE HAUT</p>
         </button>
       </form>
     </section>
