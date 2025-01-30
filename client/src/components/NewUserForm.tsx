@@ -72,7 +72,19 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
 
           // vérifie si les CGU sont acceptés
           if (!isGCUAccepted) {
-            alert("Vous devez accepter les CGU avant de soumettre.");
+            toast.error("Vous devez accepter les CGU avant de soumettre.");
+            return;
+          }
+
+          if (
+            !firstname ||
+            !lastname ||
+            !pseudo ||
+            !email ||
+            !password ||
+            !passwordConfirm
+          ) {
+            toast.error("Veuillez remplir tous les champs obligatoires.");
             return;
           }
 
@@ -211,7 +223,10 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           ))}
         </div>
 
-        <label className="form-fields" htmlFor="is_gcu_accepted">
+        <label className="form-fields gcu-label" htmlFor="is_gcu_accepted">
+          <Link to="/cgu" className="gcu-link">
+            J'accepte les conditions générales d'utilisation*
+          </Link>
           <input
             className="is_gcu_accepted"
             id="is_gcu_accepted"
@@ -220,30 +235,30 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
             checked={isGCUAccepted}
             onChange={(e) => setIsGCUAccepted(e.target.checked)}
           />
-          <Link to="/cgu" className="gcu-link">
-            J'accepte les conditions générales d'utilisation*
-          </Link>
         </label>
-        <p className="obligatory-fiels">
+        <p className="obligatory-fields">
+          <br />
           Tous les champs avec une * sont obligatoires
         </p>
 
         <button type="submit" className="create-profil-button">
           {children}CRÉER MON PROFIL
         </button>
-        <button
-          className="button-up-profil-form"
-          type="button"
-          id="button_up"
-          onClick={scrollToTop} // Ajout du gestionnaire d'événement
-        >
-          <img
-            src={"/src/assets/images/arrow_up.png"}
-            alt="Retour_vers_le_haut"
-            id="arrow_up"
-          />
-          <p>RETOUR VERS LE HAUT</p>
-        </button>
+        <div className="button_center">
+          <button
+            className="button-up-profil-form"
+            type="button"
+            id="button_up"
+            onClick={scrollToTop} // Ajout du gestionnaire d'événement
+          >
+            <img
+              src={"/src/assets/images/arrow_up.png"}
+              alt="Retour_vers_le_haut"
+              id="arrow_up"
+            />
+            <p>RETOUR VERS LE HAUT</p>
+          </button>
+        </div>
         <ToastContainer />
       </form>
     </section>
