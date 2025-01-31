@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Trash from "../assets/images/trash-bin.png";
 
 type UserDeleteFormProps = {
   id?: number; // L'ID peut être undefined si mal récupéré
@@ -8,9 +9,8 @@ type UserDeleteFormProps = {
 function UserDeleteForm({ id, onDelete }: UserDeleteFormProps) {
   const navigate = useNavigate();
 
-  const handleDelete = async (event: React.FormEvent) => {
+  const handleDelete = async (event: React.MouseEvent) => {
     event.preventDefault();
-
     if (!id) {
       alert("Erreur : impossible de récupérer votre ID utilisateur.");
       return;
@@ -45,8 +45,15 @@ function UserDeleteForm({ id, onDelete }: UserDeleteFormProps) {
   };
 
   return (
-    <form onSubmit={handleDelete}>
-      <button type="submit">Supprimer mon profil</button>
+    <form className="delete-form" onSubmit={(event) => event.preventDefault()}>
+      <button
+        type="button"
+        className="delete-profil-button"
+        onClick={handleDelete}
+      >
+        <img src={Trash} alt="poubelle-icon" />
+        Supprimer mon compte
+      </button>
     </form>
   );
 }

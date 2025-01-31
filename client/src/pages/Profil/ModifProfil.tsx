@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Trash from "../../assets/images/trash-bin.png";
 import EditUserForm from "../../components/EditUserForm";
 
 interface EditProfilType {
@@ -10,17 +11,14 @@ interface EditProfilType {
   email: string;
   zip_code?: string; // optionnel
   city?: string; // optionnel
-  // hashed_password: string;
-  // passwordConfirm: string;
   avatar?: string; // optionnel
-  // is_gcu_accepted: boolean;
   is_admin: boolean;
 }
 
 function ModifProfil() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [user, setUser] = useState(null as null | EditProfilType);
+  const [user, setUser] = useState<EditProfilType | null>(null);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
@@ -36,26 +34,34 @@ function ModifProfil() {
 
   return (
     <>
-      {user && (
-        <EditUserForm
-          defaultValue={user}
-          onSubmit={(userData) => {
-            fetch(`${import.meta.env.VITE_API_URL}/api/users/${user.id}`, {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(userData),
-            }).then((response) => {
-              if (response.status === 204) {
-                navigate("/");
-              }
-            });
-          }}
-        >
-          Modifier
-        </EditUserForm>
-      )}
+      <EditUserForm
+        defaultValue={user}
+        onSubmit={(userData) => {
+          fetch(`${import.meta.env.VITE_API_URL}/api/users/${user.id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userData),
+          }).then((response) => {
+            if (response.status === 204) {
+              navigate("/");
+            }
+          });
+        }}
+        extraButton={
+          <button
+            onClick={() => navigate(`/Suppression_de_profil/${id}`)}
+            className="delete-profil-button"
+            type="button"
+          >
+            <img className="poubelle" src={Trash} alt="poubelle-icon" />
+            Supprimer mon compte
+          </button>
+        }
+      >
+        Modifier
+      </EditUserForm>
     </>
   );
 }

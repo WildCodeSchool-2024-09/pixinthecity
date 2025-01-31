@@ -47,11 +47,11 @@ function Profil() {
             alt="avatar_background"
             className="avatar_background"
           />
-          <img
+          {/* <img
             src={`${import.meta.env.VITE_API_URL}/users/${user.avatar || "default-avatar.png"}`}
             alt={`Avatar de ${user.pseudo}`}
             className="avatar_user"
-          />
+          /> */}
         </div>
 
         {/* Pseudo de l'utilisateur */}

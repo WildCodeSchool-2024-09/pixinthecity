@@ -14,33 +14,30 @@
 }
 
 .RS {
-  text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   align-items: center;
   font-family: "roboto", sans-serif;
   color: white;
-  padding-bottom: 10em;
 }
 
 .container_contact {
   background: url("../../assets/images/backgroundstars.jpg") center / cover
     fixed;
-  position: fixed;
   width: 100%;
-
+  position: fixed;
   padding-bottom: 100%;
-  padding-top: 53%;
+  padding-top: 24%;
 }
 
 .box {
-  width: 10em;
-  height: 8em;
-  background-color: #6e7dc9;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
+  width: 10em;
+  height: 9em;
+  background-color: #6e7dc9;
   align-items: center;
   margin: 0.5em;
   border-radius: 8px; /* Coins légèrement arrondis */
@@ -63,8 +60,8 @@
 }
 
 .box img {
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 2em;
 }
 
 .title {
@@ -73,17 +70,17 @@
 }
 
 h1#contacts {
+  padding-top: 10em;
   font-family: "pixeleum", sans-serif;
   color: #fad009;
-  font-size: 1.5em;
-  padding-bottom: 3.2em;
+  font-size: 1em;
 }
 
 a {
   text-decoration: none;
   font-family: "pixeleum", sans-serif;
   color: white;
-  font-size: 1.2em;
+  font-size: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,9 +89,8 @@ a {
 @media (min-width: 768px) and (max-width: 1024px) {
   .container_contact {
     position: fixed;
-    padding-top: 15%;
+    padding-top: 10%;
     background: black;
-    padding-top: 20%;
   }
 
   .RS {
@@ -116,7 +112,7 @@ a {
     margin-top: -42%;
     width: 82%;
     padding-bottom: 100%;
-    padding-top: 57%;
+    padding-top: 48%;
     padding-left: 18%;
   }
 

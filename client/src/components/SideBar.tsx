@@ -54,6 +54,7 @@ const SideBar = () => {
               Modifier mon profil
             </button>
             <button
+              id="logout_btn"
               type="button"
               className="sidebar-button-logged"
               onClick={handleLogout}
