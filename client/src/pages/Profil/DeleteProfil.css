@@ -1,0 +1,33 @@
+.delete-account-container {
+  margin-top: 5em;
+  text-align: center;
+  background: url("../../assets/images/backgroundstars.jpg") center / cover
+    fixed;
+  font-family: "roboto", sans-serif;
+  color: white;
+  padding: 12em 1.5em 13em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.delete-button {
+  width: 100%;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding: 10px;
+  border: solid white 1px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-family: "pixeleum", sans-serif;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #ed2ea5;
+}

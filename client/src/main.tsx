@@ -7,17 +7,21 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
+import CardChasseurs from "./components/CardChasseurs";
+import { UserProvider } from "./contexts/UserContext";
+import CGU from "./pages/PagesClassiques/CGU";
 import Carte from "./pages/PagesClassiques/Carte";
 import Classement from "./pages/PagesClassiques/Classement";
 import Contact from "./pages/PagesClassiques/Contact";
 import Regles from "./pages/PagesClassiques/Regles";
-import Shoot from "./pages/Photos/Shoot";
-import SoumPhoto from "./pages/Photos/SoumPhoto";
+import UploadPhoto from "./pages/PagesClassiques/UploadPhoto";
 import CreaProfil from "./pages/Profil/CreaProfil";
+import DeleteProfil from "./pages/Profil/DeleteProfil";
 import ModifProfil from "./pages/Profil/ModifProfil";
 import Profil from "./pages/Profil/Profil";
 import Login from "./pages/Secu/Login";
 import MdpOublie from "./pages/Secu/MdpOublie";
+
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
@@ -30,21 +34,13 @@ import MdpOublie from "./pages/Secu/MdpOublie";
 // You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
-    path: "", // The root path
-    element: <Carte />,
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "Modification_mot_de_passe",
-    element: <MdpOublie />,
-  },
-  {
     path: "/",
-    element: <App />,
+    element: <App />, // Le composant principal qui englobe les autres pages
     children: [
+      {
+        path: "/",
+        element: <Carte />, // La page principale (Carte)
+      },
       {
         path: "Regles",
         element: <Regles />,
@@ -58,28 +54,43 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "Shoot",
-        element: <Shoot />,
+        path: "Donnees_photo",
+        element: <UploadPhoto />,
       },
       {
-        path: "Donnees_photo",
-        element: <SoumPhoto />,
+        path: "affichage_photos",
+        element: <CardChasseurs />,
       },
       {
         path: "Creation_de_profil",
         element: <CreaProfil />,
       },
       {
-        path: "Modification_de_profil ",
+        path: "Modification_de_profil/:id",
         element: <ModifProfil />,
       },
       {
-        path: "Profil",
+        path: "Suppression_de_profil/:id",
+        element: <DeleteProfil />,
+      },
+      {
+        path: "Profil/:id",
         element: <Profil />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "Modification_mot_de_passe",
+        element: <MdpOublie />,
+      },
+      {
+        path: "cgu",
+        element: <CGU />,
       },
     ],
   },
-  // Try adding a new route! For example, "/about" with an About component
 ]);
 
 /* ************************************************************************* */
@@ -93,7 +104,10 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    {/* Envelopper l'application avec UserProvider */}
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </StrictMode>,
 );
 

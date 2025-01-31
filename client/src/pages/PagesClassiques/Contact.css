@@ -1,4 +1,3 @@
-/* === Définition des polices === */
 @font-face {
   font-family: "pixeleum";
   src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
@@ -15,34 +14,54 @@
 }
 
 .RS {
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
   align-items: center;
   font-family: "roboto", sans-serif;
   color: white;
-  padding-bottom: 10em;
 }
 
-.container {
+.container_contact {
   background: url("../../assets/images/backgroundstars.jpg") center / cover
     fixed;
+  width: 100%;
+  position: fixed;
+  padding-bottom: 100%;
+  padding-top: 24%;
 }
 
 .box {
-  width: 11em;
-  height: 8em;
-  background-color: #6e7dc9;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
+  width: 10em;
+  height: 9em;
+  background-color: #6e7dc9;
   align-items: center;
-  margin: 1em;
+  margin: 0.5em;
+  border-radius: 8px; /* Coins légèrement arrondis */
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(110, 125, 201, 0.5); /* Effet néon léger */
+  cursor: pointer;
 }
+
+/* Effet survol */
+.box:hover {
+  background-color: #ed2ea5; /* Rose */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Lumière blanche plus intense */
+  transform: scale(1.05); /* Légère expansion */
+}
+
+/* Effet clic */
+.box:active {
+  transform: scale(0.95); /* Légère réduction */
+  box-shadow: 0 0 25px rgba(255, 255, 255, 1); /* Lumière blanche plus forte */
+}
+
 .box img {
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 2em;
 }
 
 .title {
@@ -50,19 +69,54 @@
   text-align: center;
 }
 
-h1 {
+h1#contacts {
+  padding-top: 10em;
   font-family: "pixeleum", sans-serif;
   color: #fad009;
-  font-size: 1.5em;
-  padding-bottom: 1em;
+  font-size: 1em;
 }
 
 a {
   text-decoration: none;
   font-family: "pixeleum", sans-serif;
   color: white;
-  font-size: 1.2em;
+  font-size: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container_contact {
+    position: fixed;
+    padding-top: 10%;
+    background: black;
+  }
+
+  .RS {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .box {
+    width: 13em;
+    height: 10em;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container_contact {
+    position: fixed;
+    background: none;
+    margin-left: 10%;
+    padding-bottom: -4%;
+    margin-top: -42%;
+    width: 82%;
+    padding-bottom: 100%;
+    padding-top: 48%;
+    padding-left: 18%;
+  }
+
+  .RS {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }

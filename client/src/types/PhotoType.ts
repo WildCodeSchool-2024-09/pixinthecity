@@ -2,7 +2,11 @@ type PhotoType = {
   id: number;
   title: string;
   content: string;
-  picture: string;
+  artist: string;
+  dateoftheday: string;
+  latitude: number;
+  longitude: number;
+  picture: File | null;
 };
 
 export default PhotoType;

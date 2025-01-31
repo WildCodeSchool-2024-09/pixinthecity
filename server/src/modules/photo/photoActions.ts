@@ -6,10 +6,10 @@ import photoRepository from "./photoRepository";
 // The B of BREAD - Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch all items
+    // Fetch all photos
     const photos = await photoRepository.readAll();
 
-    // Respond with the items in JSON format
+    // Respond with the photos in JSON format
     res.json(photos);
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -21,15 +21,15 @@ const browse: RequestHandler = async (req, res, next) => {
 const read: RequestHandler = async (req, res, next) => {
   try {
     // Fetch a specific item based on the provided ID
-    const photoId = Number(req.params.id);
-    const photos = await photoRepository.read(photoId);
+    const photoid = Number(req.params.id);
+    const photo = await photoRepository.read(photoid);
 
     // If the photo is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
-    if (photos == null) {
+    if (photo == null) {
       res.sendStatus(404);
     } else {
-      res.json(photos);
+      res.json(photo);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -38,23 +38,62 @@ const read: RequestHandler = async (req, res, next) => {
 };
 
 // The A of BREAD - Add (Create) operation
-// const add: RequestHandler = async (req, res, next) => {
-//   try {
-//     // Extract the item data from the request body
-//     const newItem = {
-//       title: req.body.title,
-//       user_id: req.body.user_id,
-//     };
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    // Extract the photo data from the request body
+    const { title, content, artist, date, user_id } = req.body;
+    const latitude = req.body.latitude;
+    const longitude = req.body.longitude;
 
-//     // Create the item
-//     const insertId = await itemRepository.create(newItem);
+    const defaultLatitude = 45.7597; // Latitude par défaut (centre de Lyon)
+    const defaultLongitude = 4.8422; // Longitude par défaut (centre de Lyon)
 
-//     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-//     res.status(201).json({ insertId });
-//   } catch (err) {
-//     // Pass any errors to the error-handling middleware
-//     next(err);
-//   }
-// };
+    const newLatitude =
+      latitude !== undefined ? Number.parseFloat(latitude) : defaultLatitude;
+    const newLongitude =
+      longitude !== undefined ? Number.parseFloat(longitude) : defaultLongitude;
 
-export default { browse, read };
+    const newPhoto = {
+      title,
+      content,
+      artist,
+      dateoftheday: date,
+      latitude: newLatitude, // Toujours utiliser les coordonnées par défaut
+      longitude: newLongitude,
+      picture: req.file?.filename || null, // Nom du fichier si présent
+      user_id: user_id || null, // Gérer les utilisateurs non connectés
+    };
+
+    // Create the photo
+    const insertId = await photoRepository.create(newPhoto);
+
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted photo
+    res.status(201).json({ insertId });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    // Fetch a specific photo based on the provided ID
+    const photoid = Number(req.params.id);
+    const photo = await photoRepository.delete(photoid);
+
+    // If the photo is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the photo in JSON format
+    if (photo == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(photo);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+// Export them to import them somewhere else
+
+export default { browse, read, add, destroy };

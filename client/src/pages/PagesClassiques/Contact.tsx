@@ -5,9 +5,9 @@ function Contact() {
   return (
     <>
       <Header />
-      <div className="container">
+      <section className="container_contact">
         <div className="title">
-          <h1>CONTACTS</h1>
+          <h1 id="contacts">CONTACTS</h1>
         </div>
         <div className="RS">
           <div className="box">
@@ -47,7 +47,7 @@ function Contact() {
             </a>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

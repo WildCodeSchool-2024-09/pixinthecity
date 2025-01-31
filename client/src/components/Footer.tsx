@@ -14,24 +14,25 @@ function Footer() {
           <p>CARTE</p>
         </button>
       </Link>
-      <Link to="/classement">
+      <Link to="/affichage_photos">
         <button type="button" className="button_footer">
           <img
-            src={"/src/assets/images/footer_icons/icon_ranking.png"}
+            src={"/src/assets/images/footer_icons/icon_artwork.png"}
             alt="ranking"
             className="icon_footer"
           />
-          <p>CLASSEMENT</p>
+          <p>ŒUVRES</p>
         </button>
       </Link>
-
-      <button type="button" className="button_camera">
-        <img
-          src={"/src/assets/images/footer_icons/icon_camera.png"}
-          alt="camera"
-          className="icon_camera"
-        />
-      </button>
+      <Link to="/Donnees_photo">
+        <button type="button" className="button_camera">
+          <img
+            src={"/src/assets/images/footer_icons/icon_add.png"}
+            alt="camera"
+            className="icon_camera"
+          />
+        </button>
+      </Link>
       <Link to="/regles">
         <button type="button" className="button_footer">
           <img
@@ -49,7 +50,7 @@ function Footer() {
             alt="contact"
             className="icon_footer"
           />
-          <p>CONTACT</p>
+          <p>CONTACTS</p>
         </button>
       </Link>
     </footer>
