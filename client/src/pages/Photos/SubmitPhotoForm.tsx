@@ -46,7 +46,7 @@ function SubmitPhotoForm({
         <label htmlFor="title">TITRE DE L'ŒUVRE</label>
         <input
           className="form-photo-fields"
-          placeholder="title"
+          placeholder="TITRE DE L'ŒUVRE"
           type="text"
           name="title"
           defaultValue={defaultValue.title}
@@ -54,7 +54,7 @@ function SubmitPhotoForm({
         <label htmlFor="artist">NOM DE L'ARTISTE</label>
         <input
           className="form-photo-fields"
-          placeholder="artiste"
+          placeholder="NOM DE L'ARTISTE"
           type="text"
           name="artist"
           defaultValue={defaultValue.artist}
@@ -64,7 +64,7 @@ function SubmitPhotoForm({
           className="form-photo-fields"
           rows={5}
           cols={50}
-          placeholder="description"
+          placeholder="DESCRIPTION"
           name="content"
           defaultValue={defaultValue.content}
         />
