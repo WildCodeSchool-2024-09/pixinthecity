@@ -14,7 +14,7 @@ function Footer() {
           <p>CARTE</p>
         </button>
       </Link>
-      <Link to="/classement">
+      <Link to="/affichage_photos">
         <button type="button" className="button_footer">
           <img
             src={"/src/assets/images/footer_icons/icon_artwork.png"}
