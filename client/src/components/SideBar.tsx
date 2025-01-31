@@ -141,7 +141,7 @@ const SideBar = () => {
               className="icon_camera"
             />
           </button>
-          <p>AJOUTER UNE ŒUVRE</p>
+          <p id="add-artwork">AJOUTER UNE ŒUVRE</p>
         </Link>
       </section>
     </section>

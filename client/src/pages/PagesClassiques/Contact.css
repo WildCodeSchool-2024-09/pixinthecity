@@ -17,21 +17,21 @@
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  justify-content: center;
-
+  justify-items: center;
+  align-items: center;
   font-family: "roboto", sans-serif;
   color: white;
   padding-bottom: 10em;
 }
 
-.container {
+.container_contact {
   background: url("../../assets/images/backgroundstars.jpg") center / cover
     fixed;
   position: fixed;
   width: 100%;
-  justify-content: center;
-  align-items: center;
+
+  padding-bottom: 100%;
+  padding-top: 53%;
 }
 
 .box {
@@ -43,7 +43,25 @@
   justify-content: center;
   align-items: center;
   margin: 0.5em;
+  border-radius: 8px; /* Coins légèrement arrondis */
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(110, 125, 201, 0.5); /* Effet néon léger */
+  cursor: pointer;
 }
+
+/* Effet survol */
+.box:hover {
+  background-color: #ed2ea5; /* Rose */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Lumière blanche plus intense */
+  transform: scale(1.05); /* Légère expansion */
+}
+
+/* Effet clic */
+.box:active {
+  transform: scale(0.95); /* Légère réduction */
+  box-shadow: 0 0 25px rgba(255, 255, 255, 1); /* Lumière blanche plus forte */
+}
+
 .box img {
   width: 3em;
   height: 3em;
@@ -69,4 +87,40 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container_contact {
+    position: fixed;
+    padding-top: 15%;
+    background: black;
+    padding-top: 20%;
+  }
+
+  .RS {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .box {
+    width: 13em;
+    height: 10em;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container_contact {
+    position: fixed;
+    background: none;
+    margin-left: 10%;
+    padding-bottom: -4%;
+    margin-top: -42%;
+    width: 82%;
+    padding-bottom: 100%;
+    padding-top: 57%;
+    padding-left: 18%;
+  }
+
+  .RS {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }

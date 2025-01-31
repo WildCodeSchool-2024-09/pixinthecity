@@ -210,6 +210,10 @@ img.icon_camera {
   margin-bottom: 4%;
 }
 
+#add-artwork {
+  font-size: 0.8em;
+}
+
 * {
   margin: 0;
   padding: 0;

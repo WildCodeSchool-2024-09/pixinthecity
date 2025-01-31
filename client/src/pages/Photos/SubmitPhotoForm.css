@@ -16,7 +16,7 @@
   background: url("backgroundstars.jpg") center / cover fixed;
   color: #ed2ea5;
   font-family: "pixeleum", sans-serif;
-  margin-top: 6em;
+  margin-top: 1em;
   margin-bottom: 4em;
   padding: 2em;
   display: flex;
@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  position: relative;
+  position: fixed;
 }
 h1 {
   color: #fad009;
@@ -60,10 +60,17 @@ h1 {
 .auth-gcu {
   margin-top: 0.75em;
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .post-photo-container {
+    background: none;
+    background-color: black;
+  }
+}
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .main-content {
     padding: 0;
+    background-color: black;
   }
   .formphoto {
     margin-left: 19%;
@@ -81,6 +88,7 @@ h1 {
     padding-top: 1em;
     text-align: center;
     margin-bottom: 1em;
+    padding-left: 5%;
   }
   .post-photo-container {
     margin-top: 0;
@@ -88,7 +96,7 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 8%;
+    padding-left: 20%;
   }
   .form-photo-fields {
     margin-top: 0.5em;

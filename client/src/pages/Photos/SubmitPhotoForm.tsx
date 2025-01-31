@@ -15,12 +15,12 @@ interface SubmitPhotoType {
   onSubmit: (photo: FormData) => void;
 }
 
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth", // Défilement fluide
-  });
-};
+// const scrollToTop = () => {
+//   window.scrollTo({
+//     top: 0,
+//     behavior: "smooth", // Défilement fluide
+//   });
+// };
 
 function SubmitPhotoForm({
   children,
@@ -51,7 +51,7 @@ function SubmitPhotoForm({
           name="title"
           defaultValue={defaultValue.title}
         />
-        <label htmlFor="artist">Nom de l'artiste</label>
+        <label htmlFor="artist">NOM DE L'ARTISTE</label>
         <input
           className="form-photo-fields"
           placeholder="artiste"
@@ -80,7 +80,7 @@ function SubmitPhotoForm({
         <button className="post-photo-button" type="submit">
           {children}PROPOSER UNE ŒUVRE
         </button>
-        <div className="button_hiden">
+        {/* <div className="button_hiden">
           <button
             type="button"
             id="button_up"
@@ -93,7 +93,7 @@ function SubmitPhotoForm({
             />
             <p>RETOUR VERS LE HAUT</p>
           </button>
-        </div>
+        </div> */}
       </form>
     </section>
   );
