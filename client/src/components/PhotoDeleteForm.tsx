@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 type PhotoDeleteFormProps = {
   id: number;
-  children: ReactNode;
+  children?: ReactNode;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 };
 
 function PhotoDeleteForm({ id, children }: PhotoDeleteFormProps) {
