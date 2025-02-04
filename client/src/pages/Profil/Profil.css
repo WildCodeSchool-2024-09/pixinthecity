@@ -18,20 +18,9 @@
   padding-top: 8%;
 }
 
-.avatar_picture {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.avatar_background {
+.user_background {
   width: 40%;
   margin-top: 0;
-}
-
-.avatar_user {
-  width: 21%;
-  margin-top: -27%;
 }
 
 .user_results {

@@ -11,7 +11,6 @@ interface EditProfilType {
   email: string;
   zip_code?: string; // optionnel
   city?: string; // optionnel
-  avatar?: string; // optionnel
   is_admin: boolean;
 }
 

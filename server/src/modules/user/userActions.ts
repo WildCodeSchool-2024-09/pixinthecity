@@ -55,7 +55,6 @@ const edit: RequestHandler = async (req, res, next) => {
       email: req.body.email,
       zip_code: req.body.zip_code || null,
       hashed_password: req.body.hashed_password || null,
-      avatar: req.body.avatar,
       is_gcu_accepted: req.body.is_gcu_accepted,
       is_admin: req.body.is_admin,
     };
@@ -86,7 +85,6 @@ const add: RequestHandler = async (req, res, next) => {
       zip_code: req.body.zip_code || null,
       city: req.body.city || null,
       hashed_password: req.body.hashed_password,
-      avatar: req.body.avatar,
       is_gcu_accepted: req.body.is_gcu_accepted,
       is_admin: req.body.is_admin,
     };

@@ -25,6 +25,9 @@ CREATE TABLE photo (
   FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE -- Contrainte de clé étrangère
 );
 
+ALTER TABLE user
+DROP COLUMN avatar;
+
 -- Ajout de user_id dans la table photo :
 
 -- Colonne définie comme INT UNSIGNED NOT NULL.
@@ -39,11 +42,11 @@ CREATE TABLE photo (
 
 -- La table user est créée avant la table photo.
 
-insert into user(firstname, lastname, pseudo, email, zip_code, city, hashed_password, avatar, is_gcu_accepted, is_admin)
+insert into user(firstname, lastname, pseudo, email, zip_code, city, hashed_password, is_gcu_accepted, is_admin)
 values
-  ("Jacqueline", "Morin", "jijimomo_95", "jacquelinecomptabilite@sah.fr", "69001", "Lyon", "ilovecomptabilite", NULL, TRUE, TRUE),
-  ("René", "Pichard", "pich-art", "rene_pich-art@sah.fr", "69002", "Lyon", "rene_explorateur", "avatar01.png", TRUE, FALSE),
-  ("Pépito", "Perez", "pepito_roi_du_gateau", "p-p@sah.fr", "69003", "Lyon" ,"perezforever", NULL, TRUE, FALSE);
+  ("Jacqueline", "Morin", "jijimomo_95", "jacquelinecomptabilite@sah.fr", "69001", "Lyon", "ilovecomptabilite", TRUE, TRUE),
+  ("René", "Pichard", "pich-art", "rene_pich-art@sah.fr", "69002", "Lyon", "rene_explorateur", TRUE, FALSE),
+  ("Pépito", "Perez", "pepito_roi_du_gateau", "p-p@sah.fr", "69003", "Lyon" ,"perezforever", TRUE, FALSE);
 
 insert into photo(title, content, picture, latitude, longitude, artist, user_id)
 values

@@ -36,28 +36,6 @@
 h1 {
   color: #fad009;
 }
-.avatar-image {
-  width: 100px; /* Largeur des avatars */
-  height: 100px; /* Hauteur des avatars */
-  object-fit: cover; /* S'adapte sans déformation */
-  border-radius: 50%; /* Pour un effet cercle */
-  margin: 5px; /* Espacement autour de chaque avatar */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Effet esthétique optionnel */
-}
-
-.avatars {
-  display: flex; /* Aligne les avatars horizontalement */
-  flex-wrap: wrap; /* Retour à la ligne si nécessaire */
-  justify-content: center; /* Centre les avatars horizontalement */
-  gap: 10px; /* Espace entre les conteneurs d'avatars */
-}
-
-.avatars div {
-  margin-top: 3em;
-  display: flex;
-  flex-direction: column; /* Input et image alignés en colonne */
-  align-items: center; /* Centrer les éléments dans chaque div */
-}
 
 .is_gcu_accepted {
   color: white;

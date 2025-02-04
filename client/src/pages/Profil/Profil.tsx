@@ -12,7 +12,6 @@ interface User {
   city?: string; // optionnel
   // hashed_password: string;
   // passwordConfirm: string;
-  avatar?: string; // optionnel
   is_gcu_accepted: boolean;
   is_admin: boolean;
 }
@@ -47,11 +46,6 @@ function Profil() {
             alt="avatar_background"
             className="avatar_background"
           />
-          {/* <img
-            src={`${import.meta.env.VITE_API_URL}/users/${user.avatar || "default-avatar.png"}`}
-            alt={`Avatar de ${user.pseudo}`}
-            className="avatar_user"
-          /> */}
         </div>
 
         {/* Pseudo de l'utilisateur */}
