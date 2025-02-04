@@ -31,7 +31,6 @@ function CardChasseurs() {
     const isConfirmed = window.confirm(
       "Êtes-vous sûr·e de vouloir supprimer cette photo ?",
     );
-
     if (!isConfirmed) return; // Si l'utilisateur annule, on stoppe la suppression
     fetch(`${import.meta.env.VITE_API_URL}/api/photos/${photoId}`, {
       method: "DELETE",
