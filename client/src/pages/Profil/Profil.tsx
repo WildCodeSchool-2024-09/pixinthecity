@@ -36,22 +36,22 @@ function Profil() {
 
   return (
     <div className="profil_div">
-      <h1>
+      {/* <h1>
         Profil de {user.firstname} {user.lastname}
-      </h1>
+      </h1> */}
       <section className="profil_container">
         {/* Avatar de l'utilisateur */}
-        <div className="avatar_picture">
+        <div className="user_picture">
           <img
             src={"/src/assets/images/avatar/avatar_background.png"}
-            alt="avatar_background"
-            className="avatar_background"
+            alt="user_background"
+            className="user_background"
           />
-          {/* <img
-            src={`${import.meta.env.VITE_API_URL}/users/${user.avatar || "default-avatar.png"}`}
-            alt={`Avatar de ${user.pseudo}`}
-            className="avatar_user"
-          /> */}
+          <img
+            src={"/src/assets/images/icon_user.png"}
+            alt="icon_user"
+            className="icon_user"
+          />
         </div>
 
         {/* Pseudo de l'utilisateur */}
