@@ -5,12 +5,6 @@ import "react-toastify/dist/ReactToastify.css"; // Import des styles de Toastify
 
 import "./NewUserForm.css";
 import { Link } from "react-router-dom";
-import avatar1 from "../assets/images/avatar/avatar01.png";
-import avatar2 from "../assets/images/avatar/avatar02.png";
-import avatar3 from "../assets/images/avatar/avatar03.png";
-import avatar4 from "../assets/images/avatar/avatar04.png";
-import avatar5 from "../assets/images/avatar/avatar05.png";
-import avatar6 from "../assets/images/avatar/avatar06.png";
 
 export type ProfilType = {
   firstname: string;
@@ -21,7 +15,6 @@ export type ProfilType = {
   city?: string | null; // optionnel
   password: string;
   passwordConfirm: string;
-  avatar?: string; // optionnel
   is_gcu_accepted: boolean;
   is_admin: boolean;
 };
@@ -44,14 +37,6 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
     defaultValue.is_gcu_accepted,
   );
 
-  const avatars = [
-    { id: "avatar01.png", src: avatar1 },
-    { id: "avatar2", src: avatar2 },
-    { id: "avatar3", src: avatar3 },
-    { id: "avatar4", src: avatar4 },
-    { id: "avatar5", src: avatar5 },
-    { id: "avatar6", src: avatar6 },
-  ];
   return (
     <section className="create-profil-container">
       <h1>CRÉER MON PROFIL</h1>
@@ -67,7 +52,6 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           const city = (formData.get("city") as string)?.trim() || null;
           const password = formData.get("password") as string;
           const passwordConfirm = formData.get("passwordConfirm") as string;
-          const avatar = formData.get("avatar") as string;
           const is_admin = formData.get("is_admin") === "0";
 
           // vérifie si les CGU sont acceptés
@@ -97,7 +81,6 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
             city: city || null,
             password,
             passwordConfirm,
-            avatar, // optionnel
             is_gcu_accepted: isGCUAccepted,
             is_admin,
           });
@@ -198,30 +181,6 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
           placeholder="Confirmez votre mot de passe"
           defaultValue={defaultValue.passwordConfirm}
         />
-
-        {/* biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
-        <label className="form-fields">Choix de l'avatar (optionnel)</label>
-        <div className="avatars">
-          {avatars.map((avatar) => (
-            <div key={avatar.id} className="avatar-item">
-              <input
-                id={`avatar-${avatar.id}`}
-                className="avatar-radio"
-                type="radio"
-                name="avatar"
-                value={avatar.id}
-                defaultChecked={defaultValue.avatar === avatar.id}
-              />
-              <label htmlFor={`avatar-${avatar.id}`}>
-                <img
-                  src={avatar.src}
-                  alt={`Avatar ${avatar.id}`}
-                  className="avatar-image"
-                />
-              </label>
-            </div>
-          ))}
-        </div>
 
         <label className="form-fields gcu-label" htmlFor="is_gcu_accepted">
           <Link to="/cgu" className="gcu-link">

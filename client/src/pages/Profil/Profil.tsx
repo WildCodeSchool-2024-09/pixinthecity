@@ -12,7 +12,6 @@ interface User {
   city?: string; // optionnel
   // hashed_password: string;
   // passwordConfirm: string;
-  avatar?: string; // optionnel
   is_gcu_accepted: boolean;
   is_admin: boolean;
 }

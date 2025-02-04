@@ -9,7 +9,6 @@ type User = {
   zip_code?: string; // optionnel
   city?: string; // optionnel
   // hashed_password: string;
-  avatar?: string; // optionnel
   // is_gcu_accepted: boolean;
   is_admin: boolean;
 };
@@ -49,7 +48,6 @@ function EditUserForm({
             zip_code: formData.get("zip_code")?.toString(),
             city: formData.get("city")?.toString(),
             // hashed_password: formData.get("hashed_password") as string,
-            avatar: formData.get("avatar")?.toString(),
             // is_gcu_accepted: formData.get("is_gcu_accepted") === "true",
             is_admin: formData.get("is_admin") === "true",
           });
@@ -107,27 +105,21 @@ function EditUserForm({
             defaultValue={defaultValue.city || ""}
           />
         </label>
-        {/* <label className="updateForm-fields">
-          Avatar:
-          <input
-            type="text"
-            name="avatar"
-            defaultValue={defaultValue.avatar || ""}
-          />
-        </label> */}
 
         <button type="submit" className="update-profil-button">
           {children}
         </button>
-        {extraButton && <div className="extra-button">{extraButton}</div>}
-        <button type="button" id="button_up" onClick={scrollToTop}>
-          <img
-            src={"/src/assets/images/arrow_up.png"}
-            alt="Retour_vers_le_haut"
-            id="arrow_up"
-          />
-          <p>RETOUR VERS LE HAUT</p>
-        </button>
+        {extraButton && <p className="delete_button">{extraButton}</p>}
+        <div className="button_center">
+          <button type="button" id="button_up" onClick={scrollToTop}>
+            <img
+              src={"/src/assets/images/arrow_up.png"}
+              alt="Retour_vers_le_haut"
+              id="arrow_up"
+            />
+            <p>RETOUR VERS LE HAUT</p>
+          </button>
+        </div>
       </form>
     </section>
   );

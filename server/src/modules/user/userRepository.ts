@@ -11,7 +11,6 @@ type User = {
   zip_code?: number;
   city?: string;
   hashed_password: string;
-  avatar?: string;
   is_gcu_accepted: boolean;
   is_admin: boolean;
 };
@@ -22,7 +21,7 @@ class UserRepository {
   async create(user: Omit<User, "id">): Promise<number> {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await databaseClient.query<Result>(
-      "insert into user (firstname, lastname, pseudo, email, zip_code, city, hashed_password, avatar, is_gcu_accepted, is_admin) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "insert into user (firstname, lastname, pseudo, email, zip_code, city, hashed_password, is_gcu_accepted, is_admin) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         user.firstname,
         user.lastname,
@@ -31,7 +30,6 @@ class UserRepository {
         user.zip_code ?? null,
         user.city ?? null,
         user.hashed_password,
-        user.avatar ?? null,
         user.is_gcu_accepted,
         user.is_admin,
       ],
@@ -76,20 +74,11 @@ class UserRepository {
   // TODO: Implement the update operation to modify an existing item
 
   async update(user: User) {
-    const {
-      firstname,
-      lastname,
-      pseudo,
-      email,
-      zip_code,
-      city,
-      avatar,
-      is_admin,
-      id,
-    } = user;
+    const { firstname, lastname, pseudo, email, zip_code, city, is_admin, id } =
+      user;
 
     const query =
-      "UPDATE user SET firstname = ?, lastname = ?, pseudo = ?, email = ?, zip_code = ?, city = ?,  avatar = ?,  is_admin = ? WHERE id = ?";
+      "UPDATE user SET firstname = ?, lastname = ?, pseudo = ?, email = ?, zip_code = ?, city = ?,  is_admin = ? WHERE id = ?";
     const values = [
       firstname,
       lastname,
@@ -97,7 +86,6 @@ class UserRepository {
       email,
       zip_code,
       city,
-      avatar,
       is_admin,
       id,
     ];
