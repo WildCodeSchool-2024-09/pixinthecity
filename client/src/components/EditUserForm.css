@@ -89,9 +89,32 @@ h1 {
   background-color: #cc0000;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+  .update-profil-container {
+    background: none;
+    background-color: black;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  .delete_button {
+    display: flex;
+    justify-content: center;
+  }
+  .delete-profil-button {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 1025px) {
   .main-content {
     padding: 0;
+  }
+
+  .update-profil-container {
+    background: none;
+    background-color: black;
+    padding-left: 22%;
   }
   .profil-form {
     margin-left: 19%;
@@ -108,6 +131,17 @@ h1 {
     margin-bottom: 1em;
   }
   .update-profil-button {
+    display: flex;
+    justify-content: center;
     margin-top: 2em;
+  }
+  .button_center,
+  .delete_button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .delete-profil-button {
+    margin-left: 0;
   }
 }
