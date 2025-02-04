@@ -24,11 +24,11 @@
     transform: translateY(0);
   }
 }
-.container p {
+.container_rules p {
   text-align: center;
 }
 
-.container {
+.container_rules {
   position: absolute;
   text-align: center;
   background: url("../../assets/images/backgroundstars.jpg") center / cover
@@ -101,13 +101,12 @@ img#arrow_up {
 
 h1,
 h2,
-h3,
 h4,
 h6 {
   font-family: "pixeleum", sans-serif;
 }
 
-h1 {
+h1#firsttitle {
   color: #fad009;
   font-size: 1.5em;
   padding-bottom: 1.2em;
@@ -118,11 +117,13 @@ h2 {
   font-size: 1.2em;
 }
 
-h3 {
+h3.thirdtitles_rules {
+  font-family: "pixeleum", sans-serif;
   color: #ed2ea5;
   border: 2px solid #ed2ea5;
   margin-bottom: 0.5em;
   padding: 0.2em 0 0.3em;
+  width: 100%;
 }
 
 h4 {
@@ -140,7 +141,7 @@ h6 {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .container {
+  .container_rules {
     font-size: 1.2em;
     max-width: 100%;
     margin: 0 auto;
@@ -157,10 +158,10 @@ h6 {
 }
 
 @media (min-width: 1025px) {
-  .container {
-    padding-top: 1em;
-    font-size: 1.5em;
-    padding-left: 14em;
+  .container_rules {
+    padding-top: 10%;
+    font-size: 1em;
+    padding-left: 22%;
     max-width: 100%;
     margin: 0 auto;
     background-image: none; /* Retirer l'image de fond */
@@ -181,11 +182,11 @@ h6 {
     width: 20%;
   }
 
-  h1 {
-    font-size: 2em;
-  }
-
   h2 {
     font-size: 1.5em;
+  }
+
+  h3.thirdtitles_rules {
+    width: 91%;
   }
 }
