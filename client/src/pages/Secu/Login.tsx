@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../../components/CSS/Login.css";
+import Cookies from "js-cookie";
 import { type FormEventHandler, useContext, useRef, useState } from "react";
 import Logo from "../../assets/images/logo.png";
 import { UserContext } from "../../contexts/UserContext"; // Importer le UserContext
@@ -7,7 +8,7 @@ import { UserContext } from "../../contexts/UserContext"; // Importer le UserCon
 function Login() {
   const emailRef = useRef<HTMLInputElement>(null);
   const [password, setPassword] = useState<string>("");
-  const { setUser } = useContext(UserContext) || {}; // Utilisation d'une valeur par défaut (vide) si UserContext est undefined
+  const { setUser } = useContext(UserContext) || {}; // Utilisation d'une valeur par défaut si UserContext est undefined
   const navigate = useNavigate();
 
   const handleSubmit: FormEventHandler = async (event) => {
@@ -19,18 +20,30 @@ function Login() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            email: emailRef.current?.value, // Sécurise l'accès à emailRef
-            password,
+            email: emailRef.current?.value,
+            password: password,
           }),
         },
       );
 
       if (response.status === 200) {
         const data = await response.json();
+        const token = data.token;
+
+        // Stocker le token dans un cookie
+        Cookies.set("authToken", token, {
+          expires: 7, // Expiration dans 7 jours
+          path: "/",
+          // secure: true,
+          // sameSite: "Strict",
+        });
+
         if (setUser) {
           setUser(data.user); // Met à jour l'état de l'utilisateur
         }
+
         navigate(`/Profil/${data.user.id}`);
+        // window.location.reload(); // Rafraîchir la page pour recharger l'état
       } else {
         console.info(response);
       }
