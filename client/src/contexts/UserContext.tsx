@@ -7,7 +7,6 @@ interface User {
   lastname: string;
   pseudo: string;
   email: string;
-  avatar?: string;
   is_gcu_accepted: boolean;
   is_admin: boolean;
 }

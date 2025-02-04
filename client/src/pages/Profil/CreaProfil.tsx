@@ -14,7 +14,6 @@ function CreaProfil() {
     city: "",
     password: "",
     passwordConfirm: "",
-    avatar: "",
     is_gcu_accepted: false,
     is_admin: false,
   };
