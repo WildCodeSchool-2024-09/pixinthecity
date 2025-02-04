@@ -109,15 +109,17 @@ function EditUserForm({
         <button type="submit" className="update-profil-button">
           {children}
         </button>
-        {extraButton && <div className="extra-button">{extraButton}</div>}
-        <button type="button" id="button_up" onClick={scrollToTop}>
-          <img
-            src={"/src/assets/images/arrow_up.png"}
-            alt="Retour_vers_le_haut"
-            id="arrow_up"
-          />
-          <p>RETOUR VERS LE HAUT</p>
-        </button>
+        {extraButton && <p className="delete_button">{extraButton}</p>}
+        <div className="button_center">
+          <button type="button" id="button_up" onClick={scrollToTop}>
+            <img
+              src={"/src/assets/images/arrow_up.png"}
+              alt="Retour_vers_le_haut"
+              id="arrow_up"
+            />
+            <p>RETOUR VERS LE HAUT</p>
+          </button>
+        </div>
       </form>
     </section>
   );
