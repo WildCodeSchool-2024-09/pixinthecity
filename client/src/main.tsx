@@ -11,7 +11,6 @@ import CardChasseurs from "./components/CardChasseurs";
 import { UserProvider } from "./contexts/UserContext";
 import CGU from "./pages/PagesClassiques/CGU";
 import Carte from "./pages/PagesClassiques/Carte";
-import Classement from "./pages/PagesClassiques/Classement";
 import Contact from "./pages/PagesClassiques/Contact";
 import Regles from "./pages/PagesClassiques/Regles";
 import UploadPhoto from "./pages/PagesClassiques/UploadPhoto";
@@ -20,7 +19,6 @@ import DeleteProfil from "./pages/Profil/DeleteProfil";
 import ModifProfil from "./pages/Profil/ModifProfil";
 import Profil from "./pages/Profil/Profil";
 import Login from "./pages/Secu/Login";
-import MdpOublie from "./pages/Secu/MdpOublie";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -42,48 +40,40 @@ const router = createBrowserRouter([
         element: <Carte />, // La page principale (Carte)
       },
       {
-        path: "Regles",
+        path: "regles",
         element: <Regles />,
       },
       {
-        path: "Classement",
-        element: <Classement />,
-      },
-      {
-        path: "Contact",
+        path: "contact",
         element: <Contact />,
       },
       {
-        path: "Donnees_photo",
+        path: "post_a_photo",
         element: <UploadPhoto />,
       },
       {
-        path: "affichage_photos",
+        path: "oeuvres",
         element: <CardChasseurs />,
       },
       {
-        path: "Creation_de_profil",
+        path: "creer_un_profil",
         element: <CreaProfil />,
       },
       {
-        path: "Modification_de_profil/:id",
+        path: "modifier_mon_profil/:id",
         element: <ModifProfil />,
       },
       {
-        path: "Suppression_de_profil/:id",
+        path: "supprimer_mon_profil/:id",
         element: <DeleteProfil />,
       },
       {
-        path: "Profil/:id",
+        path: "profil/:id",
         element: <Profil />,
       },
       {
         path: "login",
         element: <Login />,
-      },
-      {
-        path: "Modification_mot_de_passe",
-        element: <MdpOublie />,
       },
       {
         path: "cgu",
