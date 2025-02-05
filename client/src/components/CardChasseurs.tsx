@@ -15,6 +15,7 @@ type PhotoType = {
 
 function CardChasseurs() {
   const [photos, setPhotos] = useState<PhotoType[]>([]);
+  const [selectedPhoto, setSelectedPhoto] = useState<PhotoType | null>(null);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/photos`)
@@ -31,7 +32,7 @@ function CardChasseurs() {
     const isConfirmed = window.confirm(
       "Êtes-vous sûr·e de vouloir supprimer cette photo ?",
     );
-    if (!isConfirmed) return; // Si l'utilisateur annule, on stoppe la suppression
+    if (!isConfirmed) return;
     fetch(`${import.meta.env.VITE_API_URL}/api/photos/${photoId}`, {
       method: "DELETE",
     })
@@ -49,47 +50,88 @@ function CardChasseurs() {
       });
   };
 
-  // Fonction pour formater la date au format DD-MM-YYYY
   const formatDate = (date: string) => {
-    const dateObject = new Date(date); // Créer un objet Date à partir de la chaîne
-    const day = dateObject.getDate().toString().padStart(2, "0"); // Jour
-    const month = (dateObject.getMonth() + 1).toString().padStart(2, "0"); // Mois (0-indexé, donc +1)
-    const year = dateObject.getFullYear(); // Année
+    const dateObject = new Date(date);
+    const day = dateObject.getDate().toString().padStart(2, "0");
+    const month = (dateObject.getMonth() + 1).toString().padStart(2, "0");
+    const year = dateObject.getFullYear();
     return `${day}-${month}-${year}`;
   };
 
   return (
     <>
-      <h1 className="liste-streetArt">Liste des street arts</h1>
+      <h1 className="liste-streetArt">LES ŒUVRES STREET ART</h1>
       <section className="carte-photo">
         {photos.map((photo) => (
           <section className="streetArtPhotos" key={photo.id}>
-            <p className="titre-photo">{photo.title}</p>
-            <img
-              src={`${import.meta.env.VITE_API_URL}/photos/${photo.picture || "default-picture.jpg"}`}
-              alt={photo.title}
-            />
-            <p>{photo.artist}</p>
-            <p>{photo.content}</p>
-            <p>{formatDate(photo.dateoftheday)}</p>{" "}
-            {/* Affichage de la date formatée */}
-            <PhotoDeleteForm
-              onSubmit={(event: { preventDefault: () => void }) =>
-                event.preventDefault()
-              }
-              id={0}
+            <h2 className="titre-photo">{photo.title}</h2>
+            <button
+              type="button"
+              className="image-container"
+              onClick={() => setSelectedPhoto(photo)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  setSelectedPhoto(photo);
+                }
+              }}
+              style={{
+                cursor: "pointer",
+                background: "none",
+                border: "none",
+                padding: 0,
+              }}
             >
-              <button
-                type="button"
-                className="delete-photo-button"
-                onClick={() => handleDelete(photo.id)}
+              <img
+                src={`${import.meta.env.VITE_API_URL}/photos/${photo.picture || "default-picture.jpg"}`}
+                alt={photo.title}
+              />
+            </button>
+            <p className="artist_content">{photo.artist}</p>
+            <p className="photo_content">{photo.content}</p>
+            <div className="delete_photo_content">
+              <p className="date_content">{formatDate(photo.dateoftheday)}</p>
+              <PhotoDeleteForm
+                onSubmit={(event: { preventDefault: () => void }) =>
+                  event.preventDefault()
+                }
+                id={0}
               >
-                Supprimer
-              </button>
-            </PhotoDeleteForm>
+                <button
+                  type="button"
+                  className="delete-photo-button"
+                  onClick={() => handleDelete(photo.id)}
+                >
+                  Supprimer
+                </button>
+              </PhotoDeleteForm>
+            </div>
           </section>
         ))}
       </section>
+
+      {selectedPhoto && (
+        // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
+        <div className="modal-overlay" onClick={() => setSelectedPhoto(null)}>
+          {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="close-button"
+              onClick={() => setSelectedPhoto(null)}
+            >
+              X
+            </button>
+            <img
+              className="modal-image"
+              src={`${import.meta.env.VITE_API_URL}/photos/${
+                selectedPhoto.picture || "default-picture.jpg"
+              }`}
+              alt={selectedPhoto.title}
+            />
+            <p className="modal-title">{selectedPhoto.title}</p>
+          </div>
+        </div>
+      )}
     </>
   );
 }
