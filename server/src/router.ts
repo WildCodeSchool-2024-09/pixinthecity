@@ -27,7 +27,7 @@ const upload = multer({ dest: "public/photos/" });
 
 router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);
-router.get("/api/me", authActions.verifyToken);
+router.get("/api/auth", authActions.verifyToken);
 
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.destroy);

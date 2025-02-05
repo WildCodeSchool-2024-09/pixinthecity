@@ -34,8 +34,8 @@ function Login() {
         Cookies.set("authToken", token, {
           expires: 7, // Expiration dans 7 jours
           path: "/",
-          // secure: true,
-          // sameSite: "Strict",
+          secure: true,
+          sameSite: "Strict",
         });
 
         if (setUser) {

@@ -36,6 +36,12 @@ const login: RequestHandler = async (req, res, next) => {
           expiresIn: "1h",
         },
       );
+      res.cookie("authToken", token, {
+        // httpOnly: true,
+        // secure: true,
+        sameSite: "strict",
+        maxAge: 60 * 60 * 1000,
+      });
 
       res.json({ user: userWithoutHashedPassword, token });
     } else {
@@ -71,6 +77,27 @@ const hashPassword: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+
+const checkAuthCookie: RequestHandler = (req, res, next) => {
+  const { authToken } = req.cookies;
+  try {
+    if (authToken) {
+      const verified = jwt.verify(authToken, process.env.APP_SECRET as string);
+      if (verified) {
+        res.status(200).json({ user: req.auth });
+      } else {
+        res.clearCookie("authToken");
+        res.status(401).json({ message: "Token expired or invalid" });
+      }
+      next();
+    } else {
+      res.status(401).json({ message: "No token provided" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 const verifyToken: RequestHandler = (req, res, next) => {
   try {
     // Vérifier la présence de l'en-tête "Authorization" dans la requête
@@ -101,4 +128,4 @@ const verifyToken: RequestHandler = (req, res, next) => {
     res.sendStatus(401);
   }
 };
-export default { login, hashPassword, verifyToken };
+export default { login, hashPassword, verifyToken, checkAuthCookie };
