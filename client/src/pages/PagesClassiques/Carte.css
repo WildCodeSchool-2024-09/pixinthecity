@@ -3,38 +3,42 @@
   src: url("../../assets/fonts/roboto.ttf") format("truetype");
 }
 
+.leaflet-container {
+  position: fixed;
+  padding-top: 40em;
+  margin-top: -1em;
+}
+
 .container-carte {
-  padding: 3.4em 0;
-  text-align: center;
-  margin-bottom: 6em;
+  padding: 0;
+}
+
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+  position: relative;
+  width: 100%;
 }
 .carte-leaflet {
-  margin: 0 auto;
-  max-width: 100%; /* Limite la largeur de l'image à celle de son conteneur */
-  height: auto; /* Maintient le ratio d'aspect */
-  display: block; /* Supprime les espaces blancs autour des images */
-}
-.streetArtPhotos img {
-  max-width: 100%; /* Limite la largeur de l'image à celle de son conteneur */
-  height: auto; /* Maintient le ratio d'aspect */
-  display: block; /* Supprime les espaces blancs autour des images */
-  margin: 0 auto; /* Centre l'image horizontalement si elle est plus petite */
-}
-.titre-photos {
-  font-family: "roboto_bold", sans-serif;
-}
-.content-photos {
-  font-family: "roboto", sans-serif;
+  margin-top: 9em;
 }
 
-/* src/pages/PagesClassiques/Carte.css */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .leaflet-container {
+    padding-top: 65em;
+    margin-top: 0em;
+  }
 
-/* Assure que le contenu de la carte est bien disposé, même avec la sidebar sur desktop */
-.container-carte {
-  padding: 3.4em 0;
-  text-align: center;
-  margin-bottom: 6em;
-  display: block; /* Affichage par défaut pour mobile */
+  .container-carte {
+    padding: 0;
+  }
+
+  .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+    position: relative;
+    width: 100%;
+  }
+
+  .carte-leaflet {
+    margin-top: 7em;
+  }
 }
 
 @media (min-width: 1025px) {
@@ -55,5 +59,10 @@
   .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
     position: relative;
     width: 100%;
+    padding-bottom: 4em;
+  }
+
+  .carte-leaflet {
+    margin-top: 0;
   }
 }

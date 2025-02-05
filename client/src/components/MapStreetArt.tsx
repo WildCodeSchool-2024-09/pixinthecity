@@ -35,13 +35,13 @@ function MapStreetArt({ photos, apiUrl }: MapStreetArtProps) {
             position={[photo.latitude, photo.longitude]}
             icon={customIcon}
           >
-            <Popup>
+            <Popup className="popup-streetart">
               <strong>{photo.title}</strong>
               {photo.picture && (
                 <img
                   src={`${apiUrl}/photos/${photo.picture}`}
                   alt={photo.title}
-                  style={{ maxWidth: "100px", maxHeight: "100px" }}
+                  style={{ maxWidth: "200px", maxHeight: "200px" }}
                 />
               )}
               <p>{photo.content}</p>

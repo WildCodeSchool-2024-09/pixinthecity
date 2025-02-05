@@ -1,7 +1,67 @@
-.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
-  position: relative;
-  width: 100%;
-  /* padding-top: 51em;
-  margin-top: 11em;
-/* } */
+@font-face {
+  font-family: "pixeleum";
+  src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "roboto";
+  src: url("../../assets/fonts/roboto.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "roboto_bold";
+  src: url("../../assets/fonts/roboto_bold.ttf") format("truetype");
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border: 2px solid #ff00ff; /* Bordure noire autour de la popup */
+}
+.popup-streetart strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-family: "pixeleum", sans-serif;
+  color: #ff00ff; /* Pink color for the title */
+  text-align: center;
+}
+.popup-streetart {
+  font-family: "Roboto", sans-serif; /* Police par défaut pour le reste du contenu */
+}
+
+.popup-streetart .title,
+.popup-streetart .artist {
+  font-family: "pixeleum", sans-serif;
+  color: #ff00ff; /* Couleur rose pour le titre et l'artiste */
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.popup-streetart img {
+  display: block;
+  margin: 10px auto; /* Centre l'image */
+  border-radius: 5px;
+  max-width: 150px; /* Agrandir l'image */
+  max-height: 150px; /* Agrandir l'image */
+}
+
+.popup-streetart p {
+  margin: 5px 0;
+  font-size: 12px; /* Réduire la taille du texte de description */
+  color: #000000; /* Couleur noire pour le texte */
+}
+
+.popup-streetart .artist {
+  color: #6e7dc9; /* Couleur bleue pour le nom de l'artiste */
+}
+
+.popup-streetart .date {
+  color: #6e7dc9; /* Couleur bleue pour la date */
+}
+
+.popup-streetart p:nth-of-type(3) {
+  color: #6e7dc9; /* Blue color for the date */
 }

@@ -20,9 +20,9 @@
   }
 
   /* Le contenu principal doit se décaler à droite pour faire de la place à la sidebar */
-  .container-carte {
+  /* .container-carte {
     display: flex;
-  }
+  } */
 
   .main-content {
     margin-left: 20%; /* Décale le contenu principal en fonction de la largeur de la sidebar */
