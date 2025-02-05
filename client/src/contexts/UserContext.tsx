@@ -43,12 +43,12 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
           if (data.user) {
             setUser(data.user);
           } else {
-            Cookies.remove("authToken"); // Supprime le cookie si le token est invalide
+            //Cookies.remove("authToken"); // Supprime le cookie si le token est invalide
             setUser(null);
           }
         })
         .catch(() => {
-          Cookies.remove("authToken");
+          // Cookies.remove("authToken");
           setUser(null);
         });
     }
