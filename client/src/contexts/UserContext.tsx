@@ -1,11 +1,4 @@
-import Cookies from "js-cookie";
-import {
-  type ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { type ReactNode, createContext, useEffect, useState } from "react";
 
 // Définir le type de l'utilisateur
 interface User {
@@ -20,14 +13,14 @@ interface User {
 }
 
 // Créer un contexte avec un utilisateur par défaut
-interface UserContextType {
+export interface UserContextType {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   isAuthenticated: boolean;
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const UserContext = createContext<UserContextType | undefined>(undefined);
+const UserContext = createContext<UserContextType | null>(null);
 
 // Crée un provider pour fournir le contexte à l'application
 const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -35,30 +28,26 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const token = Cookies.get("authToken");
-    if (token) {
-      fetch(`${import.meta.env.VITE_API_URL}/api/auth`, {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-        credentials: "include",
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
+    // const token = Cookies.get("authToken");
+    // if (token) {
+    fetch(`${import.meta.env.VITE_API_URL}/api/auth`, {
+      // method: "GET",
+      // headers: { Authorization: `Bearer ${token}` },
+      credentials: "include",
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setIsAuthenticated(true);
+        } else {
           throw new Error("Token validation failed");
-        })
-        .then((data) => {
-          if (data.user) {
-            setUser(data.user);
-            setIsAuthenticated(true);
-          }
-        })
-        .catch(() => {
-          setIsAuthenticated(false);
-          setUser(null);
-        });
-    }
+        }
+      })
+
+      .catch(() => {
+        setIsAuthenticated(false);
+        setUser(null);
+      });
+    // }
   }, []);
 
   return (
@@ -69,13 +58,13 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     </UserContext.Provider>
   );
 };
-export function useIsAuthenticatedContext() {
-  const value = useContext(UserContext);
-  if (value === null) {
-    throw new Error(
-      "useIsAuthenticatedContext must be used within an IsAuthenticatedProvider",
-    );
-  }
-  return value;
-}
+// export function useIsAuthenticatedContext() {
+//   const value = useContext(UserContext);
+//   if (value === null) {
+//     throw new Error(
+//       "useIsAuthenticatedContext must be used within an IsAuthenticatedProvider",
+//     );
+//   }
+//   return value;
+// }
 export { UserContext, UserProvider };

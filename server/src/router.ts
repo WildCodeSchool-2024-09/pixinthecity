@@ -41,7 +41,7 @@ router.post(
   userActions.add,
 );
 // ajout du middleware verifyToken, si l'on a le token, on l'ajoute au cookie
-router.post("/api/login", authActions.login, authActions.verifyToken);
+router.post("/api/login", authActions.login);
 
 // routes liées aux photos
 

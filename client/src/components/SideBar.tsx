@@ -4,7 +4,7 @@ import { useUser } from "../hooks/useUser"; // Import du hook personnalisé
 import "./CSS/SideBar.css";
 
 const SideBar = () => {
-  const { user, setUser } = useUser(); // Accéder au contexte utilisateur
+  const { user, setUser, isAuthenticated } = useUser(); // Accéder au contexte utilisateur
   const navigate = useNavigate(); // Utiliser le hook useNavigate pour la redirection
 
   const handleLogout = () => {
@@ -33,11 +33,11 @@ const SideBar = () => {
           </Link>
         </div>
 
-        {user ? (
+        {isAuthenticated !== null && isAuthenticated === false ? (
           <div className="sidebar-welcome">
             <span className="welcome_username">
               <p id="welcome">Bienvenue</p>
-              <p id="header_username">{user.pseudo}</p>
+              <p id="header_username">{user?.pseudo}</p>
             </span>
             <button
               type="button"

@@ -77,14 +77,13 @@ const hashPassword: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-
-const checkAuthCookie: RequestHandler = (req, res, next) => {
+const verifyToken: RequestHandler = (req, res, next) => {
   const { authToken } = req.cookies;
   try {
     if (authToken) {
       const verified = jwt.verify(authToken, process.env.APP_SECRET as string);
       if (verified) {
-        res.status(200).json({ user: req.auth });
+        res.status(200).json();
       } else {
         res.clearCookie("authToken");
         res.status(401).json({ message: "Token expired or invalid" });
@@ -97,35 +96,4 @@ const checkAuthCookie: RequestHandler = (req, res, next) => {
     next(err);
   }
 };
-
-const verifyToken: RequestHandler = (req, res, next) => {
-  try {
-    // Vérifier la présence de l'en-tête "Authorization" dans la requête
-    const authorizationHeader = req.get("Authorization");
-
-    if (authorizationHeader == null) {
-      throw new Error("Authorization header is missing");
-    }
-
-    // Vérifier que l'en-tête a la forme "Bearer <token>"
-    const [type, token] = authorizationHeader.split(" ");
-
-    if (type !== "Bearer") {
-      throw new Error("Authorization header has not the 'Bearer' type");
-    }
-
-    // Vérifier la validité du token (son authenticité et sa date d'expération)
-    // En cas de succès, le payload est extrait et décodé
-    const decodedToken = jwt.verify(
-      token,
-      process.env.APP_SECRET as string,
-    ) as MyPayload;
-    req.auth = decodedToken;
-
-    next();
-  } catch (err) {
-    console.error(err);
-    res.sendStatus(401);
-  }
-};
-export default { login, hashPassword, verifyToken, checkAuthCookie };
+export default { login, hashPassword, verifyToken };

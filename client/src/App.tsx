@@ -2,8 +2,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import SideBar from "./components/SideBar";
-import { UserProvider } from "./contexts/UserContext";
 import "./App.css";
+import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   const location = useLocation();

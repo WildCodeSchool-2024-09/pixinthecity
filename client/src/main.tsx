@@ -8,7 +8,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import CardChasseurs from "./components/CardChasseurs";
-import { UserProvider } from "./contexts/UserContext";
 import CGU from "./pages/PagesClassiques/CGU";
 import Carte from "./pages/PagesClassiques/Carte";
 import Classement from "./pages/PagesClassiques/Classement";
@@ -105,9 +104,8 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     {/* Envelopper l'application avec UserProvider */}
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
+
+    <RouterProvider router={router} />
   </StrictMode>,
 );
 

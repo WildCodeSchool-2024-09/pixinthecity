@@ -5,7 +5,10 @@ import { useUser } from "../hooks/useUser"; // Import du hook personnalisé
 import "./CSS/Header.css";
 
 function Header() {
-  const { user, setUser } = useUser();
+  const { user, setUser, isAuthenticated } = useUser();
+
+  //console.log(isAuthenticated);
+
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -52,7 +55,7 @@ function Header() {
 
       {/* Boutons à droite */}
       <nav className="buttons">
-        {!user ? (
+        {isAuthenticated !== null && isAuthenticated === false ? (
           <>
             <button type="button" id="login_button" onClick={handleLogin}>
               CONNEXION
