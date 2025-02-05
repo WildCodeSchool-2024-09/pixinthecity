@@ -10,8 +10,8 @@ const scrollToTop = () => {
 function Regles() {
   return (
     <>
-      <div className="container">
-        <h1>RÈGLES DU JEU</h1>
+      <div className="container_rules">
+        <h1 id="firsttitle_rules">RÈGLES DU JEU</h1>
         <h2>Prêt·es à vivre l’aventure ?</h2>
         <p>Découvrez nos règles et rejoignez-nous !</p>
         <div className="instructions">
@@ -22,7 +22,7 @@ function Regles() {
             assidu·es, avec un classement officiel.
           </p>
         </div>
-        <h3>Système de points</h3>
+        <h3 className="thirdtitles_rules">Système de points</h3>
         <ul>
           <li>
             Soumission d'une œuvre avec photo et localisation valide :
@@ -37,7 +37,7 @@ function Regles() {
             <div className="points01">30 points</div>
           </li>
         </ul>
-        <h3>Système de Badges</h3>
+        <h3 className="thirdtitles_rules">Système de Badges</h3>
         <p>
           Les badges sont des récompenses visuelles qui sont attribués aux
           contributeur·rices.
@@ -130,7 +130,7 @@ function Regles() {
           </li>
         </ul>
 
-        <h3>Niveaux</h3>
+        <h3 className="thirdtitles_rules">Niveaux</h3>
         <div className="niveaux">
           <p>
             Les niveaux permettent de suivre la progression globale des
