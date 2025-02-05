@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         element: <UploadPhoto />,
       },
       {
-        path: "ouevres",
+        path: "oeuvres",
         element: <CardChasseurs />,
       },
       {
