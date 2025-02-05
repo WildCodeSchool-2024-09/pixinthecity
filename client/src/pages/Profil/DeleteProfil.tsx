@@ -39,7 +39,7 @@ function DeleteProfil() {
 
   return (
     <section className="delete-account-container">
-      <h1>SUPPRIMER MON PROFIL</h1>
+      <h1 id="delete_profile_title">SUPPRIMER MON PROFIL</h1>
       <p>Êtes-vous sûr·e de supprimer votre profil ? </p>
       <button onClick={handleDelete} className="delete-button" type="button">
         Oui, supprimer mon compte
