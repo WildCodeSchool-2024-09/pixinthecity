@@ -10,24 +10,23 @@ interface User {
   email: string;
   zip_code?: string; // optionnel
   city?: string; // optionnel
-  // hashed_password: string;
-  // passwordConfirm: string;
   is_gcu_accepted: boolean;
   is_admin: boolean;
 }
 
 function Profil() {
-  const { id } = useParams(); // Récupération de l'ID de l'utilisateur depuis l'URL
+  const { id } = useParams(); // Récupération de l'ID de l'utilisateur depuis l'URL (de manière dynamique type profil/:id)
   const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(null); // État pour stocker les informations de l'user
 
   useEffect(() => {
+    // requête pour récupérer les données de l'user via son ID
     fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
       .then((response) => response.json())
       .then((data: User) => {
-        setUser(data);
+        setUser(data); // mise à jour de l'état avec les données de l'user
       });
-  }, [id]);
+  }, [id]); // useEffect déclanché chaque fois que l'ID change
 
   if (!user) {
     return <p>Chargement...</p>;
@@ -35,9 +34,6 @@ function Profil() {
 
   return (
     <div className="profil_div">
-      {/* <h1>
-        Profil de {user.firstname} {user.lastname}
-      </h1> */}
       <section className="profil_container">
         {/* Avatar de l'utilisateur */}
         <div className="user_picture">
@@ -111,11 +107,6 @@ function Profil() {
                 src: "/src/assets/images/essai_photo.webp",
                 title: "Oeuvre 3",
               },
-              // {
-              //   id: 4,
-              //   src: "/src/assets/images/essai_photo.webp",
-              //   title: "Oeuvre 4",
-              // },
             ].map((contribution) => (
               <li key={contribution.id}>
                 <figure>
