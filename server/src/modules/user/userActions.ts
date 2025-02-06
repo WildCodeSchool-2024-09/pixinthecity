@@ -6,10 +6,10 @@ import userRepository from "./userRepository";
 // The B of BREAD - Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch all users
+    // Fetch tous les users
     const users = await userRepository.readAll();
 
-    // Respond with the users in JSON format
+    // Répond avec les users au format JSON
     res.json(users);
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -20,13 +20,13 @@ const browse: RequestHandler = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch a specific user based on the provided ID
+    // Fetche un user particulier avec son id
     const userId = Number.parseInt(req.params.id);
 
     const user = await userRepository.read(userId);
 
-    // If the user is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the user in JSON format
+    // Si l'utilisateur n'est pas trouvé, répondre avec une erreur 404
+    // Sinon, répondre avec l'user au format json
     if (user == null) {
       res.sendStatus(404);
     } else {
@@ -42,9 +42,9 @@ const edit: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number.parseInt(req.params.id);
 
-    // Vérifiez si l'ID est valide
+    // Vérifie si l'ID est valide
     if (Number.isNaN(userId)) {
-      return; // res.status(400).json({ error: "Invalid user ID" })
+      return;
     }
 
     const userData = {
@@ -60,8 +60,8 @@ const edit: RequestHandler = async (req, res, next) => {
     };
 
     const affectedRows = await userRepository.update(userData);
-    // If the user is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the user in JSON format
+    // Si l'utilisateur n'est pas trouvé, répondre avec une erreur 404
+    // Sinon, répondre avec l'user au format json
     if (affectedRows === 0) {
       res.sendStatus(404); // Arrêtez ici
       return;
@@ -76,7 +76,7 @@ const edit: RequestHandler = async (req, res, next) => {
 // The A of BREAD - Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
   try {
-    // Extract the user data from the request body
+    // Extret des datas de user depuis la requet body
     const newUser = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
@@ -98,12 +98,12 @@ const add: RequestHandler = async (req, res, next) => {
 
 const destroy: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch a specific user based on the provided ID
+    // Fetche un user spécifique à partir de l'ID fournie
     const id = Number(req.params.id);
     const user = await userRepository.delete(id);
 
-    // If the user is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the user in JSON format
+    // Si l'utilisateur n'est pas trouvé, répondre avec une erreur 404
+    // Sinon, répondre avec l'user au format json
     if (user == null) {
       res.sendStatus(404);
     } else {
