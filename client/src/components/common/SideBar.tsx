@@ -95,7 +95,7 @@ const SideBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/affichage_photos">
+              <Link to="/oeuvres">
                 <button type="button" className="sidebar-button_footer">
                   <img
                     src={"/src/assets/images/footer_icons/icon_artwork.png"}
@@ -134,7 +134,7 @@ const SideBar = () => {
         </nav>
 
         {/* Bouton pour ajouter une œuvre */}
-        <Link to="/Donnees_photo">
+        <Link to="/post_a_photo">
           <button type="button" className="button_camera">
             <img
               src={"/src/assets/images/footer_icons/icon_add.png"}
