@@ -17,7 +17,7 @@ footer {
   padding-bottom: 2.3em;
   z-index: 1000;
   background-image: url("../../assets/images/backgroundstreet.jpg");
-  background-position: 0em -37em;
+  background-position: 0em -37em fixed;
   background-size: cover;
 }
 
@@ -90,7 +90,7 @@ img.icon_camera {
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+@media (min-width: 768px) and (max-width: 1024px) {
   footer {
     background: url("../../assets/images/backgroundcity.jpg") center / cover
       fixed;

@@ -12,8 +12,9 @@
   /* Pas de marge à gauche par défaut */
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
   .main-content {
-    margin-left: 0; /* Assure que la version mobile n'a pas de marge gauche */
+    margin-left: 0;
+    /* Assure que la version mobile n'a pas de marge gauche */
   }
 }

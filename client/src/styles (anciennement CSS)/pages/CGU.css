@@ -37,7 +37,6 @@
     margin-top: 11%;
     padding-bottom: 15em;
     background: white;
-    margin-top: 5%;
   }
 }
 
@@ -48,7 +47,7 @@
     margin-top: 0%;
   }
   .main-content {
-    background-color: white;
+    background-color: black;
     margin: 0;
     padding: 0;
   }
