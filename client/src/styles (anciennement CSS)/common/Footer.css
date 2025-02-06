@@ -1,10 +1,14 @@
-/* Importation des polices */
+/* -------------------------------------------
+   POLICES
+------------------------------------------- */
 @font-face {
   font-family: "pixeleum";
   src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
 }
 
-/* Styles généraux pour le footer */
+/* -------------------------------------------
+   FOOTER STYLES
+------------------------------------------- */
 footer {
   display: flex;
   flex-direction: row;
@@ -21,7 +25,9 @@ footer {
   background-size: cover;
 }
 
-/* Boutons généraux */
+/* -------------------------------------------
+   BOUTONS FOOTER
+------------------------------------------- */
 .button_footer {
   display: flex;
   flex-direction: column;
@@ -43,14 +49,18 @@ footer {
   font-size: 0.8em;
 }
 
-/* Images des boutons */
+/* -------------------------------------------
+   IMAGES DES BOUTONS
+------------------------------------------- */
 img.icon_footer {
   width: 140%;
   height: auto;
   margin-bottom: 0.5em;
 }
 
-/* Bouton caméra */
+/* -------------------------------------------
+   BOUTON CAMÉRA
+------------------------------------------- */
 .button_camera {
   display: flex;
   align-items: center;
@@ -84,12 +94,11 @@ img.icon_footer {
 img.icon_camera {
   width: 70%;
 }
-@media (min-width: 1025px) {
-  footer {
-    display: none;
-  }
-}
 
+/* -------------------------------------------
+   MEDIA QUERIES
+------------------------------------------- */
+/* Pour les tablettes (768px à 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
   footer {
     background: url("../../assets/images/backgroundcity.jpg") center / cover
@@ -103,5 +112,12 @@ img.icon_camera {
 
   .button_camera {
     margin-top: -7%;
+  }
+}
+
+/* Cache le footer sur les écrans de bureau (1025px et plus) */
+@media (min-width: 1025px) {
+  footer {
+    display: none;
   }
 }

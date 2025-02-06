@@ -8,10 +8,11 @@
   src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
 }
 
+/* Styles généraux */
 .carte-photo {
   padding-top: 2em;
   text-align: center;
-  background: url("../assets/images/backgroundstars.jpg") center / cover fixed;
+  background: url(/src/assets/images/backgroundstars.jpg) center / cover fixed;
   color: white;
   display: flex;
   flex-direction: column;
@@ -42,6 +43,13 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 p.photo_content {
   font-family: "roboto", sans-serif;
   text-align: left;
@@ -53,21 +61,16 @@ p.artist_content {
   text-transform: uppercase;
   padding-top: 4%;
 }
-.delete_photo_content {
-  margin-top: auto;
-  padding: 15px;
-}
+
 p.date_content {
   font-family: "roboto", sans-serif;
   padding-bottom: 25%;
   color: #6e7dc9;
 }
 
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+.delete_photo_content {
+  margin-top: auto;
+  padding: 15px;
 }
 
 .streetArtPhotos .titre-photo {
@@ -82,7 +85,6 @@ p.date_content {
 }
 
 .liste-streetArt {
-  background: url(/src/assets/images/backgroundstars.jpg) center / cover fixed;
   margin-top: 4em;
   text-align: center;
   padding-top: 25%;
@@ -97,60 +99,6 @@ button.delete-photo-button {
   padding: 0.5em;
   color: white;
   text-transform: uppercase;
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .streetArtPhotos img {
-    height: 15em;
-    width: 25em;
-  }
-
-  .carte-photo {
-    background-color: black;
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: center;
-    align-content: center;
-  }
-
-  .liste-streetArt {
-    margin-top: 3em;
-    background-image: none;
-    background-color: black;
-    padding-top: 7%;
-    padding-bottom: 7%;
-  }
-}
-
-@media (min-width: 1025px) {
-  .streetArtPhotos img {
-    height: 15em;
-    width: 25em;
-  }
-
-  .carte-photo {
-    font-size: larger;
-    background-image: none;
-    background-color: black;
-    padding-top: 0;
-    display: grid;
-    grid-template-columns: auto auto;
-    padding-left: 20%;
-  }
-  .streetArtPhotos {
-    background-image: none;
-    background-color: black;
-    margin-bottom: 2em;
-    padding-top: 1em;
-  }
-
-  .liste-streetArt {
-    padding-left: 13em;
-    margin-top: 0;
-    background-image: none;
-    background-color: black;
-    padding-top: 4em;
-  }
 }
 
 /* Styles pour la modale */
@@ -204,4 +152,67 @@ button.delete-photo-button {
   border-radius: 50%;
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Media Queries */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .streetArtPhotos img {
+    height: 15em;
+    width: 25em;
+  }
+
+  .cards_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .carte-photo {
+    background-image: none;
+    background-color: black;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .liste-streetArt {
+    margin-top: 3em;
+    background-image: none;
+    background-color: black;
+    padding-top: 7%;
+    padding-bottom: 7%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .streetArtPhotos img {
+    height: 15em;
+    width: 25em;
+  }
+
+  .cards_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .carte-photo {
+    font-size: larger;
+    background-image: none;
+    background-color: black;
+    padding-top: 0;
+    align-items: center;
+    padding-left: 20%;
+  }
+
+  .streetArtPhotos {
+    background-image: none;
+    background-color: black;
+    margin-bottom: 2em;
+    padding-top: 1em;
+  }
+
+  .liste-streetArt {
+    margin-top: 0;
+    background-image: none;
+    background-color: black;
+    padding-top: 4em;
+  }
 }

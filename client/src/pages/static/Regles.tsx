@@ -15,7 +15,7 @@ function Regles() {
         <h2>Prêt·es à vivre l’aventure ?</h2>
         <p>Découvrez nos règles et rejoignez-nous !</p>
         <div className="instructions">
-          <p>
+          <p id="intro_rules">
             Des règles simples pour une aventure inoubliable. Vous parcourez les
             rues comme un·e historien·ne moderne, redécouvrant les trésors
             cachés de nos villes. Des récompenses pour les contributeur·rices

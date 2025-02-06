@@ -23,14 +23,6 @@ interface UserFormProps {
   onSubmit: (user: User) => void;
 }
 
-// Fonction pour remonter en haut de la page avec un défilement fluide
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
-
 // fonction du composant permettant la modification du profil
 function EditUserForm({
   children,
@@ -115,16 +107,6 @@ function EditUserForm({
         </button>
         {/* Appel au bouton déclaré dans la page parent "ModifProfil" */}
         {extraButton && <p className="delete_button">{extraButton}</p>}
-        <div className="button_center">
-          <button type="button" id="button_up" onClick={scrollToTop}>
-            <img
-              src={"/src/assets/images/arrow_up.png"}
-              alt="Retour_vers_le_haut"
-              id="arrow_up"
-            />
-            <p>RETOUR VERS LE HAUT</p>
-          </button>
-        </div>
       </form>
     </section>
   );

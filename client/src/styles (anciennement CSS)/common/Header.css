@@ -1,9 +1,15 @@
+/* -------------------------------------------
+   RESET GLOBAL
+------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* -------------------------------------------
+   POLICES
+------------------------------------------- */
 @font-face {
   font-family: "pixeleum";
   src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
@@ -13,11 +19,15 @@
   font-family: "roboto";
   src: url("../../assets/fonts/roboto.ttf") format("truetype");
 }
+
 @font-face {
   font-family: "roboto_bold";
   src: url("../../assets/fonts/roboto_bold.ttf") format("truetype");
 }
 
+/* -------------------------------------------
+   HEADER STYLES
+------------------------------------------- */
 header {
   background-image: url("../../assets/images/backgroundstreet.jpg");
   background-size: cover;
@@ -40,9 +50,9 @@ header {
 
 /* Conteneur centré pour "Bienvenue - Pseudo" */
 .center-container {
-  flex-grow: 1; /* Permet au bloc de prendre l'espace disponible */
+  flex-grow: 1;
   display: flex;
-  justify-content: center; /* Centre le texte */
+  justify-content: center;
   align-items: center;
 }
 
@@ -50,7 +60,7 @@ header {
 .welcome_username {
   color: white;
   text-align: center;
-  line-height: 1.2; /* Réduction de l'espace entre les lignes */
+  line-height: 1.2;
 }
 
 #welcome {
@@ -66,13 +76,13 @@ header {
 /* Boutons alignés verticalement à droite */
 .buttons {
   display: flex;
-  flex-direction: column; /* Aligne les boutons en colonne */
-  align-items: flex-end; /* Alignement à droite */
+  flex-direction: column;
+  align-items: flex-end;
   gap: 0.1em;
   margin-right: 1em;
 }
 
-/* Style des boutons */
+/* Style des boutons généraux */
 .button_header {
   font-family: "pixeleum", sans-serif;
   color: white;
@@ -85,17 +95,16 @@ header {
   height: 23px;
   font-size: 60%;
   text-align: center;
-  transition: all 0.3s ease; /* Ajout de la transition pour un effet fluide */
+  transition: all 0.3s ease;
 }
 
-/* Inversion des couleurs au survol */
 .button_header:hover {
-  color: #2c0d2a; /* Le texte devient violet */
-  background-color: white; /* Le fond devient blanc */
-  border: solid #2c0d2a 1px; /* Le bord devient violet */
+  color: #2c0d2a;
+  background-color: white;
+  border: solid #2c0d2a 1px;
 }
 
-/* Boutons de connexion et inscription */
+/* Style des boutons de connexion et inscription */
 #login_button,
 #signup_button {
   font-size: 50%;
@@ -123,16 +132,13 @@ header {
     rgba(255, 255, 255, 0.3);
 }
 
-/* Responsive : Masquer le header sur desktop */
-@media (min-width: 1025px) {
-  header {
-    display: none;
-  }
-}
-
+/* -------------------------------------------
+   MEDIA QUERIES
+------------------------------------------- */
+/* Tablettes (768px à 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
   header {
-    background-image: url(/src/assets/images/backgroundcity.jpg);
+    background-image: url("/src/assets/images/backgroundcity.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -140,5 +146,12 @@ header {
 
   .welcome_username {
     padding-top: 10%;
+  }
+}
+
+/* Cache le header sur les écrans de bureau (1025px et plus) */
+@media (min-width: 1025px) {
+  header {
+    display: none;
   }
 }

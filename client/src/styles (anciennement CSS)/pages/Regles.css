@@ -1,3 +1,4 @@
+/* Fonts */
 @font-face {
   font-family: "pixeleum";
   src: url("../../assets/fonts/pixeleum-48.ttf") format("truetype");
@@ -13,6 +14,7 @@
   src: url("../../assets/fonts/roboto_bold.ttf") format("truetype");
 }
 
+/* Animations */
 @keyframes moveUpDown {
   0% {
     transform: translateY(0);
@@ -24,81 +26,8 @@
     transform: translateY(0);
   }
 }
-.container_rules p {
-  text-align: center;
-}
 
-.container_rules {
-  position: absolute;
-  text-align: center;
-  background: url("../../assets/images/backgroundstars.jpg") center / cover
-    fixed;
-  font-family: "roboto", sans-serif;
-  color: white;
-  padding: 12em 1.5em 13em;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  min-height: 100vh;
-  box-sizing: border-box;
-  overflow-y: auto;
-}
-
-ul {
-  list-style: none;
-  margin-bottom: 3em;
-}
-
-.instructions,
-.niveaux {
-  text-align: left;
-  padding: 2.8em 0;
-}
-
-.niveaux {
-  padding-top: 0;
-}
-
-.badges_img {
-  width: 15%;
-  margin: 1.5em 0;
-}
-
-.badges_class {
-  margin-top: 2em;
-}
-
-.badge {
-  color: #6e7dc9;
-  font-family: "roboto_bold", sans-serif;
-}
-
-.points01,
-.points02 {
-  font-family: "pixeleum", sans-serif;
-  color: #fad009;
-  font-size: larger;
-  margin: 1em 0 2em;
-}
-
-img#arrow_up {
-  width: 11%;
-  animation: moveUpDown 1s ease-in-out infinite;
-}
-
-#button_up {
-  background: none;
-  border: 0;
-  cursor: pointer;
-  z-index: 10;
-}
-
-#button_up p {
-  color: white;
-  font-family: "pixeleum", sans-serif;
-}
-
+/* Titles */
 h1,
 h2,
 h4,
@@ -140,13 +69,97 @@ h6 {
   font-size: medium;
 }
 
+.container_rules p {
+  text-align: center;
+}
+
+/* Container  */
+.container_rules {
+  position: absolute;
+  text-align: center;
+  background: url("../../assets/images/backgroundstars.jpg") center / cover
+    fixed;
+  font-family: "roboto", sans-serif;
+  color: white;
+  padding: 12em 1.5em 13em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+ul {
+  list-style: none;
+  margin-bottom: 3em;
+}
+
+.instructions,
+.niveaux {
+  text-align: left;
+  padding: 2.8em 0;
+}
+
+.niveaux {
+  padding-top: 0;
+}
+
+.points01,
+.points02 {
+  font-family: "pixeleum", sans-serif;
+  color: #fad009;
+  font-size: larger;
+  margin: 1em 0 2em;
+}
+
+#intro_rules {
+  text-align: left;
+}
+
+/* Badges */
+.badges_img {
+  width: 15%;
+  margin: 1.5em 0;
+}
+
+.badges_class {
+  margin-top: 2em;
+}
+
+.badge {
+  color: #6e7dc9;
+  font-family: "roboto_bold", sans-serif;
+}
+
+/* Button */
+
+img#arrow_up {
+  width: 11%;
+  animation: moveUpDown 1s ease-in-out infinite;
+}
+
+#button_up {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#button_up p {
+  color: white;
+  font-family: "pixeleum", sans-serif;
+}
+
+/* Tablet (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
   .container_rules {
     font-size: 1.2em;
     max-width: 100%;
     margin: 0 auto;
-    background-image: none; /* Retirer l'image de fond */
-    background-color: black; /* Ajouter une couleur de fond noire */
+    background-image: none;
+    background-color: black;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -157,6 +170,7 @@ h6 {
   }
 }
 
+/* Desktop (1025px and above) */
 @media (min-width: 1025px) {
   .container_rules {
     padding-top: 10%;
@@ -164,8 +178,8 @@ h6 {
     padding-left: 22%;
     max-width: 100%;
     margin: 0 auto;
-    background-image: none; /* Retirer l'image de fond */
-    background-color: black; /* Ajouter une couleur de fond noire */
+    background-image: none;
+    background-color: black;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;

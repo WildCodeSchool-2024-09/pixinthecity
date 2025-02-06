@@ -60,6 +60,8 @@ h1 {
 .auth-gcu {
   margin-top: 0.75em;
 }
+
+/* Tablet (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
   .post-photo-container {
     background: none;
@@ -67,6 +69,7 @@ h1 {
   }
 }
 
+/* Desktop(1025px and above) */
 @media (min-width: 1025px) {
   .main-content {
     padding: 0;
@@ -75,9 +78,6 @@ h1 {
   .formphoto {
     margin-left: 19%;
     margin-right: 15%;
-    /* display: flex;
-    flex-direction: column; /* Aligne les éléments verticalement */
-    /* justify-content: center; */
   }
 
   .form-photo-fields {
