@@ -106,7 +106,6 @@ button.delete-photo-button {
   }
 
   .carte-photo {
-    background-image: none;
     background-color: black;
     display: grid;
     grid-template-columns: auto auto;
@@ -115,7 +114,7 @@ button.delete-photo-button {
   }
 
   .liste-streetArt {
-    margin-top: 5em;
+    margin-top: 3em;
     background-image: none;
     background-color: black;
     padding-top: 7%;

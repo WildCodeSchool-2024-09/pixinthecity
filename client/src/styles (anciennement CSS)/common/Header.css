@@ -137,4 +137,8 @@ header {
     background-position: center;
     background-attachment: fixed;
   }
+
+  .welcome_username {
+    padding-top: 10%;
+  }
 }
