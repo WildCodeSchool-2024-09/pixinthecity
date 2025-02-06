@@ -21,7 +21,7 @@ class PhotoRepository {
 
     const latitude = photo.latitude ?? defaultLatitude; // Valeur ou défaut
     const longitude = photo.longitude ?? defaultLongitude; // Valeur ou défaut
-    // Execute the SQL INSERT query to add a new photo to the "photo" table
+    // Exécute l'insertion SQL query pour ajouter une nouvelle photo à la photo table
     const [result] = await databaseClient.query<Result>(
       "insert into photo (title, content, artist, dateoftheday, latitude, longitude, picture, user_id) values (?, ?, ?, ?, ?, ?, ?, ?)",
       [
@@ -36,39 +36,39 @@ class PhotoRepository {
       ],
     );
 
-    // Return the ID of the newly inserted photo
+    // Retourne l'ID de la nouvelle photo inserrée
     return result.insertId;
   }
 
   // The Rs of CRUD - Read operations
 
   async read(photoId: number) {
-    // Execute the SQL SELECT query to retrieve a specific photo by its ID
+    // Exécute le SQL select pour rendre une photo spécifique grâce à son ID
     const [rows] = await databaseClient.query<Rows>(
       "select * from photo where id = ?",
       [photoId],
     );
 
-    // Return the first row of the result, which represents the photo
+    // retourne la première row du résultat qui représente une photo
     return rows[0] as Photo;
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all photos from the "photo" table
+    // // Exécute le SQL select pour rendre toutes les photos de la table
     const [rows] = await databaseClient.query<Rows>("select * from photo");
 
-    // Return the array of photos
+    // Return un tableau de photos
     return rows as Photo[];
   }
 
   async delete(id: number) {
-    // Execute the SQL DELETE query to delete an existing photo from the "photo" table
+    // Execute la query DELETE de SQL pour supprimer une photo identifiée par son ID
     const [result] = await databaseClient.query<Result>(
       "delete from photo where id = ?",
       [id],
     );
 
-    // Return how many rows were affected
+    // retourne combien de rows ont été affectés
     return result.affectedRows;
   }
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./CardChasseurs.css";
+import "../styles (anciennement CSS)/pages/CardChasseurs.css";
 import PhotoDeleteForm from "./PhotoDeleteForm";
 
 type PhotoType = {

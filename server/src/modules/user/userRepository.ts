@@ -19,7 +19,7 @@ class UserRepository {
   //   // The C of CRUD - Create operation
 
   async create(user: Omit<User, "id">): Promise<number> {
-    // Execute the SQL INSERT query to add a new user to the "user" table
+    // Execute le query SQL INSERT pour ajouter un nouvel user à la table
     const [result] = await databaseClient.query<Result>(
       "insert into user (firstname, lastname, pseudo, email, zip_code, city, hashed_password, is_gcu_accepted, is_admin) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
@@ -35,43 +35,42 @@ class UserRepository {
       ],
     );
 
-    // Return the ID of the newly inserted user
+    // Retourne l'ID du nouvel user inserré
     return result.insertId;
   }
 
   // The Rs of CRUD - Read operations
 
   async read(id: number) {
-    // Execute the SQL SELECT query to retrieve a specific user by its ID
+    // Execute la query SQL Select pour récupérer un user spécifique grâce à son ID
     const [rows] = await databaseClient.query<Rows>(
       "select * from user where id = ?",
       [id],
     );
 
-    // Return the first row of the result, which represents the user
+    // Retourne la première row du résultat, qui représente l'user
     return rows[0] as User;
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all users from the "user" table
+    // Exécute la query SELECT de SQL SELECT pour récupérer tous les users de la table user
     const [rows] = await databaseClient.query<Rows>("select * from user");
 
-    // Return the array of users
+    // Retourne un tableau
     return rows as User[];
   }
 
   async readByEmailWithPassword(email: string) {
-    // Execute the SQL SELECT query to retrieve a specific user by its email
+    // Exécute la query SQL SELECT pour récupérer un user spécifique avec son email
     const [rows] = await databaseClient.query<Rows>(
       "select * from user where email = ?",
       [email],
     );
 
-    // Return the first row of the result, which represents the user
+    // Retourne la première row du résultat, c'est-à-dire l'user
     return rows[0] as User;
   }
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing item
 
   async update(user: User) {
     const { firstname, lastname, pseudo, email, zip_code, city, is_admin, id } =
@@ -94,13 +93,13 @@ class UserRepository {
     return result.affectedRows;
   }
   async delete(id: number) {
-    // Execute the SQL DELETE query to delete an existing user from the "user" table
+    // Exécute la query SQL DELETE pour supprimer un user existant depuis la table
     const [result] = await databaseClient.query<Result>(
       "delete from user where id = ?",
       [id],
     );
 
-    // Return how many rows were affected
+    // Retourne combien de rows ont été affectés
     return result.affectedRows;
   }
 }

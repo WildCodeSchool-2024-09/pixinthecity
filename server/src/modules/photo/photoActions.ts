@@ -9,10 +9,9 @@ const browse: RequestHandler = async (req, res, next) => {
     // Fetch all photos
     const photos = await photoRepository.readAll();
 
-    // Respond with the photos in JSON format
+    // Répond avec les photos en JSON format
     res.json(photos);
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
@@ -20,19 +19,18 @@ const browse: RequestHandler = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch a specific item based on the provided ID
+    // Fetch une photo spécifique basée sur l'ID fournie
     const photoid = Number(req.params.id);
     const photo = await photoRepository.read(photoid);
 
-    // If the photo is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the item in JSON format
+    // Si la photo n'est pas trouvée, répondre avec une erreur 404
+    // Sinon, répondre avec une photo en format JSON
     if (photo == null) {
       res.sendStatus(404);
     } else {
       res.json(photo);
     }
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
@@ -40,7 +38,7 @@ const read: RequestHandler = async (req, res, next) => {
 // The A of BREAD - Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
   try {
-    // Extract the photo data from the request body
+    // Extrait des photos du request body
     const { title, content, artist, date, user_id } = req.body;
     const latitude = req.body.latitude;
     const longitude = req.body.longitude;
@@ -67,7 +65,7 @@ const add: RequestHandler = async (req, res, next) => {
     // Create the photo
     const insertId = await photoRepository.create(newPhoto);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted photo
+    // Répond avec une 201 (Created) et l'ID de la nouvelle photo inserrée
     res.status(201).json({ insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -77,12 +75,11 @@ const add: RequestHandler = async (req, res, next) => {
 
 const destroy: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch a specific photo based on the provided ID
+    // Fetch une photo spécifique basée sur l'ID fournie
     const photoid = Number(req.params.id);
     const photo = await photoRepository.delete(photoid);
-
-    // If the photo is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the photo in JSON format
+    // Si la photo n'est pas trouvée, répondre avec une erreur 404
+    // Sinon, répondre avec une photo en format JSON
     if (photo == null) {
       res.sendStatus(404);
     } else {
@@ -93,7 +90,5 @@ const destroy: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-
-// Export them to import them somewhere else
 
 export default { browse, read, add, destroy };
