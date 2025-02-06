@@ -13,13 +13,14 @@ const customIcon = new L.Icon({
 });
 
 type MapStreetArtProps = {
-  photos: PhotoType[];
-  apiUrl: string;
+  photos: PhotoType[]; // contient un tableau avec des infos sur l'oeuvre d'art
+  apiUrl: string; // URL de l'API (utilisé pour obtenir l'image de chaque photo)
 };
 
 function MapStreetArt({ photos, apiUrl }: MapStreetArtProps) {
   return (
     <>
+      {/* Import de la mapcontainer avec openstreetmap */}
       <MapContainer
         center={[45.7455, 4.8278]}
         zoom={20}
@@ -29,14 +30,19 @@ function MapStreetArt({ photos, apiUrl }: MapStreetArtProps) {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
+        {/* Affichage des marqueurs sur la carte pour chaque photo */}
         {photos.map((photo) => (
           <Marker
-            key={photo.id}
+            key={photo.id} // la clé pour chaque marqueur venant récupérer ses coordonnées gps
             position={[photo.latitude, photo.longitude]}
             icon={customIcon}
           >
+            {/* pop-up qui apparait lorsqu'on clique sur le marqueur */}
             <Popup className="popup-streetart">
               <strong>{photo.title}</strong>
+
+              {/* Affichage de l'image de la photo */}
               {photo.picture && (
                 <img
                   src={`${apiUrl}/photos/${photo.picture}`}

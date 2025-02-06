@@ -5,10 +5,10 @@ import "./DeleteProfil.css";
 
 function DeleteProfil() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id } = useParams(); // récupération de l'ID utilisateur depuis l'URL (paramètre dynamique comme profil/:id)
 
   const handleDelete = async () => {
-    if (!id) return;
+    if (!id) return; // vérifie si un ID est présent sinon annule l'exécution du delete
 
     const confirmDelete = window.confirm(
       "Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible.",
@@ -16,6 +16,7 @@ function DeleteProfil() {
     if (!confirmDelete) return;
 
     try {
+      // requete pour supprimer le user identifié avec son ID de l'API
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users/${id}`,
         {
@@ -23,10 +24,10 @@ function DeleteProfil() {
           headers: { "Content-Type": "application/json" },
         },
       );
-
+      // si la réponse est ok, le compte est supprimé, sinon envoi une erreur
       if (response.ok) {
         toast.success("Votre compte a été supprimé.");
-        navigate("/", { state: { deleted: true } }); // Envoi du state
+        navigate("/", { state: { deleted: true } }); // redirection vers l'accueil avec un état
       } else {
         throw new Error("Erreur lors de la suppression du compte.");
       }

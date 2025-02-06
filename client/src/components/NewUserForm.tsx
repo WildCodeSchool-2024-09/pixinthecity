@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css"; // Import des styles de Toastify
 import "./NewUserForm.css";
 import { Link } from "react-router-dom";
 
+// Définition du type de données pour un profil utilisateur
 export type ProfilType = {
   firstname: string;
   lastname: string;
@@ -19,20 +20,23 @@ export type ProfilType = {
   is_admin: boolean;
 };
 
+// Définition des props pour le composant NewUserForm
 interface CreaProfilType {
   children?: ReactNode;
   defaultValue: ProfilType;
   onSubmit: (photo: ProfilType) => void;
 }
 
+// Fonction pour faire défiler la page vers le haut de manière fluide
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth", // Défilement fluide
+    behavior: "smooth",
   });
 };
 
 function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
+  // État pour suivre si l'utilisateur a accepté les CGU
   const [isGCUAccepted, setIsGCUAccepted] = useState(
     defaultValue.is_gcu_accepted,
   );
@@ -43,7 +47,9 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          const formData = new FormData(event.currentTarget);
+          const formData = new FormData(event.currentTarget); // Récupère les valeurs des champs du formulaire
+
+          // Extraction des valeurs du formulaire
           const firstname = formData.get("firstname") as string;
           const lastname = formData.get("lastname") as string;
           const pseudo = formData.get("pseudo") as string;
@@ -60,6 +66,7 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
             return;
           }
 
+          // Vérifie que tous les champs obligatoires sont remplis
           if (
             !firstname ||
             !lastname ||
