@@ -1,13 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../../components/CSS/Login.css";
-import { type FormEventHandler, useContext, useRef, useState } from "react";
+//import Cookies from "js-cookie";
+import { type FormEventHandler, useRef, useState } from "react";
 import Logo from "../../assets/images/logo.png";
-import { UserContext } from "../../contexts/UserContext"; // Importer le UserContext
+import { useUser } from "../../hooks/useUser";
 
 function Login() {
   const emailRef = useRef<HTMLInputElement>(null);
   const [password, setPassword] = useState<string>("");
-  const { setUser } = useContext(UserContext) || {}; // Utilisation d'une valeur par défaut (vide) si UserContext est undefined
+  const { setUserId, setIsAuthenticated, isAuthenticated } = useUser(); // Utilisation d'une valeur par défaut (vide) si UserContext est undefined
   const navigate = useNavigate();
 
   const handleSubmit: FormEventHandler = async (event) => {
@@ -17,26 +18,39 @@ function Login() {
         `${import.meta.env.VITE_API_URL}/api/login`,
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: emailRef.current?.value, // Sécurise l'accès à emailRef
-            password,
+            password: password,
           }),
         },
       );
 
       if (response.status === 200) {
         const data = await response.json();
-        if (setUser) {
-          setUser(data.user); // Met à jour l'état de l'utilisateur
-        }
-        navigate(`/Profil/${data.user.id}`);
+        // const token = data.token;
+        // Stocker le token dans un cookie
+        // Cookies.set("authToken", token, {
+        //   expires: 7, // Expiration dans 7 jours
+        //   path: "/",
+        //   secure: true,
+        //   sameSite: "Strict",
+        // });
+        setIsAuthenticated(isAuthenticated);
+        setUserId(data.id); // Met à jour l'état de l'utilisateur
+        navigate(`/Profil/${data.id}`);
+        // window.location.reload(); // Rafraîchir la page pour recharger l'état
       } else {
+        alert("mot de passe invalide");
         console.info(response);
       }
     } catch (err) {
       console.error(err);
     }
+    // --------------------------------------------------------------------------------------------------------
+    // fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
+    // })
   };
 
   return (
@@ -53,7 +67,7 @@ function Login() {
               <input
                 className="input_email"
                 type="email"
-                id="email"
+                id="identifiant"
                 placeholder="email"
                 ref={emailRef}
                 required
@@ -64,7 +78,7 @@ function Login() {
               <br />
               <input
                 className="input_password"
-                id="password"
+                id="mdp"
                 placeholder="mot de passe"
                 type="password"
                 value={password}

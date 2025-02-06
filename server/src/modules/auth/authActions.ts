@@ -21,9 +21,8 @@ const login: RequestHandler = async (req, res, next) => {
     if (verified) {
       // Respond with the user in JSON format (but without the hashed password)
       const { hashed_password, ...userWithoutHashedPassword } = user;
-      const myPayload = {
-        sub: user.id.toString(),
-        // isAdmin: user.is_admin,
+      const myPayload: MyPayload = {
+        id: user.id,
       };
 
       const token = await jwt.sign(
@@ -33,8 +32,14 @@ const login: RequestHandler = async (req, res, next) => {
           expiresIn: "1h",
         },
       );
+      res.cookie("authToken", token, {
+        // httpOnly: true,
+        // secure: true,
+        sameSite: "strict",
+        maxAge: 60 * 60 * 1000,
+      });
 
-      res.json({ user: userWithoutHashedPassword, token });
+      res.status(200).json({ id: user.id });
     } else {
       res.sendStatus(422);
     }
@@ -68,4 +73,35 @@ const hashPassword: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-export default { login, hashPassword };
+const verifyToken: RequestHandler = (req, res, next) => {
+  const { authToken } = req.cookies;
+  try {
+    if (authToken) {
+      const verified = jwt.verify(authToken, process.env.APP_SECRET as string);
+      if (verified) {
+        const decoded = jwt.decode(authToken);
+        res.status(200).json(decoded);
+      } else {
+        res.clearCookie("authToken");
+      }
+    } else {
+      res.status(401).json({ message: "No token provided" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const logout: RequestHandler = (req, res, next) => {
+  const { authToken } = req.cookies;
+
+  try {
+    if (authToken) {
+      res.status(200).clearCookie(authToken);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { login, hashPassword, verifyToken, logout };

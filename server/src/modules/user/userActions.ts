@@ -30,7 +30,8 @@ const read: RequestHandler = async (req, res, next) => {
     if (user == null) {
       res.sendStatus(404);
     } else {
-      res.json(user);
+      const { hashed_password, ...userWithoutPassword } = user;
+      res.json(userWithoutPassword);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware

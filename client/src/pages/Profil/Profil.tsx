@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../../pages/Profil/Profil.css";
+// import { useUser } from "../../hooks/useUser";
 
 interface User {
   id: number;
@@ -19,17 +20,19 @@ interface User {
 function Profil() {
   const { id } = useParams(); // Récupération de l'ID de l'utilisateur depuis l'URL
   const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
+  const [userId, setUserId] = useState<User | null>(null);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`, {
+      credentials: "include",
+    })
       .then((response) => response.json())
       .then((data: User) => {
-        setUser(data);
+        setUserId(data);
       });
   }, [id]);
 
-  if (!user) {
+  if (!userId) {
     return <p>Chargement...</p>;
   }
 
@@ -54,7 +57,7 @@ function Profil() {
         </div>
 
         {/* Pseudo de l'utilisateur */}
-        <h1 id="username">{user.pseudo}</h1>
+        <h1 id="username">{userId.pseudo}</h1>
 
         {/* Niveau de l'utilisateur */}
         <p id="user_level" aria-label="Niveau de l'utilisateur">
@@ -135,7 +138,7 @@ function Profil() {
         <section aria-labelledby="user-settings">
           <button
             type="button"
-            onClick={() => navigate(`/modifier_mon_profil/${user.id}`)}
+            onClick={() => navigate(`/modifier_mon_profil/${userId}`)}
             className="btn-edit-profile"
           >
             <img

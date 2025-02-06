@@ -4,23 +4,29 @@ import { useUser } from "../../hooks/useUser"; // Import du hook personnalisé
 import "../../styles (anciennement CSS)/common/SideBar.css";
 
 const SideBar = () => {
-  const { user, setUser } = useUser(); // Accéder au contexte utilisateur
+  const { userId, setUserId, setIsAuthenticated, isAuthenticated } = useUser(); // Accéder au contexte utilisateur
   const navigate = useNavigate(); // Utiliser le hook useNavigate pour la redirection
 
   const handleLogout = () => {
-    setUser(null); // Déconnexion de l'utilisateur
-    navigate("/"); // Redirection vers la page d'accueil après déconnexion
+    fetch(`${import.meta.env.VITE_API_URL}/api/logout`, {
+      credentials: "include",
+    }).then((res) => {
+      if (res.status === 200) setIsAuthenticated(false);
+      navigate("/"); // Redirige vers la page d'accueil
+      setUserId(null); // Déconnecte l'utilisateur en réinitialisant le contexte
+    });
   };
 
   const goToProfile = () => {
-    if (user) {
-      navigate(`/Profil/${user.id}`); // Redirection vers le profil de l'utilisateur
+    if (userId) {
+      navigate(`/Profil/${userId}`); // Redirection vers le profil de l'utilisateur
+      window.location.reload(); // Rafraîchir la page pour recharger l'état
     }
   };
 
   const goToEditProfile = () => {
-    if (user) {
-      navigate(`/modifier_mon_profil/${user.id}`); // Redirection vers la modification du profil
+    if (userId) {
+      navigate(`/modifier_mon_profil/${userId}`); // Redirection vers la modification du profil
     }
   };
 
@@ -32,12 +38,11 @@ const SideBar = () => {
             <img src={Logo} alt="Logo" className="logo-sidebar" />
           </Link>
         </div>
-
-        {user ? (
+        {isAuthenticated === false ? (
           <div className="sidebar-welcome">
             <span className="welcome_username">
               <p id="welcome">Bienvenue</p>
-              <p id="header_username">{user.pseudo}</p>
+              {/* <p id="header_username">{userId?.pseudo}</p> */}
             </span>
             <button
               type="button"
