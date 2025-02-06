@@ -15,6 +15,7 @@ const SideBar = () => {
   const goToProfile = () => {
     if (user) {
       navigate(`/Profil/${user.id}`); // Redirection vers le profil de l'utilisateur
+      window.location.reload(); // Rafraîchir la page pour recharger l'état
     }
   };
 
@@ -33,11 +34,13 @@ const SideBar = () => {
           </Link>
         </div>
 
-        {isAuthenticated !== null && isAuthenticated === false ? (
+        {isAuthenticated ? (
           <div className="sidebar-welcome">
             <span className="welcome_username">
+              {/* Affichage conditionnel du pseudo de l'utilisateur */}
               <p id="welcome">Bienvenue</p>
-              <p id="header_username">{user?.pseudo}</p>
+              <p id="header_username">{user?.pseudo || "Utilisateur"}</p>{" "}
+              {/* Si pseudo est undefined ou null, afficher "Utilisateur" */}
             </span>
             <button
               type="button"

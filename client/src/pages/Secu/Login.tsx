@@ -43,7 +43,7 @@ function Login() {
         }
 
         navigate(`/Profil/${data.user.id}`);
-        // window.location.reload(); // Rafraîchir la page pour recharger l'état
+        window.location.reload(); // Rafraîchir la page pour recharger l'état
       } else {
         console.info(response);
       }

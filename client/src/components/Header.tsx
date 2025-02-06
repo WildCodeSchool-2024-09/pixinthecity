@@ -43,29 +43,20 @@ function Header() {
         <img src={Logo} alt="Logo" id="logo" />
       </Link>
 
-      {/* Bienvenue + Pseudo centré */}
-      {user && (
-        <div className="center-container">
-          <span className="welcome_username">
-            <p id="welcome">Bienvenue</p>
-            <p id="header_username">{user.pseudo}</p>
-          </span>
-        </div>
-      )}
-
       {/* Boutons à droite */}
       <nav className="buttons">
-        {isAuthenticated !== null && isAuthenticated === false ? (
+        {isAuthenticated === true ? (
           <>
-            <button type="button" id="login_button" onClick={handleLogin}>
-              CONNEXION
-            </button>
-            <button type="button" id="signup_button" onClick={handleSignup}>
-              CRÉER MON COMPTE
-            </button>
-          </>
-        ) : (
-          <>
+            {/* Bienvenue + Pseudo centré */}
+            {user && (
+              <div className="center-container">
+                <span className="welcome_username">
+                  <p id="welcome">Bienvenue</p>
+                  <p id="header_username">{user.pseudo}</p>
+                </span>
+              </div>
+            )}
+
             <button
               type="button"
               className="button_header"
@@ -86,6 +77,15 @@ function Header() {
               onClick={handleLogout}
             >
               DÉCONNEXION
+            </button>
+          </>
+        ) : (
+          <>
+            <button type="button" id="login_button" onClick={handleLogin}>
+              CONNEXION
+            </button>
+            <button type="button" id="signup_button" onClick={handleSignup}>
+              CRÉER MON COMPTE
             </button>
           </>
         )}
