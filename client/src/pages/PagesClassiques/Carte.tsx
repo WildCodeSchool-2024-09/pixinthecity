@@ -10,9 +10,11 @@ import "./Carte.css";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function CartePage() {
+  // Déclaration de l'état pour stocker les photos récupérées depuis l'API
   const [photos, setPhotos] = useState<PhotoType[] | []>([]);
+  // // Déclaration de l'état pour détecter si l'affichage est en mode desktop (par rapport à la side barre)
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
-
+  // s'exécute au montage du composant
   useEffect(() => {
     fetch(`${API_URL}/api/photos`)
       .then((responseData) => {
@@ -27,10 +29,10 @@ function CartePage() {
       setIsDesktop(window.innerWidth >= 1024); // Définit "isDesktop" si la largeur de l'écran est supérieure à 1024px
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize); // Ajoute un écouteur d'événement pour voir si l'utilisateur utilise un écran desktop. La sidebar s'affiche ou non en fonction
     handleResize(); // Appel initial pour vérifier la taille de l'écran
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResize); // nettoyage de l'écouteur d'évenement lors du montage du composant
     };
   }, []);
 
@@ -43,7 +45,7 @@ function CartePage() {
 
         <main>
           {isDesktop && <SideBar />}{" "}
-          {/* Afficher la SideBar uniquement si c'est un écran desktop */}
+          {/* Afficher la sidebar uniquement si c'est un écran desktop */}
           <div className="carte-leaflet">
             {photos.length > 0 ? (
               <MapStretArt photos={photos} apiUrl={API_URL} />

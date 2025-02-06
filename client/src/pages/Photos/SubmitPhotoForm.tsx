@@ -10,23 +10,17 @@ type PhotoType = {
 };
 
 interface SubmitPhotoType {
-  children?: ReactNode;
-  defaultValue: PhotoType;
-  onSubmit: (photo: FormData) => void;
+  children?: ReactNode; // contenu optionnel qui peut être passé à l'intérieur du composant (pour le bouton dynamique)
+  defaultValue: PhotoType; // valeurs par défaut du formulaire
+  onSubmit: (photo: FormData) => void; // appelée lors de la soumission d'une photo
 }
-
-// const scrollToTop = () => {
-//   window.scrollTo({
-//     top: 0,
-//     behavior: "smooth", // Défilement fluide
-//   });
-// };
 
 function SubmitPhotoForm({
   children,
   defaultValue,
   onSubmit,
 }: SubmitPhotoType) {
+  // obtention de la date actuelle au format aaaa-mm-dd
   const today = new Date().toISOString().split("T")[0];
   const formattedDate = new Date().toLocaleDateString("fr-FR"); // Format de la date au format DD-MM-YYYY
 
@@ -36,7 +30,7 @@ function SubmitPhotoForm({
       <form
         className="formphoto"
         onSubmit={(event) => {
-          event.preventDefault();
+          event.preventDefault(); // empêche le rechargement de la page lors de la soumission
           const formData = new FormData(event.currentTarget);
           formData.append("date", today);
           formData.append("dateoftheday", formattedDate); // Ajouter la date formatée
@@ -80,20 +74,6 @@ function SubmitPhotoForm({
         <button className="post-photo-button" type="submit">
           {children}PROPOSER UNE ŒUVRE
         </button>
-        {/* <div className="button_hiden">
-          <button
-            type="button"
-            id="button_up"
-            onClick={scrollToTop} // Ajout du gestionnaire d'événement
-          >
-            <img
-              src={"/src/assets/images/arrow_up.png"}
-              alt="Retour_vers_le_haut"
-              id="arrow_up"
-            />
-            <p>RETOUR VERS LE HAUT</p>
-          </button>
-        </div> */}
       </form>
     </section>
   );
