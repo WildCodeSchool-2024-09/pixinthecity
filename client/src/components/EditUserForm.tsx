@@ -20,13 +20,6 @@ interface UserFormProps {
   onSubmit: (user: User) => void;
 }
 
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
-
 function EditUserForm({
   children,
   defaultValue,
@@ -110,16 +103,6 @@ function EditUserForm({
           {children}
         </button>
         {extraButton && <p className="delete_button">{extraButton}</p>}
-        <div className="button_center">
-          <button type="button" id="button_up" onClick={scrollToTop}>
-            <img
-              src={"/src/assets/images/arrow_up.png"}
-              alt="Retour_vers_le_haut"
-              id="arrow_up"
-            />
-            <p>RETOUR VERS LE HAUT</p>
-          </button>
-        </div>
       </form>
     </section>
   );
