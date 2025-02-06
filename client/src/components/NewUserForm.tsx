@@ -190,7 +190,12 @@ function NewUserForm({ children, defaultValue, onSubmit }: CreaProfilType) {
         />
 
         <label className="form-fields gcu-label" htmlFor="is_gcu_accepted">
-          <Link to="/cgu" className="gcu-link">
+          <Link
+            to="/cgu"
+            className="gcu-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             J'accepte les conditions générales d'utilisation*
           </Link>
           <input

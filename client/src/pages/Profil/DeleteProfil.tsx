@@ -28,6 +28,7 @@ function DeleteProfil() {
       if (response.ok) {
         toast.success("Votre compte a été supprimé.");
         navigate("/", { state: { deleted: true } }); // redirection vers l'accueil avec un état
+        window.location.reload(); // Rafraîchir la page pour recharger l'état
       } else {
         throw new Error("Erreur lors de la suppression du compte.");
       }
