@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         element: <Carte />, // La page principale (Carte)
       },
       {
-        path: "Regles",
+        path: "regles",
         element: <Regles />,
       },
       {
@@ -48,27 +48,27 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "Donnees_photo",
+        path: "post_a_photo",
         element: <UploadPhoto />,
       },
       {
-        path: "affichage_photos",
+        path: "oeuvres",
         element: <CardChasseurs />,
       },
       {
-        path: "Creation_de_profil",
+        path: "creer_un_profil",
         element: <CreaProfil />,
       },
       {
-        path: "Modification_de_profil/:id",
+        path: "modifier_mon_profil/:id",
         element: <ModifProfil />,
       },
       {
-        path: "Suppression_de_profil/:id",
+        path: "supprimer_mon_profil/:id",
         element: <DeleteProfil />,
       },
       {
-        path: "Profil/:id",
+        path: "profil/:id",
         element: <Profil />,
       },
       {

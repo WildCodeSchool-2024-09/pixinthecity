@@ -13,10 +13,12 @@
   min-height: 100vh;
   box-sizing: border-box;
   overflow-y: auto;
+  position: fixed;
+  width: 100%;
 }
 
 .delete-button {
-  width: 100%;
+  width: 50%;
   margin-top: 2em;
   margin-bottom: 1em;
   padding: 10px;
@@ -30,4 +32,34 @@
   text-align: center;
   text-transform: uppercase;
   background-color: #ed2ea5;
+}
+
+#delete_profile_title {
+  margin-top: 25%;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .delete-account-container {
+    background: none;
+  }
+
+  #delete_profile_title {
+    margin-top: 5%;
+  }
+
+  .delete-button {
+    width: 25%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .delete-account-container {
+    background: none;
+    padding-left: 22%;
+    padding-top: 2%;
+  }
+
+  .delete-button {
+    width: 30%;
+  }
 }
