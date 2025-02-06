@@ -1,10 +1,9 @@
 // src/pages/PagesClassiques/Carte.tsx
 import { useEffect, useState } from "react";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
 import MapStretArt from "../../components/MapStreetArt";
-// import PhotoDeleteForm from "../../components/PhotoDeleteForm";
-import SideBar from "../../components/SideBar"; // Import de la SideBar
+import Footer from "../../components/common/Footer";
+import Header from "../../components/common/Header";
+import SideBar from "../../components/common/SideBar"; // Import de la SideBar
 import type PhotoType from "../../types/PhotoType";
 import "./Carte.css";
 

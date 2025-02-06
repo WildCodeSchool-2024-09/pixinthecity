@@ -27,9 +27,16 @@ body.login-page {
   padding: 0;
 }
 
+#logo_login {
+  width: 15em;
+  padding-top: 3em;
+  padding-bottom: 20%;
+}
+
 /* S'assurer que le formulaire ne dépasse pas la largeur */
 .formulaire {
   width: 100%;
+  margin-top: 3em;
 }
 
 /* Labels Container */

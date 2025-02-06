@@ -1,4 +1,4 @@
-import "../../components/CSS/Regles.css";
+import "../../styles (anciennement CSS)/pages/Regles.css";
 
 const scrollToTop = () => {
   window.scrollTo({

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../assets/images/logo.png";
-import { useUser } from "../hooks/useUser"; // Import du hook personnalisé
-import "./CSS/SideBar.css";
+import Logo from "../../assets/images/logo.png";
+import { useUser } from "../../hooks/useUser"; // Import du hook personnalisé
+import "../../styles (anciennement CSS)/common/SideBar.css";
 
 const SideBar = () => {
   const { user, setUser } = useUser(); // Accéder au contexte utilisateur

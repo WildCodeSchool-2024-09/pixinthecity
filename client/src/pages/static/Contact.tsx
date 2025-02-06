@@ -1,5 +1,5 @@
-import "./Contact.css";
-import Header from "../../components/Header";
+import "../../styles (anciennement CSS)/pages/Contact.css";
+import Header from "../../components/common/Header";
 
 function Contact() {
   return (

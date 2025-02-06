@@ -1,4 +1,4 @@
-import "../../components/CSS/CGU.css";
+import "../../styles (anciennement CSS)/pages/CGU.css";
 
 function CGU() {
   return (

@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import SideBar from "./components/SideBar";
+import Footer from "./components/common/Footer";
+import Header from "./components/common/Header";
+import SideBar from "./components/common/SideBar";
 import { UserProvider } from "./contexts/UserContext";
 import "./App.css";
 
