@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo.png";
-import { useUser } from "../hooks/useUser"; // Import du hook personnalisé
-import "./CSS/Header.css";
+import Logo from "../../assets/images/logo.png"
+import { useUser } from "../../hooks/useUser"; // Import du hook personnalisé
+import "../../styles (anciennement CSS)/common/Header.css";
 
 function Header() {
   const { user, setUser } = useUser();

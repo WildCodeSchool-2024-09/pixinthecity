@@ -9,16 +9,16 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import CardChasseurs from "./components/CardChasseurs";
 import { UserProvider } from "./contexts/UserContext";
-import CGU from "./pages/PagesClassiques/CGU";
 import Carte from "./pages/PagesClassiques/Carte";
-import Contact from "./pages/PagesClassiques/Contact";
-import Regles from "./pages/PagesClassiques/Regles";
 import UploadPhoto from "./pages/PagesClassiques/UploadPhoto";
 import CreaProfil from "./pages/Profil/CreaProfil";
 import DeleteProfil from "./pages/Profil/DeleteProfil";
 import ModifProfil from "./pages/Profil/ModifProfil";
 import Profil from "./pages/Profil/Profil";
 import Login from "./pages/Secu/Login";
+import CGU from "./pages/static/CGU";
+import Contact from "./pages/static/Contact";
+import Regles from "./pages/static/Regles";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         element: <Regles />,
       },
       {
-        path: "contact",
+        path: "Contact",
         element: <Contact />,
       },
       {
