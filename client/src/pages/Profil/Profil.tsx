@@ -135,7 +135,7 @@ function Profil() {
         <section aria-labelledby="user-settings">
           <button
             type="button"
-            onClick={() => navigate(`/modification_de_profil/${user.id}`)}
+            onClick={() => navigate(`/modifier_mon_profil/${user.id}`)}
             className="btn-edit-profile"
           >
             <img

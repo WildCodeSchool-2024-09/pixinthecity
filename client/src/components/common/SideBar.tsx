@@ -20,7 +20,7 @@ const SideBar = () => {
 
   const goToEditProfile = () => {
     if (user) {
-      navigate(`/Modification_de_profil/${user.id}`); // Redirection vers la modification du profil
+      navigate(`/modifier_mon_profil/${user.id}`); // Redirection vers la modification du profil
     }
   };
 

@@ -50,7 +50,7 @@ function ModifProfil() {
         }}
         extraButton={
           <button
-            onClick={() => navigate(`/Suppression_de_profil/${id}`)}
+            onClick={() => navigate(`/supprimer_mon_profil/${id}`)}
             className="delete-profil-button"
             type="button"
           >

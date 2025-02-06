@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/images/logo.png"
+import Logo from "../../assets/images/logo.png";
 import { useUser } from "../../hooks/useUser"; // Import du hook personnalisé
 import "../../styles (anciennement CSS)/common/Header.css";
 
@@ -29,7 +29,7 @@ function Header() {
 
   const goToEditProfile = () => {
     if (user) {
-      navigate(`/Modification_de_profil/${user.id}`);
+      navigate(`/modifier_mon_profil/${user.id}`);
     }
   };
 
