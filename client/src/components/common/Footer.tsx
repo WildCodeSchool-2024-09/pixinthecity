@@ -14,7 +14,7 @@ function Footer() {
           <p>CARTE</p>
         </button>
       </Link>
-      <Link to="/affichage_photos">
+      <Link to="/oeuvres">
         <button type="button" className="button_footer">
           <img
             src={"/src/assets/images/footer_icons/icon_artwork.png"}
@@ -24,7 +24,7 @@ function Footer() {
           <p>ŒUVRES</p>
         </button>
       </Link>
-      <Link to="/Donnees_photo">
+      <Link to="/post_a_photo">
         <button type="button" className="button_camera">
           <img
             src={"/src/assets/images/footer_icons/icon_add.png"}

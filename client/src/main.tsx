@@ -56,7 +56,7 @@ const router = createBrowserRouter([
         element: <CardChasseurs />,
       },
       {
-        path: "creer_un_profil",
+        path: "creation_de_profil",
         element: <CreaProfil />,
       },
       {
