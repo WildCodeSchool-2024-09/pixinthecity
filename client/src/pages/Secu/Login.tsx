@@ -2,33 +2,29 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../components/CSS/Login.css";
 import { type FormEventHandler, useContext, useRef, useState } from "react";
 import Logo from "../../assets/images/logo.png";
-import { UserContext } from "../../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext"; // Importer le UserContext
 
 function Login() {
-  const emailRef = useRef<HTMLInputElement>(null); // Référence à l'élément email pour un accès direct à sa valeur
-
-  // État local pour gérer le mot de passe
+  const emailRef = useRef<HTMLInputElement>(null);
   const [password, setPassword] = useState<string>("");
-  // Utilisation du contexte UserContext pour accéder à l'utilisateur et à la méthode setUser pour modifier l'état de l'utilisateur
   const { setUser } = useContext(UserContext) || {}; // Utilisation d'une valeur par défaut (vide) si UserContext est undefined
   const navigate = useNavigate();
 
   const handleSubmit: FormEventHandler = async (event) => {
     event.preventDefault();
     try {
-      // Envoi d'une requête POST vers l'API pour se connecter avec les données saisies (email et mot de passe)
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            email: emailRef.current?.value, // Accès sécurisé à la valeur de l'email avec emailRef
+            email: emailRef.current?.value, // Sécurise l'accès à emailRef
+            password,
           }),
         },
       );
 
-      // Si la réponse est valide (code 200), on procède à l'authentification
       if (response.status === 200) {
         const data = await response.json();
         if (setUser) {
@@ -36,7 +32,6 @@ function Login() {
         }
         navigate(`/Profil/${data.user.id}`);
       } else {
-        // Si la réponse n'est pas correcte, on affiche les détails de la réponse dans la console
         console.info(response);
       }
     } catch (err) {
@@ -61,7 +56,7 @@ function Login() {
                 id="email"
                 placeholder="email"
                 ref={emailRef}
-                required // champ obligatoire
+                required
               />
             </div>
             <div className="label2">
@@ -74,7 +69,7 @@ function Login() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required // champ obligatoire
+                required
               />
             </div>
             <button type="submit" className="login_button">
