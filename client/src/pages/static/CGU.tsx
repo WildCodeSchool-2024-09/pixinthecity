@@ -302,6 +302,14 @@ function CGU() {
         </p>
         <br />
         <p>CGU réalisées sur http://legalplace.fr/</p>
+        {/* Bouton pour fermer la fenêtre si elle a été ouverte dans un nouvel onglet */}
+        <button
+          onClick={() => window.close()}
+          className="fermer-button"
+          type="button"
+        >
+          Fermer la fenêtre
+        </button>
       </div>
     </>
   );
