@@ -1,4 +1,6 @@
+import fs from "node:fs";
 import type { RequestHandler } from "express";
+import { validateMIMEType } from "validate-image-type";
 import photoRepository from "./photoRepository";
 
 // Import access to data
@@ -38,6 +40,21 @@ const read: RequestHandler = async (req, res, next) => {
 // The A of BREAD - Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
   try {
+    // Vérifie si un fichier est présent
+    if (!req.file) {
+      res.status(400).json({ error: "No file uploaded" });
+      return;
+    }
+
+    const validation = await validateMIMEType(req.file.path, {
+      allowMimeTypes: ["image/jpeg", "image/png", "image/webp"],
+    });
+
+    if (!validation.ok) {
+      fs.unlinkSync(req.file.path);
+      res.status(400).json({ error: "Invalid image type" });
+      return;
+    }
     // Extrait des photos du request body
     const { title, content, artist, date, user_id } = req.body;
     const latitude = req.body.latitude;
