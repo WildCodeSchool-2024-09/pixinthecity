@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         element: <DeleteProfil />,
       },
       {
-        path: "profil/:id",
+        path: "profil",
         element: <Profil />,
       },
       {

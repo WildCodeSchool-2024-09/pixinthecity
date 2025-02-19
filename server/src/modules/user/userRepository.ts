@@ -92,6 +92,7 @@ class UserRepository {
     const [result] = await databaseClient.query<Result>(query, values);
     return result.affectedRows;
   }
+
   async delete(id: number) {
     // Exécute la query SQL DELETE pour supprimer un user existant depuis la table
     const [result] = await databaseClient.query<Result>(
