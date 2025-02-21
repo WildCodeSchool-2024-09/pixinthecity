@@ -5,11 +5,12 @@ import { useUser } from "../../hooks/useUser"; // Import du hook personnalisé
 import "../../styles (anciennement CSS)/common/Header.css";
 
 function Header() {
-  const { user, setUser } = useUser();
+  const { user, userId, setUserId, isAuthenticated, setIsAuthenticated } =
+    useUser();
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    navigate("/Login");
+    navigate("/login");
   };
 
   const handleSignup = () => {
@@ -17,19 +18,24 @@ function Header() {
   };
 
   const handleLogout = () => {
-    setUser(null); // Déconnecte l'utilisateur en réinitialisant le contexte
-    navigate("/"); // Redirige vers la page d'accueil
+    fetch(`${import.meta.env.VITE_API_URL}/api/logout`, {
+      credentials: "include",
+    }).then((res) => {
+      if (res.status === 200) setIsAuthenticated(false);
+      navigate("/"); // Redirige vers la page d'accueil
+      setUserId(null); // Déconnecte l'utilisateur en réinitialisant le contexte
+    });
   };
 
   const goToProfile = () => {
-    if (user) {
-      navigate(`/Profil/${user.id}`);
+    if (userId) {
+      navigate("/profil/");
     }
   };
 
   const goToEditProfile = () => {
-    if (user) {
-      navigate(`/modifier_mon_profil/${user.id}`);
+    if (userId) {
+      navigate(`/modifier_mon_profil/${userId}`);
     }
   };
 
@@ -40,29 +46,16 @@ function Header() {
         <img src={Logo} alt="Logo" id="logo" />
       </Link>
 
-      {/* Bienvenue + Pseudo centré */}
-      {user && (
-        <div className="center-container">
-          <span className="welcome_username">
-            <p id="welcome">Bienvenue</p>
-            <p id="header_username">{user.pseudo}</p>
-          </span>
-        </div>
-      )}
-
       {/* Boutons à droite */}
       <nav className="buttons">
-        {!user ? (
+        {isAuthenticated === true ? (
           <>
-            <button type="button" id="login_button" onClick={handleLogin}>
-              CONNEXION
-            </button>
-            <button type="button" id="signup_button" onClick={handleSignup}>
-              CRÉER MON COMPTE
-            </button>
-          </>
-        ) : (
-          <>
+            <div className="center-container">
+              <span className="welcome_username">
+                <p id="welcome">Bienvenue</p>
+                <p id="header_username">{user?.pseudo}</p>
+              </span>
+            </div>
             <button
               type="button"
               className="button_header"
@@ -83,6 +76,15 @@ function Header() {
               onClick={handleLogout}
             >
               DÉCONNEXION
+            </button>
+          </>
+        ) : (
+          <>
+            <button type="button" id="login_button" onClick={handleLogin}>
+              CONNEXION
+            </button>
+            <button type="button" id="signup_button" onClick={handleSignup}>
+              CRÉER MON COMPTE
             </button>
           </>
         )}

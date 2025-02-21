@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-
 import NewUserForm from "../../components/NewUserForm";
 
 function CreaProfil() {
@@ -40,8 +39,8 @@ function CreaProfil() {
             }
           })
           // si l'utilisateur rempli bien le formulaire il / elle, sera renvoyé à la page de son profil
-          .then((data) => {
-            navigate(`/Profil/${data.insertId}`);
+          .then(() => {
+            navigate("/login/");
           });
       }}
     />

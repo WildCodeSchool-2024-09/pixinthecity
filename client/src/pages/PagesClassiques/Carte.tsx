@@ -7,8 +7,6 @@ import SideBar from "../../components/common/SideBar"; // Import de la SideBar
 import type PhotoType from "../../types/PhotoType";
 import "./Carte.css";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 function CartePage() {
   // Déclaration de l'état pour stocker les photos récupérées depuis l'API
   const [photos, setPhotos] = useState<PhotoType[] | []>([]);
@@ -16,7 +14,7 @@ function CartePage() {
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
   // s'exécute au montage du composant
   useEffect(() => {
-    fetch(`${API_URL}/api/photos`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/photos`)
       .then((responseData) => {
         return responseData.json();
       })
@@ -48,7 +46,10 @@ function CartePage() {
           {/* Afficher la sidebar uniquement si c'est un écran desktop */}
           <div className="carte-leaflet">
             {photos.length > 0 ? (
-              <MapStretArt photos={photos} apiUrl={API_URL} />
+              <MapStretArt
+                photos={photos}
+                apiUrl={import.meta.env.VITE_API_URL}
+              />
             ) : (
               <p>Chargement des photos...</p>
             )}

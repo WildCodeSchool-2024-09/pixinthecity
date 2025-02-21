@@ -3,7 +3,6 @@ import type { RequestHandler } from "express";
 import userRepository from "../user/userRepository";
 
 import jwt from "jsonwebtoken";
-import type { JwtPayload } from "jsonwebtoken";
 // Importe l'access aux data
 
 const login: RequestHandler = async (req, res, next) => {
@@ -22,7 +21,9 @@ const login: RequestHandler = async (req, res, next) => {
       // Répond avec un user au format json (sans hashed password)
       const { hashed_password, ...userWithoutHashedPassword } = user;
       const myPayload = {
-        sub: user.id.toString(),
+        id: user.id.toString(),
+        email: user.email,
+        pseudo: user.pseudo,
       };
 
       const token = await jwt.sign(
@@ -33,7 +34,13 @@ const login: RequestHandler = async (req, res, next) => {
         },
       );
 
-      res.json({ user: userWithoutHashedPassword, token });
+      res.cookie("authToken", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production", // Active HTTPS en prod
+        sameSite: "strict",
+        maxAge: 60 * 60 * 1000,
+      });
+      res.sendStatus(200);
     } else {
       res.sendStatus(422);
     }
@@ -64,4 +71,53 @@ const hashPassword: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-export default { login, hashPassword };
+
+const verifyToken: RequestHandler = (req, res, next) => {
+  const { authToken } = req.cookies;
+  try {
+    if (authToken) {
+      const verified = jwt.verify(authToken, process.env.APP_SECRET as string);
+      if (verified) {
+        const decoded = jwt.decode(authToken);
+        res.status(200).json(decoded);
+      } else {
+        res.clearCookie("authToken");
+      }
+    } else {
+      res.status(401).json({ message: "No token provided" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const verifyAuth: RequestHandler = (req, res): void => {
+  const token = req.cookies.authToken;
+
+  if (!token) {
+    res.status(401).json({ message: "Non authentifié" });
+    return;
+  }
+
+  try {
+    const user = jwt.verify(token, process.env.APP_SECRET as string);
+    res.json(user);
+  } catch (error) {
+    res.status(401).json({ message: "Token invalide" });
+  }
+};
+
+const logout: RequestHandler = async (req, res, next) => {
+  try {
+    res.clearCookie("authToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+    res.status(200).json({ message: "Deconnected" });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { login, hashPassword, verifyToken, logout, verifyAuth };

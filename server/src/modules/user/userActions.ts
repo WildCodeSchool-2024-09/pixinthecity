@@ -30,7 +30,8 @@ const read: RequestHandler = async (req, res, next) => {
     if (user == null) {
       res.sendStatus(404);
     } else {
-      res.json(user);
+      const { hashed_password, ...userWithoutPassword } = user;
+      res.json(userWithoutPassword);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -66,7 +67,6 @@ const edit: RequestHandler = async (req, res, next) => {
       res.sendStatus(404); // Arrêtez ici
       return;
     }
-
     res.sendStatus(204); // Arrêtez ici aussi
   } catch (err) {
     next(err); // Passez l'erreur au middleware d'erreurs
@@ -98,20 +98,29 @@ const add: RequestHandler = async (req, res, next) => {
 
 const destroy: RequestHandler = async (req, res, next) => {
   try {
-    // Fetche un user spécifique à partir de l'ID fournie
+    // Récupère l'ID de l'utilisateur à supprimer
     const id = Number(req.params.id);
-    const user = await userRepository.delete(id);
 
-    // Si l'utilisateur n'est pas trouvé, répondre avec une erreur 404
-    // Sinon, répondre avec l'user au format json
-    if (user == null) {
-      res.sendStatus(404);
-    } else {
-      res.json(user);
+    // Supprime l'utilisateur dans la base de données
+    const deleteResult = await userRepository.delete(id);
+
+    // Vérifie si l'utilisateur existait bien avant suppression
+    if (!deleteResult || deleteResult === 0) {
+      res.status(404).json({ message: "User not found" });
     }
+
+    // Suppression réussie → Efface le cookie d'authentification
+    res.clearCookie("authToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+
+    res.status(200).json({ message: "User deleted and logged out" });
   } catch (err) {
-    // Pass any errors to the error-handling middleware
+    // Passe les erreurs au middleware de gestion des erreurs
     next(err);
   }
 };
+
 export default { browse, read, edit, add, destroy };

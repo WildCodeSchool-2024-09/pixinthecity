@@ -143,6 +143,11 @@ body.login-page .sidebar {
     flex: 1;
   }
 
+  /* Logo */
+  #logo_login {
+    padding: 3em 0 45%;
+  }
+
   .loginPage {
     background: url("../../assets/images/backgroundcity.jpg") center / cover
       fixed;

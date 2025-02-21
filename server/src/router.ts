@@ -20,6 +20,7 @@ const upload = multer({ dest: "public/photos/" });
 
 router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);
+router.get("/api/auth", authActions.verifyToken);
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.destroy);
 
@@ -32,7 +33,8 @@ router.post(
   userActions.add,
 );
 router.post("/api/login", authActions.login);
-
+router.get("/api/auth", authActions.verifyAuth);
+router.get("/api/logout", authActions.logout);
 // routes liées aux photos
 
 router.get("/api/photos", photoActions.browse);

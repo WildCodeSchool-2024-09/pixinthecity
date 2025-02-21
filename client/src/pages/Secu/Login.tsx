@@ -1,13 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../../components/CSS/Login.css";
-import { type FormEventHandler, useContext, useRef, useState } from "react";
+import { type FormEventHandler, useRef, useState } from "react";
 import Logo from "../../assets/images/logo.png";
-import { UserContext } from "../../contexts/UserContext"; // Importer le UserContext
+import { useUser } from "../../hooks/useUser";
 
 function Login() {
   const emailRef = useRef<HTMLInputElement>(null);
   const [password, setPassword] = useState<string>("");
-  const { setUser } = useContext(UserContext) || {}; // Utilisation d'une valeur par défaut (vide) si UserContext est undefined
+  const { setIsAuthenticated, isAuthenticated } = useUser(); // Utilisation d'une valeur par défaut (vide) si UserContext est undefined
   const navigate = useNavigate();
 
   const handleSubmit: FormEventHandler = async (event) => {
@@ -20,25 +20,24 @@ function Login() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: emailRef.current?.value, // Sécurise l'accès à emailRef
-            password,
+            password: password,
           }),
+          credentials: "include",
         },
       );
 
       if (response.status === 200) {
-        const data = await response.json();
-        if (setUser) {
-          setUser(data.user); // Met à jour l'état de l'utilisateur
-        }
-        navigate(`/Profil/${data.user.id}`);
+        setIsAuthenticated(true);
+        navigate("/profil");
+        window.location.reload(); // Rafraîchir la page pour recharger l'état
       } else {
-        console.info(response);
+        alert("mot de passe invalide");
       }
     } catch (err) {
       console.error(err);
     }
   };
-
+  console.info(isAuthenticated);
   return (
     <section className="loginPage">
       <Link to="/">
@@ -53,7 +52,7 @@ function Login() {
               <input
                 className="input_email"
                 type="email"
-                id="email"
+                id="identifiant"
                 placeholder="email"
                 ref={emailRef}
                 required
@@ -64,7 +63,7 @@ function Login() {
               <br />
               <input
                 className="input_password"
-                id="password"
+                id="mdp"
                 placeholder="mot de passe"
                 type="password"
                 value={password}

@@ -1,36 +1,11 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../hooks/useUser";
 import "../../pages/Profil/Profil.css";
 
-interface User {
-  id: number;
-  firstname: string;
-  lastname: string;
-  pseudo: string;
-  email: string;
-  zip_code?: string; // optionnel
-  city?: string; // optionnel
-  is_gcu_accepted: boolean;
-  is_admin: boolean;
-}
-
 function Profil() {
-  const { id } = useParams(); // Récupération de l'ID de l'utilisateur depuis l'URL (de manière dynamique type profil/:id)
+  // Récupération de l'ID de l'utilisateur depuis l'URL (de manière dynamique type profil/:id)
   const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null); // État pour stocker les informations de l'user
-
-  useEffect(() => {
-    // requête pour récupérer les données de l'user via son ID
-    fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`)
-      .then((response) => response.json())
-      .then((data: User) => {
-        setUser(data); // mise à jour de l'état avec les données de l'user
-      });
-  }, [id]); // useEffect déclanché chaque fois que l'ID change
-
-  if (!user) {
-    return <p>Chargement...</p>;
-  }
+  const { user } = useUser();
 
   return (
     <div className="profil_div">
@@ -50,7 +25,7 @@ function Profil() {
         </div>
 
         {/* Pseudo de l'utilisateur */}
-        <h1 id="username">{user.pseudo}</h1>
+        <h1 id="username">{user?.pseudo}</h1>
 
         {/* Niveau de l'utilisateur */}
         <p id="user_level" aria-label="Niveau de l'utilisateur">
@@ -126,7 +101,7 @@ function Profil() {
         <section aria-labelledby="user-settings">
           <button
             type="button"
-            onClick={() => navigate(`/modifier_mon_profil/${user.id}`)}
+            onClick={() => navigate(`/modifier_mon_profil/${user}`)}
             className="btn-edit-profile"
           >
             <img

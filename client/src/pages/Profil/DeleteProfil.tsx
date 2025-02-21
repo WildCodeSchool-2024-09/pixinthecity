@@ -2,11 +2,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./DeleteProfil.css";
+import { useUser } from "../../hooks/useUser";
 
 function DeleteProfil() {
   const navigate = useNavigate();
   const { id } = useParams(); // récupération de l'ID utilisateur depuis l'URL (paramètre dynamique comme profil/:id)
-
+  const { setIsAuthenticated, setUserId } = useUser();
   const handleDelete = async () => {
     if (!id) return; // vérifie si un ID est présent sinon annule l'exécution du delete
 
@@ -21,13 +22,17 @@ function DeleteProfil() {
         `${import.meta.env.VITE_API_URL}/api/users/${id}`,
         {
           method: "DELETE",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
         },
       );
       // si la réponse est ok, le compte est supprimé, sinon envoi une erreur
       if (response.ok) {
         toast.success("Votre compte a été supprimé.");
-        navigate("/", { state: { deleted: true } }); // redirection vers l'accueil avec un état
+        setUserId(null);
+        setIsAuthenticated(false);
+        navigate("/", { state: { deleted: true } });
+        // redirection vers l'accueil avec un état
         window.location.reload(); // Rafraîchir la page pour recharger l'état
       } else {
         throw new Error("Erreur lors de la suppression du compte.");
